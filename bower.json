@@ -20,5 +20,10 @@
     "test",
     "tests",
     "vendor/bower_components"
-  ]
+  ],
+  "devDependencies": {
+    "bootstrap": "^3.3.6",
+    "Materialize": "materialize#^0.97.6",
+    "jQuery": "^2.2.3"
+  }
 }
