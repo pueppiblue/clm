@@ -1,0 +1,24 @@
+{
+  "name": "clm",
+  "description": "loot manager for mmo",
+  "main": "index.js",
+  "authors": [
+    "pueppiblue"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "age",
+    "of",
+    "conan",
+    "loot"
+  ],
+  "homepage": "https://github.com/pueppiblue/clm",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendor/bower_components"
+  ]
+}

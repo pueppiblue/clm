@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/pueppiblue/clm/issues"
   },
-  "homepage": "https://github.com/pueppiblue/clm#readme"
+  "homepage": "https://github.com/pueppiblue/clm#readme",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
 }
