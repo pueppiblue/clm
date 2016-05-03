@@ -1,5 +1,5 @@
 AppBundle\Entity\User:
-  user{1..20}:
+  user{1..10}:
     name (unique): <firstName()>
     __construct : [$name]
     tear: <numberBetween(0, 45)>

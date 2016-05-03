@@ -3,3 +3,5 @@ AppBundle\Entity\Item:
     name (unique): <conanItem()>
     __construct : [$name]
     dropDate: <dateTime()>
+    looter: '@user*'
+    category: <randomElement( ['Tear','Urn','Weapon','Item','Accessoires'])>

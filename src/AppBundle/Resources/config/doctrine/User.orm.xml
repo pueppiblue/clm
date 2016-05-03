@@ -5,11 +5,11 @@
       <generator strategy="AUTO"/>
     </id>
     <field name="name" type="string" column="name" length="255"/>
-    <field name="tear" type="integer" column="tear"/>
-    <field name="acc" type="integer" column="acc"/>
-    <field name="weapon" type="integer" column="weapon"/>
-    <field name="item" type="integer" column="item"/>
-    <field name="urn" type="integer" column="urn"/>
+    <field name="tear" type="integer" column="tear" nullable="true"/>
+    <field name="acc" type="integer" column="acc" nullable="true"/>
+    <field name="weapon" type="integer" column="weapon" nullable="true"/>
+    <field name="item" type="integer" column="item" nullable="true"/>
+    <field name="urn" type="integer" column="urn" nullable="true"/>
     <one-to-many target-entity="Character" field="characters" mapped-by="user" />
     <one-to-many target-entity="Item" field="items" mapped-by="looter" />
   </entity>

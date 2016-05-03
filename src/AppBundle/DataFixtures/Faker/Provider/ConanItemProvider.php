@@ -12,6 +12,11 @@ class ConanItemProvider extends BaseProvider
         return self::randomElement($this->classProvider);
     }
 
+    public function conanCharName()
+    {
+        return self::randomElement($this->charNameProvider);
+    }
+
     public function conanItem()
     {
         $items = [
@@ -35,6 +40,13 @@ class ConanItemProvider extends BaseProvider
         'Haende',
         'Schultern',
         'Offhand'
+    ];
+
+    private $charNameProvider = [
+        'Rylt', 'Ejakulat', 'Entenkiller', 'Wurzeltee', 'Posexdon',
+        'Impedo', 'GrosseFresseNixDahinter', 'HäschenHerz', 'Fester Stöpsel',
+        'OttoSchlagmichTot', 'OttohautDichTot', "Flitzebogen", 'Schweinerade',
+        'Hasipupsi'
     ];
 
     private $classProvider = [

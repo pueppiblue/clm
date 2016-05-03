@@ -23,7 +23,7 @@ class Character
      */
     protected $clmClass;
     /**
-     * @var string
+     * @var integer
      */
     protected $user;
     /**

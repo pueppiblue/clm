@@ -88,9 +88,10 @@ class Item
      *
      * @return Item
      */
-    public function setLooter($looter)
+    public function setLooter(User $looter)
     {
         $this->looter = $looter;
+        $looter->assignItem($this);
 
         return $this;
     }
