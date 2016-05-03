@@ -1,0 +1,5 @@
+
+AppBundle\Entity\Character:
+  character{1..50}:
+    name (unique): <conanCharName()>.<current()>
+    __construct : [$name, '@user*', <conanClass()>]
