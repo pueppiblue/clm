@@ -1,0 +1,5 @@
+AppBundle\Entity\Item:
+  item{1..30}:
+    name (unique): <conanItem()>
+    __construct : [$name]
+    dropDate: <dateTime()>

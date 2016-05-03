@@ -6,8 +6,8 @@
     </id>
     <field name="name" type="string" column="name" length="255"/>
     <field name="dropDate" type="datetime" column="drop_date"/>
-    <field name="category" type="string" column="type" length="255"/>
-    <field name="isCash" type="boolean" column="isCash"/>
+    <field name="category" type="string" column="type" length="255" nullable="true"/>
+    <field name="isCash" type="boolean" column="isCash" nullable="true"/>
     <many-to-one
             field="looter"
             target-entity="User"

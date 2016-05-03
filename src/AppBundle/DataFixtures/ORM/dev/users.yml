@@ -2,8 +2,8 @@ AppBundle\Entity\User:
   user{1..20}:
     name (unique): <firstName()>
     __construct : [$name]
-    tear: 70%? <numberBetween(0, 45)>
-    weapon: 50%? <numberBetween(0, 45)>
-    item: 50%? <numberBetween(0, 45)>
-    acc: 20%? <numberBetween(0, 45)>
-    urn: 90%? <numberBetween(0, 45)>
+    tear: <numberBetween(0, 45)>
+    weapon: <numberBetween(0, 45)>
+    item: <numberBetween(0, 45)>
+    acc: <numberBetween(0, 45)>
+    urn: <numberBetween(0, 45)>
