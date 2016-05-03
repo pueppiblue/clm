@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pueppi
- * Date: 03.05.16
- * Time: 17:09
- */
 
 namespace AppBundle\Entity;
-
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -35,6 +28,11 @@ class User
     /**
      * @var int
      */
+    protected $item=0;
+
+    /**
+     * @var int
+     */
     protected $urn=0;
     /**
      * @var int
@@ -43,12 +41,12 @@ class User
     /**
      * @var ArrayCollection
      */
-    protected $items;
+    protected $items = null;
 
     /**
      * @var ArrayCollection
      */
-    protected $characters;
+    protected $characters = null;
 
     /**
      * User constructor.
@@ -84,6 +82,13 @@ class User
             case "urn":
                 $this->urn=0;
         }
+    }
+
+    /**
+     * @param $char
+     */
+    public function assignChar($char) {
+        $this->characters[] = $char;
     }
 
     /**
@@ -150,10 +155,4 @@ class User
         return $this->items;
     }
 
-    /**
-     * @param $char
-     */
-    public function assignChar($char) {
-        $this->characters[] = $char;
-    }
 }
