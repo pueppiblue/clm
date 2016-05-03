@@ -7,7 +7,7 @@
     <field name="name" type="string" column="name" length="255"/>
     <field name="clmClass" type="string" column="clm_class" length="255"/>
     <field name="user" type="string" column="user" length="255"/>
-    <field name="preferredSet" type="string" column="preferred_set" length="255"/>
+    <field name="preferredSet" type="string" column="preferred_set" length="255" nullable="true"/>
 
     <many-to-one
       field="user"

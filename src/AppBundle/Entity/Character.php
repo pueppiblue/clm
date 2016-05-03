@@ -29,7 +29,7 @@ class Character
     /**
      * @var ArrayCollection
      */
-    protected $preferredSet;
+    protected $preferredSet = null;
     /**
      * Character constructor.
      * @param $name
