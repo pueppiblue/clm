@@ -72,7 +72,8 @@
     "config": {
         "platform": {
             "php": "5.5.9"
-        }
+        },
+        "bin-dir": "bin"
     },
     "extra": {
         "symfony-app-dir": "app",

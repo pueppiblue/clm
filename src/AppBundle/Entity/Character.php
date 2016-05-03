@@ -29,7 +29,7 @@ class Character
     /**
      * @var ArrayCollection
      */
-    protected $preferredSet = null;
+    protected $preferredSet;
     /**
      * Character constructor.
      * @param $name
@@ -41,7 +41,6 @@ class Character
         $this->name = $name;
         $this->clmClass = $class;
         $this->user = $user;
-        $this->preferredSet = new ArrayCollection();
         $user->assignChar($this);
     }
 
