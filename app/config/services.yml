@@ -21,3 +21,8 @@ services:
       class: AppBundle\DataFixtures\Faker\Provider\ConanItemProvider
       arguments: [ "@hautelook_alice.bare_faker" ]
       tags: [ { name: "hautelook_alice.faker.provider" } ]
+
+  app.repository.user:
+      class: AppBundle\Repository\UserRepositoryInterface
+      factory: ['@doctrine', 'getRepository']
+      arguments: ['AppBundle:User']
