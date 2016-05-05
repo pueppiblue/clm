@@ -30,3 +30,7 @@ services:
   app.service.user_manager:
       class: AppBundle\Service\UserLootManager
       arguments: ['@app.repository.user']
+
+  app.user_controller:
+      class: AppBundle\Controller\UserController
+      arguments: ['@templating', '@app.service.user_manager']
