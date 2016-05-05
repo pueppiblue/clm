@@ -15,9 +15,9 @@ class UserLootManager
      * UserLootManager constructor.
      * @param UserRepositoryInterface $userRepositoryInterface
      */
-    public function __construct(UserRepositoryInterface $userRepositoryInterface)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->userRepository = $userRepositoryInterface;
+        $this->userRepository = $userRepository;
     }
 
     /**

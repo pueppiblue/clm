@@ -1,3 +1,11 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+redirect_home:
+  path: /
+  defaults:
+    _controller: FrameworkBundle:Redirect:Redirect
+    route: user_list
+    permanent: true
+
+user_list:
+  path: /users
+  defaults:
+    _controller: app.user_controller:listUsersAction

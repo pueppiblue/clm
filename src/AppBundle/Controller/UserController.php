@@ -1,5 +1,7 @@
 <?php
 
+namespace AppBundle\Controller;
+
 use AppBundle\Service\UserLootManager;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +24,7 @@ class UserController
      * @param UserLootManager $userLootManager
      * @param EngineInterface $templating
      */
-    public function __construct(UserLootManager $userLootManager, EngineInterface $templating)
+    public function __construct(EngineInterface $templating, UserLootManager $userLootManager)
     {
        $this->userLootManager = $userLootManager;
        $this->templating = $templating;
