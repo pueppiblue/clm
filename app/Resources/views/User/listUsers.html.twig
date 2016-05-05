@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h3>UserList:</h3>
+        <div>
+            <table class="table-striped table-responsive">
+                <tr>
+                    <td>Name</td>
+                    <td>Tränen</td>
+                    <td>Waffen</td>
+                    <td>Accessoires</td>
+                    <td>Urnen</td>
+                    <td>Items</td>
+                </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.getName }}</a></td>
+                        <td>{{ book.getTear }}</td>
+                        <td>{{ book.getWeapon }}</td>
+                        <td>{{ book.getAcc }}</td>
+                        <td>{{ book.getUrn }}</td>
+                        <td>{{ book.getItem }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+

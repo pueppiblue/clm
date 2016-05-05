@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Item;
 
 /*
  * @Entity User
@@ -62,7 +63,7 @@ class User
     /**
      * @param $item
      */
-    public function assignItem($item)
+    public function assignItem(Item $item)
     {
         $this->items[] = $item;
 
@@ -82,6 +83,14 @@ class User
             case "urn":
                 $this->urn=0;
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getItem()
+    {
+        return $this->item;
     }
 
     /**
@@ -154,5 +163,4 @@ class User
     {
         return $this->items;
     }
-
 }
