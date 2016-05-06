@@ -33,4 +33,11 @@ services:
 
   app.user_controller:
       class: AppBundle\Controller\UserController
-      arguments: ['@templating', '@app.service.user_manager']
+      arguments:
+        - '@templating'
+        - '@app.service.user_manager'
+        - '@app.xml_deserializer'
+
+  app.xml_deserializer:
+      class: AppBundle\Service\clmXmlDeserializer
+      arguments: ['@jms_serializer']
