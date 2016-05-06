@@ -38,7 +38,7 @@ class UserController
         $users =$this->userLootManager->getAllUsers();
 
         return $this->templating->renderResponse(
-                'AppBundle:User:listUsers.html.twig',
+                'User/listUsers.html.twig',
                 ['users' => $users]
             );
     }

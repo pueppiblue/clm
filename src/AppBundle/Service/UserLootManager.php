@@ -13,7 +13,7 @@ class UserLootManager
 
     /**
      * UserLootManager constructor.
-     * @param UserRepositoryInterface $userRepositoryInterface
+     * @param UserRepositoryInterface $userRepository
      */
     public function __construct(UserRepositoryInterface $userRepository)
     {

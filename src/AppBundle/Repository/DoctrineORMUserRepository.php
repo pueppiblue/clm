@@ -17,14 +17,6 @@ class DoctrineORMUserRepository extends EntityRepository implements UserReposito
     }
 
     /**
-     * @return \AppBundle\Entity\User[]|array
-     */
-    public function findAll()
-    {
-        return $this->findAll();
-    }
-
-    /**
      * @param $name
      * @return User[]
      */
