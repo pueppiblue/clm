@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Service\UserLootManager;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Service\clmXmlDeserializer;
 
 class UserController
 {
@@ -18,16 +19,21 @@ class UserController
      * @var EngineInterface
      */
     private $templating;
+    private $xmlDeserializer;
 
     /**
      * UserController constructor.
      * @param UserLootManager $userLootManager
      * @param EngineInterface $templating
      */
-    public function __construct(EngineInterface $templating, UserLootManager $userLootManager)
+    public function __construct(
+        EngineInterface $templating,
+        UserLootManager $userLootManager,
+        clmXmlDeserializer $xmlDeserializer)
     {
        $this->userLootManager = $userLootManager;
        $this->templating = $templating;
+        $this->xmlDeserializer = $xmlDeserializer;
     }
 
     /**
@@ -36,6 +42,8 @@ class UserController
     public function listUsersAction()
     {
         $users =$this->userLootManager->getAllUsers();
+
+        $this->xmlDeserializer->deserializeAccounts();
 
         return $this->templating->renderResponse(
                 'User/listUsers.html.twig',
