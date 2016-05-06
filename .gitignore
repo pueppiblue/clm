@@ -19,3 +19,8 @@
 /web/css
 /web/js
 /.idea/
+*Overlay.xml
+AS.Overlay.xml
+depfile.yml
+deptrac.phar
+
