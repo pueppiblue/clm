@@ -1,0 +1,66 @@
+# src\AppBundle\Resources\config\serializer\Entity.User.yml
+AppBundle\Entity\User:
+    xml_root_name: result
+    exclude: true
+    exclusion_policy: NONE
+    read_only: true
+    properties:
+        id:
+            exlude: true
+            expose: false
+        name:
+            expose: true
+            type: string
+            serialized_name: name
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        tear:
+            expose: true
+            type: integer
+            serialized_name: tear
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        weapon:
+            expose: true
+            type: integer
+            serialized_name: weapon
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        acc:
+            expose: true
+            type: integer
+            serialized_name: accessoire
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        item:
+            expose: true
+            type: integer
+            serialized_name: item
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        urn:
+            expose: true
+            type: integer
+            serialized_name: relic
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        items:
+            expose: false
+            type: string
+            serialized_name: name
+            xml_attribute: true
+            xml_value: false
+            read_only: true
+        characters:
+            expose: false
+            type: string
+            serialized_name: name
+            xml_attribute: true
+            xml_value: false
+            read_only: true
