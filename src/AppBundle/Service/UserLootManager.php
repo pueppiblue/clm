@@ -2,30 +2,30 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Repository\UserRepositoryInterface;
+use AppBundle\Repository\ClmAccountRepositoryInterface;
 
 class UserLootManager
 {
     /**
-     * @var UserRepositoryInterface
+     * @var ClmAccountRepositoryInterface
      */
-    protected $userRepository;
+    protected $accountRepository;
 
     /**
      * UserLootManager constructor.
-     * @param UserRepositoryInterface $userRepository
+     * @param ClmAccountRepositoryInterface $accountRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(ClmAccountRepositoryInterface $accountRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->$accountRepository = $accountRepository;
     }
 
     /**
-     * @return \AppBundle\Entity\User[]
+     * @return \AppBundle\Entity\ClmAccount[]
      */
     public function getAllUsers()
     {
-        $users = $this->userRepository->findAll();
+        $users = $this->accountRepository->findAll();
 
         return $users;
     }

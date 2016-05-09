@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity repository-class="AppBundle\Repository\CharacterRepository" name="AppBundle\Entity\Character" table="clm_characters">
+  <entity repository-class="AppBundle\Repository\DoctrineORMClmItemRepository" name="AppBundle\Entity\ClmItem">
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
     <field name="name" type="string" column="name" length="255"/>
-    <field name="clmClass" type="string" column="clm_class" length="255"/>
-    <field name="preferredSet" type="string" column="preferred_set" length="255" nullable="true"/>
-
+    <field name="dropDate" type="datetime" column="drop_date"/>
+    <field name="category" type="string" column="category" length="255" nullable="true"/>
+    <field name="isCash" type="boolean" column="isCash" nullable="true"/>
     <many-to-one
-      field="user"
-      target-entity="User"
-      inversed-by="characters">
-      <join-column name="user_id" referenced-column-name="id" />
+            field="looter"
+            target-entity="ClmAccount"
+            inversed-by="items">
+      <join-column name="looter_id" referenced-column-name="id" />
     </many-to-one>
   </entity>
 </doctrine-mapping>

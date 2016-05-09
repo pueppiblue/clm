@@ -22,14 +22,14 @@ services:
       arguments: [ "@hautelook_alice.bare_faker" ]
       tags: [ { name: "hautelook_alice.faker.provider" } ]
 
-  app.repository.user:
-      class: AppBundle\Repository\UserRepositoryInterface
+  app.repository.account:
+      class: AppBundle\Repository\ClmAccountRepositoryInterface
       factory: ['@doctrine', 'getRepository']
-      arguments: ['AppBundle:User']
+      arguments: ['AppBundle:ClmAccount']
 
   app.service.user_manager:
       class: AppBundle\Service\UserLootManager
-      arguments: ['@app.repository.user']
+      arguments: ['@app.repository.account']
 
   app.user_controller:
       class: AppBundle\Controller\UserController
@@ -39,5 +39,5 @@ services:
         - '@app.xml_deserializer'
 
   app.xml_deserializer:
-      class: AppBundle\Service\clmXmlDeserializer
+      class: AppBundle\Service\ClmXmlDeserializer
       arguments: ['@jms_serializer']

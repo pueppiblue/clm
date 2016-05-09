@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity repository-class="AppBundle\Repository\DoctrineORMUserRepository" name="AppBundle\Entity\User">
+  <entity repository-class="AppBundle\Repository\DoctrineORMClmAccountRepository" name="AppBundle\Entity\ClmAccount">
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
-    <field name="name" type="string" column="name" length="255"/>
+    <field name="accountName" type="string" column="name" length="255"/>
     <field name="tear" type="integer" column="tear" nullable="true"/>
     <field name="acc" type="integer" column="acc" nullable="true"/>
     <field name="weapon" type="integer" column="weapon" nullable="true"/>
     <field name="item" type="integer" column="item" nullable="true"/>
     <field name="urn" type="integer" column="urn" nullable="true"/>
-    <one-to-many target-entity="Character" field="characters" mapped-by="user" />
+    <one-to-many target-entity="Character" field="characters" mapped-by="account" />
     <one-to-many target-entity="Item" field="items" mapped-by="looter" />
   </entity>
 </doctrine-mapping>

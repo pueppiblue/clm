@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /*
  * @Entity Character
  */
-class Character
+class ClmCharacter
 {
     /**
      * @var
@@ -36,7 +36,7 @@ class Character
      * @param $class
      * @param $user
      */
-    public function __construct($name, User $user, $class)
+    public function __construct($name, ClmAccount $user, $class)
     {
         $this->name = $name;
         $this->clmClass = $class;

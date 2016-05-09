@@ -2,23 +2,23 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\User;
+use AppBundle\Entity\ClmAccount;
 use Doctrine\ORM\EntityRepository;
 
-class DoctrineORMUserRepository extends EntityRepository implements UserRepositoryInterface
+class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAccountRepositoryInterface
 {
     /**
-     * @param User $user
+     * @param ClmAccount $clmAccount
      */
-    public function save(User $user)
+    public function save(ClmAccount $clmAccount)
     {
-        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->persist($clmAccount);
         $this->getEntityManager()->flush();
     }
 
     /**
      * @param $name
-     * @return User[]
+     * @return ClmAccount[]
      */
     public function findByName($name)
     {

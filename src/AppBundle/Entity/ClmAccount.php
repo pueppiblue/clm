@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\Item;
+use AppBundle\Entity\ClmItem;
+use AppBundle\Entity\ClmCharacter;
 
 /*
- * @Entity User
+ * @Entity ClmAccount
  */
-class User
+class ClmAccount
 {
     /**
      * @var int
@@ -17,7 +18,7 @@ class User
     /**
      * @var string
      */
-    protected $name;
+    protected $accountName;
     /**
      * @var int
      */
@@ -55,7 +56,7 @@ class User
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->accountName = $name;
         $this->items = new ArrayCollection();
         $this->characters= new ArrayCollection();
     }
@@ -63,7 +64,7 @@ class User
     /**
      * @param $item
      */
-    public function assignItem(Item $item)
+    public function assignItem(ClmItem $item)
     {
         $this->items[] = $item;
 
@@ -111,9 +112,9 @@ class User
     /**
      * @return string
      */
-    public function getName()
+    public function getAccountName()
     {
-        return $this->name;
+        return $this->accountName;
     }
 
     /**

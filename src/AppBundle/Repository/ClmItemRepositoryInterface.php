@@ -2,24 +2,24 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\User;
+use AppBundle\Entity\ClmItem;
 
-interface UserRepositoryInterface
+interface ClmItemRepositoryInterface
 {
 
     /**
-     * @param User $user
+     * @param ClmItem $item
      */
-    public function save(User $user);
+    public function save(ClmItem $item);
 
     /**
-     * @return User[]
+     * @return ClmItem[]
      */
     public function findAll();
 
     /**
      * @param $name
-     * @return User[]
+     * @return ClmItem[]
      */
     public function findByName($name);
 }

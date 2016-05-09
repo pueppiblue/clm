@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 /**
  * Item
  */
-class Item
+class ClmItem
 {
     /**
      * @var int
@@ -62,7 +62,7 @@ class Item
      *
      * @param string $name
      *
-     * @return Item
+     * @return ClmItem
      */
     public function setName($name)
     {
@@ -86,9 +86,9 @@ class Item
      *
      * @param integer $looter
      *
-     * @return Item
+     * @return ClmItem
      */
-    public function setLooter(User $looter)
+    public function setLooter(ClmAccount $looter)
     {
         $this->looter = $looter;
         $looter->assignItem($this);
@@ -111,7 +111,7 @@ class Item
      *
      * @param \DateTime $dropDate
      *
-     * @return Item
+     * @return ClmItem
      */
     public function setDropDate($dropDate)
     {
@@ -135,7 +135,7 @@ class Item
      *
      * @param string $category
      *
-     * @return Item
+     * @return ClmItem
      */
     public function setCategory($category)
     {
@@ -159,7 +159,7 @@ class Item
      *
      * @param boolean $isCash
      *
-     * @return Item
+     * @return ClmItem
      */
     public function setIsCash($isCash)
     {

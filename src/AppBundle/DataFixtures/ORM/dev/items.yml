@@ -1,4 +1,4 @@
-AppBundle\Entity\Item:
+AppBundle\Entity\ClmItem:
   item{1..30}:
     name (unique): <conanItem()>
     __construct : [$name]

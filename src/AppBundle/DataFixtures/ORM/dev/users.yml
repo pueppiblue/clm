@@ -1,4 +1,4 @@
-AppBundle\Entity\User:
+AppBundle\Entity\ClmUser:
   user{1..10}:
     name (unique): <firstName()>
     __construct : [$name]
