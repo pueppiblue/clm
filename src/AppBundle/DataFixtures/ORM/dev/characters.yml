@@ -1,5 +1,0 @@
-
-AppBundle\Entity\ClmCharacter:
-  character{1..50}:
-    name (unique): <conanCharName()>.<current()>
-    __construct : [$name, '@user*', <conanClass()>]

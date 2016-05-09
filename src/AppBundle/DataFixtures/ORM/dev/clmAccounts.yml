@@ -1,7 +1,7 @@
-AppBundle\Entity\ClmUser:
-  user{1..10}:
-    name (unique): <firstName()>
-    __construct : [$name]
+AppBundle\Entity\ClmAccount:
+  clmAccount{1..10}:
+    accountName (unique): <firstName()>
+    __construct : [$accountName]
     tear: <numberBetween(0, 45)>
     weapon: <numberBetween(0, 45)>
     item: <numberBetween(0, 45)>

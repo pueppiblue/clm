@@ -9,24 +9,23 @@ class UserLootManager
     /**
      * @var ClmAccountRepositoryInterface
      */
-    protected $accountRepository;
+    private $accountRepository;
 
     /**
-     * UserLootManager constructor.
      * @param ClmAccountRepositoryInterface $accountRepository
      */
     public function __construct(ClmAccountRepositoryInterface $accountRepository)
     {
-        $this->$accountRepository = $accountRepository;
+       $this->accountRepository = $accountRepository;
     }
 
     /**
      * @return \AppBundle\Entity\ClmAccount[]
      */
-    public function getAllUsers()
+    public function getAllAccounts()
     {
-        $users = $this->accountRepository->findAll();
+        $accounts = $this->accountRepository->findAll();
 
-        return $users;
+        return $accounts;
     }
 }

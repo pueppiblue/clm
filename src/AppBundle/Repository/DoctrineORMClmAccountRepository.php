@@ -23,7 +23,7 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
     public function findByName($name)
     {
         return $this->findBy([
-            'name' => $name,
+            'accountName' => $name,
         ]);
     }
 }

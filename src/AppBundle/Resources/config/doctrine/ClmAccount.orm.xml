@@ -10,7 +10,7 @@
     <field name="weapon" type="integer" column="weapon" nullable="true"/>
     <field name="item" type="integer" column="item" nullable="true"/>
     <field name="urn" type="integer" column="urn" nullable="true"/>
-    <one-to-many target-entity="Character" field="characters" mapped-by="account" />
-    <one-to-many target-entity="Item" field="items" mapped-by="looter" />
+    <one-to-many target-entity="ClmCharacter" field="characters" mapped-by="account" />
+    <one-to-many target-entity="ClmItem" field="items" mapped-by="looter" />
   </entity>
 </doctrine-mapping>

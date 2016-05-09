@@ -41,7 +41,7 @@ class UserController
      */
     public function listUsersAction()
     {
-        $users =$this->userLootManager->getAllUsers();
+        $users =$this->userLootManager->getAllAccounts();
 
         $this->xmlDeserializer->deserializeAccounts();
 

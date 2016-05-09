@@ -25,7 +25,7 @@ class ClmCharacter
     /**
      * @var integer
      */
-    protected $user;
+    protected $account;
     /**
      * @var ArrayCollection
      */
@@ -36,12 +36,12 @@ class ClmCharacter
      * @param $class
      * @param $user
      */
-    public function __construct($name, ClmAccount $user, $class)
+    public function __construct($name, ClmAccount $account, $class)
     {
         $this->name = $name;
         $this->clmClass = $class;
-        $this->user = $user;
-        $user->assignChar($this);
+        $this->account = $account;
+        $account->assignChar($this);
     }
 
     /**
@@ -79,9 +79,9 @@ class ClmCharacter
     /**
      * @return mixed
      */
-    public function getUser()
+    public function getAccount()
     {
-        return $this->user;
+        return $this->account;
     }
 
     /**
