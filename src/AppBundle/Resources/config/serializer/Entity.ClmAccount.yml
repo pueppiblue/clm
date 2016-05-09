@@ -1,8 +1,9 @@
 # src\AppBundle\Resources\config\serializer\Entity.ClmAccount.yml
 AppBundle\Entity\ClmAccount:
-    xml_root_name: account
-    exclude: true
     exclusion_policy: NONE
+    expose: true
+    xml_root_name: account
+    read_only: false
     properties:
         id:
             exclude: true
@@ -44,15 +45,14 @@ AppBundle\Entity\ClmAccount:
             xml_attribute: true
             xml_value: false
         items:
-            expose: false
+            expose: true
             type: string
-            serialized_name: name
-            xml_attribute: true
-            xml_value: false
+            serialized_name: items
+            xml_list: true
             read_only: false
         characters:
             expose: false
             type: string
-            serialized_name: name
-            xml_attribute: true
-            xml_value: false
+            serialized_name: characters
+            xml_list: true
+            read_only: true

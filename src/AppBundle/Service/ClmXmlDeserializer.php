@@ -2,6 +2,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
+use AppBundle\Entity\ClmCharacter;
 use JMS\Serializer\Serializer;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -60,28 +61,35 @@ EOT;
 //        dump($testXML);
 
         $crawler = new Crawler($xmlData);
-        $attributes = $crawler
-            ->filterXpath('//accounts/account')
-            ->extract(array('player_name', 'tear', 'relic', 'chars'));
-        dump($attributes);
-
-        $crawler = new Crawler($xmlData);
-        dump($crawler->html());
-        $crawler = new Crawler();
-        $crawler->addXmlContent($xmlData);
-        dump($crawler->html());
-        $crawler = $crawler->filter('accounts')->children();
         dump($crawler->html());
 
-        die;
+        $crawler = $crawler->filterXPath('//accounts');
+        dump($crawler->html());
 
-//        $this->serializer = $serializer;
+        $users = [
+             new ClmAccount('Nils'),
+            new ClmAccount('Nils2'),
+        ];
+
+        dump($users);
+
+        dump($this->serializer->serialize($users, 'xml'));
 //
+//        $attributes = $crawler
+//            ->filterXpath('//accounts/account')
+//            ->extract(array('player_name', 'tear', 'relic', 'chars'));
+//        dump($attributes['0']['0']);
+//
+//        $attributes = $crawler
+//            ->filterXpath('//accounts/account/chars/char')
+//            ->extract(array('name', 'class', 'set'));
+//        dump($attributes);
+
 //        $user = $this->serializer->deserialize(
-//            $xmlData, 'User[]', 'xml');
+//            ($crawler->html()), ClmAccount::class, 'xml');
 //
 //        dump($user);
-//        die();
+        die();
     }
 
 

@@ -3,12 +3,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\XmlRoot;
 use AppBundle\Entity\ClmItem;
 use AppBundle\Entity\ClmCharacter;
 
-/*
- * @Entity ClmAccount
- */
+/** @JMS\XmlRoot("account") */
 class ClmAccount
 {
     /**
@@ -59,6 +58,46 @@ class ClmAccount
         $this->accountName = $name;
         $this->items = new ArrayCollection();
         $this->characters= new ArrayCollection();
+    }
+
+    /**
+     * @param int $tear
+     */
+    public function setTear($tear)
+    {
+        $this->tear = $tear;
+    }
+
+    /**
+     * @param int $acc
+     */
+    public function setAcc($acc)
+    {
+        $this->acc = $acc;
+    }
+
+    /**
+     * @param int $item
+     */
+    public function setItem($item)
+    {
+        $this->item = $item;
+    }
+
+    /**
+     * @param int $urn
+     */
+    public function setUrn($urn)
+    {
+        $this->urn = $urn;
+    }
+
+    /**
+     * @param int $weapon
+     */
+    public function setWeapon($weapon)
+    {
+        $this->weapon = $weapon;
     }
 
     /**
