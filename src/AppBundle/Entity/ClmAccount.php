@@ -3,11 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use JMS\Serializer\Annotation\XmlRoot;
 use AppBundle\Entity\ClmItem;
 use AppBundle\Entity\ClmCharacter;
 
-/** @JMS\XmlRoot("account") */
+
 class ClmAccount
 {
     /**
@@ -58,6 +57,14 @@ class ClmAccount
         $this->accountName = $name;
         $this->items = new ArrayCollection();
         $this->characters= new ArrayCollection();
+    }
+
+    /**
+     * @param ArrayCollection $characters
+     */
+    public function setCharacters($characters)
+    {
+        $this->characters = $characters;
     }
 
     /**

@@ -48,47 +48,50 @@ class ClmXmlDeserializer
              </chars>
         </account>
         <account player_name="NilseBaer" tear="22" relic="55" weapon="551" accessoire="51" item="31">
+            <chars>
+                <char name="Rylt" class="HoX" set="Kein" main="False" />
+                <char name="Corais" class="DT" set="Kein" main="False" />
+                <char name="Nahraya" class="Barbar" set="Kein" main="False" />
+                <char name="Skjardar" class="BS" set="Schutz" main="False" />
+            </chars>
         </account>
     </accounts>
 </AS.Overlay>
 EOT;
-//        $account = new ClmAccount('Nilsebaer');
-//        $account->setTear(55);
-//
-//        $accounts = [ $account, new ClmAccount('Anat')];
-//
-//        $testXML = $this->serializer->serialize($accounts, 'xml' );
-//        dump($testXML);
 
         $crawler = new Crawler($xmlData);
+
         dump($crawler->html());
 
-        $crawler = $crawler->filterXPath('//accounts');
-        dump($crawler->html());
+        $accounts = $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
+            $account = new ClmAccount($node->attr('player_name'));
+            $account->setTear($node->attr('tear'));
+            $characters = $node->filterXPath('//account/chars/char')->each(function (Crawler $cNode) {
+                return $cNode->attr('name');
+            });
+            $account->setCharacters($characters);
+            return $account;
+        });
+        dump($accounts);
 
-        $users = [
-             new ClmAccount('Nils'),
-            new ClmAccount('Nils2'),
-        ];
+//        dump($crawler->filterXPath('//accounts//chars')->html());
+//        dump($crawler->filterXPath('//accounts/account')->html());
+//        dump($crawler->filterXPath('//accounts/account/chars')->html());
 
-        dump($users);
+//        $xml = $crawler->filterXPath('//accounts/account[1]');
+//        dump($this->serializer->deserialize(
+//            $xml,
+//            'AppBundle\Entity\ClmAccount',
+//            'xml'
+//        ));
 
-        dump($this->serializer->serialize($users, 'xml'));
 //
 //        $attributes = $crawler
 //            ->filterXpath('//accounts/account')
 //            ->extract(array('player_name', 'tear', 'relic', 'chars'));
 //        dump($attributes['0']['0']);
 //
-//        $attributes = $crawler
-//            ->filterXpath('//accounts/account/chars/char')
-//            ->extract(array('name', 'class', 'set'));
-//        dump($attributes);
 
-//        $user = $this->serializer->deserialize(
-//            ($crawler->html()), ClmAccount::class, 'xml');
-//
-//        dump($user);
         die();
     }
 

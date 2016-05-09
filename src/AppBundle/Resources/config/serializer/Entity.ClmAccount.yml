@@ -2,7 +2,7 @@
 AppBundle\Entity\ClmAccount:
     exclusion_policy: NONE
     expose: true
-    xml_root_name: account
+    xml_root_name: accounts
     read_only: false
     properties:
         id:
@@ -11,7 +11,7 @@ AppBundle\Entity\ClmAccount:
         accountName:
             expose: true
             type: string
-            serialized_name: account_name
+            serialized_name: player_name
             xml_attribute: true
             xml_value: false
         tear:
