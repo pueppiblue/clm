@@ -8,7 +8,7 @@ module.exports = {
         path.join(source_dir,"js/hello.js")
         ],
     output: {
-        path: dest_dir,
+        path: dest_dir+"/js",
         filename: "clm_main.js"
     },
     module: {
