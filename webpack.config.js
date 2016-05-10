@@ -1,19 +1,41 @@
 var path = require('path');
 var webpack = require('webpack');
-var source_dir = path.join(__dirname, 'app/Resources/AppBundle/assets');
-var dest_dir = path.join(__dirname, 'web');
+var source_dir = path.resolve(__dirname, 'app/Resources/AppBundle/assets');
+var dest_dir = path.resolve(__dirname, 'web/assets');
 
 module.exports = {
-    entry: [
-        path.join(source_dir,"js/hello.js")
-        ],
+    entry: {
+        main: [
+            path.resolve(source_dir,"js/hello.js")
+        ]
+    },
     output: {
-        path: dest_dir+"/js",
-        filename: "clm_main.js"
+        filename: '[name].js',
+        path : dest_dir,
+        publicPath : "/assets/",
     },
     module: {
         loaders: [
-            {test: /\.css$/, loader: "style!css"}
+            {
+                test: /\.css$/,
+                include: path.join(source_dir, 'css'),
+                loader: "style!css"}
         ]
+    },
+    resolve: {
+        root: [
+            path.resolve("./vendor"),
+            path.resolve("./node_modules")
+        ]
+    },
+    devServer: {
+        hot: true,
+        port: 8090,
+        contentBase: "web/",
+        proxy: [{
+            path: '/*/',
+            target: 'http://localhost:80',
+        }]
     }
 };
+

@@ -19,7 +19,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('js/clm_main.js') }}" charset="utf-8"></script>
+    {% if app.environment == "dev" %}
+        <script src="{{ asset('webpack-dev-server.js') }}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{{ asset('assets/main.js') }}" charset="utf-8"></script>
 {% endblock %}
 
 </body>

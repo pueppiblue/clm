@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    assets_base_url: "http://localhost:8090"
 
 framework:
     #esi:             ~
@@ -30,7 +31,9 @@ framework:
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
-    assets: ~
+    assets:
+        base_urls:
+            - "%assets_base_url%"
 
 # Twig Configuration
 twig:
