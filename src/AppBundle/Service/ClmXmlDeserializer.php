@@ -2,17 +2,11 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
-use AppBundle\Entity\ClmCharacter;
-use JMS\Serializer\Serializer;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ClmXmlDeserializer
 {
 
-    /**
-     * @var Serializer
-     */
-    private $serializer;
     /**
      * @var string
      */
@@ -20,13 +14,14 @@ class ClmXmlDeserializer
 
     /**
      * clmXmlDeserializer constructor.
-     * @param Serializer $serializer
      */
-    public function  __construct(Serializer $serializer)
+    public function  __construct()
     {
-       $this->serializer = $serializer;
     }
 
+    /**
+     *
+     */
     public function deserializeAccounts()
     {
         $xmlData = <<<EOT
@@ -92,9 +87,27 @@ EOT;
 //        dump($attributes['0']['0']);
 //
 
-        die();
     }
 
+    /**
+     * @param Crawler $crawler
+     * @return array
+     */
+    private function getAccounts(Crawler $crawler)
+    {
+        $accounts = [];
+        return $accounts;
+    }
+
+    /**
+     * @param Crawler $crawler
+     * @return array
+     */
+    private function getCharacters(Crawler $crawler)
+    {
+        $characters = [];
+        return $characters;
+    }
 
 
 
