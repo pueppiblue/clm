@@ -27,16 +27,15 @@
   "homepage": "https://github.com/pueppiblue/clm#readme",
   "devDependencies": {
     "bower": "^1.7.9",
-    "browser-sync": "~2.8.2",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^2.0.6",
-    "gulp-concat": "^2.6.0",
-    "gulp-if": "^2.0.0",
-    "gulp-less": "^3.0.5",
-    "gulp-sass": "^2.2.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "~1.2.0",
-    "gulp-util": "~3.0.6",
-    "require-dir": "~0.3.0"
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "less-loader": "^2.2.3",
+    "node-sass": "^3.7.0",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   }
 }
