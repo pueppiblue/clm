@@ -31,13 +31,15 @@ services:
       class: AppBundle\Service\UserLootManager
       arguments: ['@app.repository.account']
 
-  app.user_controller:
+  app.controller.user:
       class: AppBundle\Controller\UserController
       arguments:
         - '@templating'
+        - '@router'
+        - '@form.factory'
         - '@app.service.user_manager'
         - '@app.xml_deserializer'
 
   app.xml_deserializer:
       class: AppBundle\Service\ClmXmlDeserializer
-      arguments: ['@jms_serializer']
+

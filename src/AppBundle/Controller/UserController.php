@@ -2,10 +2,16 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Service\UserLootManager;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Form\UserImportFromFileType;
 use AppBundle\Service\ClmXmlDeserializer;
+use AppBundle\Service\UserLootManager;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class UserController
 {
@@ -14,6 +20,8 @@ class UserController
      * @var UserLootManager
      */
     private $userLootManager;
+    private $router;
+    private $formFactory;
 
     /**
      * @var EngineInterface
@@ -28,18 +36,22 @@ class UserController
      */
     public function __construct(
         EngineInterface $templating,
+        UrlGeneratorInterface $router,
+        FormFactory $formFactory,
         UserLootManager $userLootManager,
         ClmXmlDeserializer $xmlDeserializer)
     {
        $this->userLootManager = $userLootManager;
        $this->templating = $templating;
+        $this->router = $router;
+        $this->formFactory = $formFactory;
         $this->xmlDeserializer = $xmlDeserializer;
     }
 
     /**
      * @return Response
      */
-    public function listUsersAction()
+    public function listAction()
     {
         $users =$this->userLootManager->getAllAccounts();
 
@@ -50,4 +62,51 @@ class UserController
                 ['users' => $users]
             );
     }
+    
+    public function importAction(Request $request)
+    {
+        $xmlFile = null;
+        $form = $this->formFactory->create(UserImportFromFileType::class, $xmlFile);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->xmlDeserializer->deserializeAccounts();
+
+            return new RedirectResponse(
+                $this->router->generate('user_list')
+            );
+        }
+
+
+        return $this->templating->renderResponse(
+            'User/importUsers.html.twig',
+            array('form' => $form->createView(),)
+        );
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
