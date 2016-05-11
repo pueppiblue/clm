@@ -6,8 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
-    assets_base_url: "http://localhost:8090"
+    locale: en"
 
 framework:
     #esi:             ~
@@ -31,9 +30,7 @@ framework:
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
-    assets:
-        base_urls:
-            - "%assets_base_url%"
+    assets: ~
 
 # Twig Configuration
 twig:

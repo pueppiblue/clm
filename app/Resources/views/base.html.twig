@@ -19,10 +19,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% if app.environment == "dev" %}
-        <script src="{{ asset('webpack-dev-server.js') }}"></script>
+    {% if app.environment == 'dev' %}
+        <script src="http://localhost:8090/assets/main.js"></script>
     {% endif %}
-    <script type="text/javascript" src="{{ asset('assets/main.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('assets/main.js') }}"></script>
 {% endblock %}
 
 </body>
