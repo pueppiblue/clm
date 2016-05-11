@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h3>Choose Overlay.xml</h3>
+        <div>
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    <input type="submit" value="Import Accounts"
+               class="form-field btn btn-default pull-right"/>
+
+    </div>
+
+{% endblock %}
+
