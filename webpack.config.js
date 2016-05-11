@@ -1,26 +1,34 @@
 var path = require('path');
 var webpack = require('webpack');
+var webpackDevServer=require('webpack-dev-server');
+var port = 8090;
 var source_dir = path.resolve(__dirname, 'app/Resources/AppBundle/assets');
 var dest_dir = path.resolve(__dirname, 'web/assets');
 var bower = path.resolve(__dirname,'vendor/bower_components');
 var node = path.resolve(__dirname,'node_modules');
 
-module.exports = {
+var config = {
     entry: {
         main: [
+            'webpack-dev-server/client?http://localhost:8090',
+            'webpack/hot/dev-server',
             path.resolve(source_dir, "js/hello.js"),
             path.resolve(source_dir, "css/hello.css"),
+        ],
+        vendor: [
+            'webpack-dev-server/client?http://localhost:8090',
+            'webpack/hot/dev-server',
             path.resolve(bower, "jquery/dist/jquery.js"),
             path.resolve(bower, "bootstrap/less/bootstrap.less"),
             path.resolve(bower, "bootstrap/dist/js/bootstrap.js"),
             path.resolve(bower, "Materialize/sass/materialize.scss"),
-            path.resolve(bower, "Materialize/dist/js/materialize.js")
+            path.resolve(bower, "Materialize/dist/js/materialize.js"),
         ]
     },
     output: {
         filename: '[name].js',
-        path : dest_dir,
-        publicPath : "/assets"
+        path: dest_dir,
+        publicPath: "http://localhost:8090/assets"
     },
     module: {
         loaders: [
@@ -48,16 +56,17 @@ module.exports = {
         ]
     },
     resolve: {
-        root:    __dirname,
+        root: __dirname,
         modulesDirectories: ['node_modules', 'vendor/bower_components'],
         alias: {
             hammerjs: "vendor/bower_components/Materialize/js/hammer.min.js"
         },
     },
     resolveLoader: {
-        root: [node, bower ]
+        root: [node, bower]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
         ),
@@ -68,14 +77,23 @@ module.exports = {
         }),
 
     ],
-    devServer: {
-        hot: true,
-        port: 8090,
-        contentBase: "web/",
-        proxy: [{
-            path: '/*/',
-            target: 'http://clm.dev:80/app_dev.php',
-        }]
-    }
 };
+//
+// var devServer = new webpackDevServer(webpack(config), {
+//     hot: true,
+//     contentBase: "/web/",
+//     }
+// );
+//
+// devServer.listen(
+//     port,
+//     'localhost',
+//     function (err, result) {
+//         if (err) {
+//             console.log(err);
+//         }
+//         console.log('Listening at localhost:'+port);
+//     }
+// );
 
+module.exports = config;

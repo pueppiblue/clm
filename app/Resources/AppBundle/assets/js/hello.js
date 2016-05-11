@@ -1,1 +1,1 @@
-document.write("It works too late.");
+document.write("It works late.");

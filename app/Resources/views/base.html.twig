@@ -20,9 +20,10 @@
 
 {% block javascripts %}
     {% if app.environment == 'dev' %}
+        <script src="http://localhost:8090/assets/vendor.js"></script>
         <script src="http://localhost:8090/assets/main.js"></script>
     {% endif %}
-    <script src="{{ asset('assets/main.js') }}"></script>
+    {#<script src="{{ asset('assets/main.js') }}"></script>#}
 {% endblock %}
 
 </body>
