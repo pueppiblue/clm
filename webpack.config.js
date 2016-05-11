@@ -28,7 +28,7 @@ var config = {
     output: {
         filename: '[name].js',
         path: dest_dir,
-        publicPath: "http://localhost:8090/assets"
+        publicPath: "http://localhost:8090/assets/"
     },
     module: {
         loaders: [
@@ -78,22 +78,25 @@ var config = {
 
     ],
 };
-//
-// var devServer = new webpackDevServer(webpack(config), {
-//     hot: true,
-//     contentBase: "/web/",
-//     }
-// );
-//
-// devServer.listen(
-//     port,
-//     'localhost',
-//     function (err, result) {
-//         if (err) {
-//             console.log(err);
-//         }
-//         console.log('Listening at localhost:'+port);
-//     }
-// );
+
+var devServer = new webpackDevServer(webpack(config), {
+    hot: true,
+    publicPath: "http://localhost:8090/assets/",
+    contentBase: "web/",
+    headers: {"X-Custom-Header": "yes"},
+    stats: {colors: true}
+    }
+);
+
+devServer.listen(
+    8090,
+    'localhost',
+    function (err, result) {
+        if (err) {
+            console.log(err);
+        }
+        console.log('Listening at localhost:'+port);
+    }
+);
 
 module.exports = config;
