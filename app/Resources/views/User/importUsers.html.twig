@@ -3,10 +3,9 @@
 
 {% block file_widget -%}
     <div class="file-field input-field">
-        {#{{- block('form_widget_simple') -}}#}
         <div class="btn btn-default">
             <span>Select xml</span>
-            <input type="file">
+            {{- block('form_widget_simple') -}}
         </div>
         <div class="file-path-wrapper">
            <input class="file-path validate" type="text">
