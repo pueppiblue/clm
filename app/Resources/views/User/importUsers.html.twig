@@ -1,28 +1,30 @@
 {% extends 'base.html.twig' %}
+{% form_theme form _self %}
+
+{% block file_widget -%}
+    <div class="file-field input-field">
+        {#{{- block('form_widget_simple') -}}#}
+        <div class="btn btn-default">
+            <span>Select xml</span>
+            <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+           <input class="file-path validate" type="text">
+        </div>
+    </div>
+{%- endblock file_widget %}
+
 
 {% block body %}
     <div class="row">
-        <h3>Choose Overlay.xml</h3>
-        <div class="form col s12">
+        <h5>Choose Overlay.xml</h5>
+        <div class="push-s3 col s6">
             {{ form_start(form) }}
             {{ form_errors(form) }}
-            <div class="row">
-                <div class="file-field input-field col s6">
-                    <div class="btn btn-default">
-                        <span>Select xml</span>
-                        <input type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                    <button class="btn waves-effect waves-light col s6" type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                    </button>
-             </div>
-        </div>
+            {{ form_widget(form.XmlFile) }}
+            <button class="btn waves-effect waves-light col s12" type="submit" name="action">
+                Import Accounts
+            </button>
             {{ form_end(form) }}
         </div>
     </div>
