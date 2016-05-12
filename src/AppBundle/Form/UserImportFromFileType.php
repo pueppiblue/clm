@@ -11,8 +11,8 @@ class UserImportFromFileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $formBuilder, array $options)
     {
-        $formBuilder
-            ->add("XmlFile", FileType::class);    
+//        $formBuilder
+//            ->add("XmlFile", FileType::class);
     }
     
 
