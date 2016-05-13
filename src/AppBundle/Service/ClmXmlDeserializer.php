@@ -11,7 +11,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ClmXmlDeserializer
 {
+    /**
+     * @var ClmAccountRepositoryInterface
+     */
     private $accountRepository;
+    /**
+     * @var ClmCharacterRepositoryInterface
+     */
     private $characterRepository;
     
     /**
