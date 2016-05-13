@@ -3,18 +3,26 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
 use AppBundle\Entity\ClmCharacter;
+use AppBundle\Repository\ClmAccountRepositoryInterface;
+use AppBundle\Repository\ClmCharacterRepositoryInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ClmXmlDeserializer
 {
-
+    private $accountRepository;
+    private $characterRepository;
+    
     /**
      * clmXmlDeserializer constructor.
      */
-    public function  __construct()
+    public function  __construct(
+        ClmAccountRepositoryInterface $accountRepository,
+        ClmCharacterRepositoryInterface $characterRepository)
     {
+        $this->accountRepository = $accountRepository;
+        $this->characterRepository = $characterRepository;
     }
 
     /**

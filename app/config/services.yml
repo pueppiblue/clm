@@ -13,9 +13,9 @@ services:
       factory: [ Faker\Factory, create ]
       lazy: true
       arguments:
-          - %hautelook_alice.locale%
+          - '%hautelook_alice.locale%'
       calls:
-          - [ seed, [ %hautelook_alice.seed% ] ]
+          - [ seed, [ '%hautelook_alice.seed%' ] ]
 
   faker.provider.conanitemprovider:
       class: AppBundle\DataFixtures\Faker\Provider\ConanItemProvider
@@ -26,6 +26,11 @@ services:
       class: AppBundle\Repository\ClmAccountRepositoryInterface
       factory: ['@doctrine', 'getRepository']
       arguments: ['AppBundle:ClmAccount']
+
+  app.repository.character:
+      class: AppBundle\Repository\ClmCharacterRepositoryInterface
+      factory: ['@doctrine', 'getRepository']
+      arguments: ['AppBundle:ClmCharacter']
 
   app.service.user_manager:
       class: AppBundle\Service\UserLootManager
@@ -42,4 +47,8 @@ services:
 
   app.xml_deserializer:
       class: AppBundle\Service\ClmXmlDeserializer
+      arguments:
+          - '@app.repository.account'
+          - '@app.repository.character'
+
 
