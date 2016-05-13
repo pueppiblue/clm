@@ -2,15 +2,13 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
+use AppBundle\Entity\ClmCharacter;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\Finder\SplFileInfo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ClmXmlDeserializer
 {
-
-    /**
-     * @var string
-     */
-    private $account;
 
     /**
      * clmXmlDeserializer constructor.
@@ -22,53 +20,22 @@ class ClmXmlDeserializer
     /**
      *
      */
-    public function deserializeAccounts()
+    public function deserializeAccounts(UploadedFile $file)
     {
-        $xmlData = <<<EOT
-<?xml version="1.0" encoding="utf-8"?>
-<AS.Overlay>
-    <settings>
-        <setting name="aocfolder" value="D:\Games\Age of Conan\scripts" />
-        <setting name="usemaintwink" value="false" />
-    </settings>
-    <accounts>
-        <account player_name="Anat" tear="55" relic="55" weapon="551" accessoire="51" item="31">
-             <chars>
-                <char name="Morituro" class="Nekromant" set="Kein" main="False" />
-                <char name="Ryjanna" class="Bärenschamane" set="Kein" main="False" />
-                <char name="Impeto" class="Barbar" set="Kein" main="False" />
-                <char name="Thraex" class="Eroberer" set="Schutz" main="False" />
-                <char name="Infausta" class="HeroldDesXotli" set="Kein" main="False" />
-                <char name="Murmilla" class="Wächter" set="Kein" main="True" />
-             </chars>
-        </account>
-        <account player_name="NilseBaer" tear="22" relic="55" weapon="551" accessoire="51" item="31">
-            <chars>
-                <char name="Rylt" class="HoX" set="Kein" main="False" />
-                <char name="Corais" class="DT" set="Kein" main="False" />
-                <char name="Nahraya" class="Barbar" set="Kein" main="False" />
-                <char name="Skjardar" class="BS" set="Schutz" main="False" />
-            </chars>
-        </account>
-    </accounts>
-</AS.Overlay>
-EOT;
-
+        $fileInfo = new SplFileInfo(
+            $file,
+            $file->getRealPath(),
+            $file->getFilename());
+        $xmlData = $fileInfo->getContents();
+        
         $crawler = new Crawler($xmlData);
 
         dump($crawler->html());
 
-        $accounts = $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
-            $account = new ClmAccount($node->attr('player_name'));
-            $account->setTear($node->attr('tear'));
-            $characters = $node->filterXPath('//account/chars/char')->each(function (Crawler $cNode) {
-                return $cNode->attr('name');
-            });
-            $account->setCharacters($characters);
-            return $account;
-        });
+        $accounts = $this->getAccounts($crawler);
         dump($accounts);
-
+        die();
+        
 //        dump($crawler->filterXPath('//accounts//chars')->html());
 //        dump($crawler->filterXPath('//accounts/account')->html());
 //        dump($crawler->filterXPath('//accounts/account/chars')->html());
@@ -89,13 +56,20 @@ EOT;
 
     }
 
+
     /**
      * @param Crawler $crawler
      * @return array
      */
     private function getAccounts(Crawler $crawler)
     {
-        $accounts = [];
+        $accounts =  $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
+            $account = new ClmAccount($node->attr('player_name'));
+            $account->setTear($node->attr('tear'));
+            $characters = $this->getCharacters($node);
+            $account->setCharacters($characters);
+            return $account;
+        });
         return $accounts;
     }
 
@@ -105,7 +79,10 @@ EOT;
      */
     private function getCharacters(Crawler $crawler)
     {
-        $characters = [];
+        $characters = $crawler->filterXPath('//account/chars/char')->each(function (Crawler $node) {
+            return $node->attr('name');
+        });
+
         return $characters;
     }
 

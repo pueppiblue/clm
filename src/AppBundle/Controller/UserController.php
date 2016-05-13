@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController
 {
@@ -55,8 +56,6 @@ class UserController
     {
         $users =$this->userLootManager->getAllAccounts();
 
-        $this->xmlDeserializer->deserializeAccounts();
-
         return $this->templating->renderResponse(
                 'User/listUsers.html.twig',
                 ['users' => $users]
@@ -71,7 +70,10 @@ class UserController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->xmlDeserializer->deserializeAccounts();
+            
+            $xmlFile = $form['XmlFile']->getData();
+            dump($xmlFile->getClientOriginalName());
+            $this->xmlDeserializer->deserializeAccounts($xmlFile);
 
             return new RedirectResponse(
                 $this->router->generate('user_list')
