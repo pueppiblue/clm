@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
+use AppBundle\Entity\ClmAccount;
 /*
  * @Entity Character
  */
@@ -22,10 +22,12 @@ class ClmCharacter
      * @var string
      */
     protected $clmClass;
+
     /**
-     * @var integer
+     * @var clmAccount
      */
     protected $account;
+
     /**
      * @var ArrayCollection
      */
@@ -33,19 +35,46 @@ class ClmCharacter
     /**
      * Character constructor.
      * @param $name
-     * @param $class
-     * @param $user
      */
-    public function __construct($name, ClmAccount $account, $class)
+    public function __construct($name)
     {
         $this->name = $name;
-        $this->clmClass = $class;
-        $this->account = $account;
-        $account->assignChar($this);
+    }
+
+
+    /**
+     * @param $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @param $clmClass
+     * @return $this
+     */
+    public function setClmClass($clmClass)
+    {
+        $this->clmClass = $clmClass;
+        return $this;
+    }
+
+    /**
+     * @param $account
+     * @return $this
+     */
+    public function setAccount(ClmAccount $account)
+    {
+        $this->account = $account;
+        $account->assignChar($this);
+        return $this;
+    }
+
+    /**
+     * @return int
      */
     public function getId()
     {
@@ -53,7 +82,7 @@ class ClmCharacter
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -61,7 +90,7 @@ class ClmCharacter
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getClmClass()
     {
@@ -69,15 +98,16 @@ class ClmCharacter
     }
 
     /**
-     * @param ArrayCollection $preferredSet
+     * @param string $preferredSet
      */
     public function setPreferredSet($preferredSet)
     {
         $this->preferredSet = $preferredSet;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return ClmAccount
      */
     public function getAccount()
     {
