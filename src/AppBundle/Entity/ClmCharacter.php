@@ -32,15 +32,17 @@ class ClmCharacter
      * @var ArrayCollection
      */
     protected $preferredSet = null;
+
     /**
-     * Character constructor.
+     * ClmCharacter constructor.
      * @param $name
+     * @param $clmClass
      */
-    public function __construct($name)
+    public function __construct($name, $clmClass = '')
     {
         $this->name = $name;
+        $this->clmClass = $clmClass;
     }
-
 
     /**
      * @param $name
