@@ -18,6 +18,12 @@
 {% block body %}
 {% endblock %}
 
+{% for flash_message in app.session.flashBag.get('info') %}
+    <div class="flash-info">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 {% block javascripts %}
     {% if app.environment == 'dev' %}
         <script src="http://localhost:8090/assets/vendor.js"></script>
