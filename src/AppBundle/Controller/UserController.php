@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UserController
 {
@@ -65,7 +64,7 @@ class UserController
     public function importAction(Request $request)
     {
         $xmlFile = null;
-        $form = $this->formFactory->create(UserImportFromFileType::class, $xmlFile);
+        $form = $this->formFactory->create(UserImportFromFileType::class);
 
         $form->handleRequest($request);
 
@@ -73,8 +72,18 @@ class UserController
             
             $xmlFile = $form['XmlFile']->getData();
             dump($xmlFile->getClientOriginalName());
-            $this->xmlDeserializer->deserializeAccounts($xmlFile);
+            $accounts = $this->xmlDeserializer->deserializeAccounts($xmlFile);
 
+            foreach ($accounts as $account) {
+                $request->getSession()->getFlashBag()
+                    ->add(
+                    'info',
+                    sprintf(
+                        'Spieler %s wurde erfolgreich angelegt.',
+                        $account->getAccountName())
+                );
+
+            }
             return new RedirectResponse(
                 $this->router->generate('user_list')
             );
