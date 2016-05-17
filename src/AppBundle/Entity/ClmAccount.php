@@ -14,7 +14,7 @@ class ClmAccount
      */
     protected $id;
     /**
-     * @var string
+     * @var stringc
      */
     protected $accountName;
     /**
@@ -62,9 +62,11 @@ class ClmAccount
     /**
      * @param ArrayCollection $characters
      */
-    public function setCharacters($characters)
+    public function setCharacters(ArrayCollection $characters)
     {
         $this->characters = $characters;
+            
+        return $this;
     }
 
     /**
@@ -73,6 +75,8 @@ class ClmAccount
     public function setTear($tear)
     {
         $this->tear = $tear;
+
+        return $this;
     }
 
     /**
@@ -81,6 +85,8 @@ class ClmAccount
     public function setAcc($acc)
     {
         $this->acc = $acc;
+
+        return $this;
     }
 
     /**
@@ -89,6 +95,8 @@ class ClmAccount
     public function setItem($item)
     {
         $this->item = $item;
+
+        return $this;
     }
 
     /**
@@ -97,6 +105,8 @@ class ClmAccount
     public function setUrn($urn)
     {
         $this->urn = $urn;
+
+        return $this;
     }
 
     /**
@@ -105,6 +115,8 @@ class ClmAccount
     public function setWeapon($weapon)
     {
         $this->weapon = $weapon;
+
+        return $this;
     }
 
     /**
