@@ -3,13 +3,19 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
 use AppBundle\Entity\ClmCharacter;
+use AppBundle\Exception\ClmAccountRepositoryException;
 use AppBundle\Repository\ClmAccountRepositoryInterface;
 use AppBundle\Repository\ClmCharacterRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+/**
+ * Class ClmXmlDeserializer
+ * @package AppBundle\Service
+ */
 class ClmXmlDeserializer
 {
     /**
@@ -70,7 +76,8 @@ class ClmXmlDeserializer
                 ->setUrn($node->attr('relic'))
                 ->setItem($node->attr('item'))
                 ->setAcc($node->attr('accessoire'));
-            $this->accountRepository->save($account);
+            
+            $this->saveAccount($account);
 
             $characters = $this->getCharacters($node);
             $this->saveCharactersToAccount(new ArrayCollection($characters), $account);
@@ -99,23 +106,38 @@ class ClmXmlDeserializer
         return $characters;
     }
 
+    /**
+     * @param ArrayCollection $characters
+     * @param ClmAccount $account
+     */
     private function saveCharactersToAccount(ArrayCollection $characters, ClmAccount $account)
     {
         foreach ($characters as $character) {
             $character->setAccount($account);
-            $this->characterRepository->save($character);
+            $this->saveCharacter($character);
         }
 
     }
 
     /**
-     * @param ArrayCollection $accounts
+     * @param ClmAccount $account
+     * @throws ClmAccountRepositoryException
      */
-    private function saveAccounts(ArrayCollection $accounts)
+    private function saveAccount(ClmAccount $account)
     {
-        foreach ($accounts as $account) {
+        try {
             $this->accountRepository->save($account);
+        } catch (ClmAccountRepositoryException $e) {
+            throw $e;
         }
+    }
+
+    /**
+     * @param ClmCharacter $character
+     */
+    private function saveCharacter(ClmCharacter $character)
+    {
+        $this->characterRepository->save($character);
     }
 
 
