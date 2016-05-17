@@ -3,8 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\ClmItem;
-use AppBundle\Entity\ClmCharacter;
 
 
 class ClmAccount
@@ -14,7 +12,7 @@ class ClmAccount
      */
     protected $id;
     /**
-     * @var stringc
+     * @var string
      */
     protected $accountName;
     /**
@@ -61,6 +59,7 @@ class ClmAccount
 
     /**
      * @param ArrayCollection $characters
+     * @return ClmAccount
      */
     public function setCharacters(ArrayCollection $characters)
     {
@@ -71,6 +70,7 @@ class ClmAccount
 
     /**
      * @param int $tear
+     * @return ClmAccount
      */
     public function setTear($tear)
     {
@@ -81,6 +81,7 @@ class ClmAccount
 
     /**
      * @param int $acc
+     * @return ClmAccount
      */
     public function setAcc($acc)
     {
@@ -91,6 +92,7 @@ class ClmAccount
 
     /**
      * @param int $item
+     * @return ClmAccount
      */
     public function setItem($item)
     {
@@ -101,6 +103,7 @@ class ClmAccount
 
     /**
      * @param int $urn
+     * @return ClmAccount
      */
     public function setUrn($urn)
     {
@@ -111,6 +114,7 @@ class ClmAccount
 
     /**
      * @param int $weapon
+     * @return ClmAccount
      */
     public function setWeapon($weapon)
     {

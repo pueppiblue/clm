@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\ClmAccount;
+
 /*
  * @Entity Character
  */
@@ -53,7 +53,7 @@ class ClmCharacter
     }
 
     /**
-     * @param $clmClass
+     * @param string $clmClass
      * @return $this
      */
     public function setClmClass($clmClass)
@@ -99,6 +99,7 @@ class ClmCharacter
 
     /**
      * @param string $preferredSet
+     * @return ClmCharacter
      */
     public function setPreferredSet($preferredSet)
     {
