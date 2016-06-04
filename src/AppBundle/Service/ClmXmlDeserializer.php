@@ -69,7 +69,18 @@ class ClmXmlDeserializer
     private function getAccounts(Crawler $crawler)
     {
         $accounts =  $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
-            $account = new ClmAccount($node->attr('player_name'));
+            $name = $node->attr('name');
+//            try {
+//                $account = $this->accountRepository->findOneByName($name);
+//            } catch(ClmAccountRepositoryException $e) {
+//                throw $e;
+//            }
+//
+//            if (!$account){
+//                $account = new ClmAccount($node->attr('name'));
+//            }
+
+            $account = new ClmAccount($name);
             $account
                 ->setTear($node->attr('tear'))
                 ->setWeapon($node->attr('weapon'))
@@ -78,6 +89,7 @@ class ClmXmlDeserializer
                 ->setAcc($node->attr('accessoire'));
             
             $this->saveAccount($account);
+            $account = $this->accountRepository->findOneByName($name);
 
             $characters = $this->getCharacters($node);
             $this->saveCharactersToAccount(new ArrayCollection($characters), $account);
@@ -126,6 +138,7 @@ class ClmXmlDeserializer
     private function saveAccount(ClmAccount $account)
     {
         try {
+//            $this->accountRepository->merge($account);
             $this->accountRepository->save($account);
         } catch (ClmAccountRepositoryException $e) {
             throw $e;

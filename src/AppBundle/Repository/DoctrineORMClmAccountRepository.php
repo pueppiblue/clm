@@ -6,12 +6,14 @@ use AppBundle\Entity\ClmAccount;
 use AppBundle\Exception\ClmAccountRepositoryException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 
 class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAccountRepositoryInterface
 {
     /**
      * @param ClmAccount $clmAccount
-     * @throws UniqueConstraintViolationException
+     * @throws ClmAccountRepositoryException
      */
     public function save(ClmAccount $clmAccount)
     {
@@ -19,18 +21,40 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
         try {
             $this->getEntityManager()->flush();
         } catch (UniqueConstraintViolationException $e) {
-            throw new ClmAccountRepositoryException('Tried to save acoount with duplicate Accountname.', null, $e);
+            throw new ClmAccountRepositoryException('Tried to save account with duplicate Accountname.', null, $e);
+            
         }
+    }
+
+    public function merge(ClmAccount $account)
+    {
+        $this->getEntityManager()->merge($account);
+        $this->getEntityManager()->flush();
     }
 
     /**
      * @param $name
-     * @return ClmAccount[]
+     * @return ClmAccount
+     * @throws ClmAccountRepositoryException
      */
-    public function findByName($name)
+    public function findOneByName($name)
     {
-        return $this->findBy([
-            'accountName' => $name,
-        ]);
+
+        $query = $this->createQueryBuilder('b')
+            ->where('b.accountName = :parName')
+            ->setParameter('parName', $name)
+            ->getQuery();
+        $account = $query->getSingleResult();
+
+        return $account;
+//        try {
+//            return $this->findBy([
+//                'accountName' => $name,
+//            ]);
+//        } catch (NoResultException $e) {
+//            throw new ClmAccountRepositoryException('Account not found by name', null, $e);
+//        } catch (NonUniqueResultException $e) {
+//            throw new ClmAccountRepositoryException('Found more than one account', null, $e);
+//        }
     }
 }

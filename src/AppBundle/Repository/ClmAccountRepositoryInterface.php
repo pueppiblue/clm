@@ -19,7 +19,13 @@ interface ClmAccountRepositoryInterface
 
     /**
      * @param $name
-     * @return ClmAccount[]
+     * @return ClmAccount
      */
-    public function findByName($name);
+    public function findOneByName($name);
+
+    /**
+     * @param ClmAccount $account
+     * @return mixed
+     */
+    public function merge(ClmAccount $account);
 }
