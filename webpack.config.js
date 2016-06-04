@@ -30,6 +30,7 @@ var config = {
         path: dest_dir,
         publicPath: "http://localhost:8090/assets/"
     },
+    devtool: 'source-maps',
     module: {
         loaders: [
             {
