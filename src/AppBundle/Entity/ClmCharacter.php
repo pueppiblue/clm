@@ -17,7 +17,7 @@ class ClmCharacter
     /**
      * @var string
      */
-    protected $name;
+    protected $charName;
     /**
      * @var string
      */
@@ -40,17 +40,17 @@ class ClmCharacter
      */
     public function __construct($name, $clmClass = '')
     {
-        $this->name = $name;
+        $this->charName = $name;
         $this->clmClass = $clmClass;
     }
 
     /**
-     * @param $name
+     * @param $charName
      * @return $this
      */
-    public function setName($name)
+    public function setCharName($charName)
     {
-        $this->name = $name;
+        $this->charName = $charName;
         return $this;
     }
 
@@ -86,9 +86,9 @@ class ClmCharacter
     /**
      * @return string
      */
-    public function getName()
+    public function getCharName()
     {
-        return $this->name;
+        return $this->charName;
     }
 
     /**
