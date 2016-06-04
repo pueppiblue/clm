@@ -11,6 +11,15 @@ use Doctrine\ORM\NoResultException;
 
 class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAccountRepositoryInterface
 {
+
+    /**
+     * @return ClmAccount[]
+     */
+    public function findAll()
+    {
+        return $this->findBy(array(), array('accountName' => 'ASC'));
+    }
+
     /**
      * @param ClmAccount $clmAccount
      * @throws ClmAccountRepositoryException
@@ -25,6 +34,9 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
         }
     }
 
+    /**
+     * @param ClmAccount $account
+     */
     public function merge(ClmAccount $account)
     {
         $this->getEntityManager()->merge($account);
