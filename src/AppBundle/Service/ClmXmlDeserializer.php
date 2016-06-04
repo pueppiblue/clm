@@ -26,9 +26,11 @@ class ClmXmlDeserializer
      * @var ClmCharacterRepositoryInterface
      */
     private $characterRepository;
-    
+
     /**
-     * clmXmlDeserializer constructor.
+     * ClmXmlDeserializer constructor.
+     * @param ClmAccountRepositoryInterface $accountRepository
+     * @param ClmCharacterRepositoryInterface $characterRepository
      */
     public function  __construct(
         ClmAccountRepositoryInterface $accountRepository,
@@ -55,8 +57,6 @@ class ClmXmlDeserializer
 
         $accounts = $this->getAccounts($crawler);
         dump($accounts);
-
-//        $this->saveAccounts(new ArrayCollection($accounts));
 
         return $accounts;
     }
