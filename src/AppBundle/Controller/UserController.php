@@ -8,7 +8,6 @@ use AppBundle\Service\ClmXmlDeserializer;
 use AppBundle\Service\UserLootManager;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
-use Symfony\Component\Config\Definition\Exception\DuplicateKeyException;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -91,7 +90,6 @@ class UserController
 
                 }
             } catch (ClmAccountRepositoryException $e){
-//              throw new DuplicateKeyException('Es gab Duplikate beim Import', null , $e );
                 $request->getSession()->getFlashBag()
                     ->add('info', 'Duplikate beim Import übersprungen.');
             }

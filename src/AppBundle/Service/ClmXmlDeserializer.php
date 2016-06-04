@@ -53,10 +53,7 @@ class ClmXmlDeserializer
         
         $crawler = new Crawler($xmlData);
 
-        dump($crawler->html());
-
         $accounts = $this->getAccounts($crawler);
-        dump($accounts);
 
         return $accounts;
     }
@@ -70,15 +67,6 @@ class ClmXmlDeserializer
     {
         $accounts =  $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
             $name = $node->attr('name');
-//            try {
-//                $account = $this->accountRepository->findOneByName($name);
-//            } catch(ClmAccountRepositoryException $e) {
-//                throw $e;
-//            }
-//
-//            if (!$account){
-//                $account = new ClmAccount($node->attr('name'));
-//            }
 
             $account = new ClmAccount($name);
             $account
@@ -138,10 +126,9 @@ class ClmXmlDeserializer
     private function saveAccount(ClmAccount $account)
     {
         try {
-//            $this->accountRepository->merge($account);
             $this->accountRepository->save($account);
         } catch (ClmAccountRepositoryException $e) {
-            throw $e;
+             throw $e;
         }
     }
 

@@ -22,7 +22,6 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
             $this->getEntityManager()->flush();
         } catch (UniqueConstraintViolationException $e) {
             throw new ClmAccountRepositoryException('Tried to save account with duplicate Accountname.', null, $e);
-            
         }
     }
 
@@ -44,17 +43,15 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
             ->where('b.accountName = :parName')
             ->setParameter('parName', $name)
             ->getQuery();
-        $account = $query->getSingleResult();
 
-        return $account;
-//        try {
-//            return $this->findBy([
-//                'accountName' => $name,
-//            ]);
-//        } catch (NoResultException $e) {
-//            throw new ClmAccountRepositoryException('Account not found by name', null, $e);
-//        } catch (NonUniqueResultException $e) {
-//            throw new ClmAccountRepositoryException('Found more than one account', null, $e);
-//        }
+        try {
+            $account = $query->getSingleResult();
+
+            return $account;
+        } catch (NoResultException $e) {
+            throw new ClmAccountRepositoryException('Account not found by name', null, $e);
+        } catch (NonUniqueResultException $e) {
+            throw new ClmAccountRepositoryException('Found more than one account', null, $e);
+        }
     }
 }
