@@ -75,7 +75,6 @@ class UserController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $xmlFile = $form['XmlFile']->getData();
-            dump($xmlFile->getClientOriginalName());
             
             try {
                 $accounts = $this->xmlDeserializer->deserializeAccounts($xmlFile);

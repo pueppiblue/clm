@@ -41,7 +41,8 @@ class ClmXmlDeserializer
     }
 
     /**
-     *
+     * @param UploadedFile $file
+     * @return ArrayCollection
      */
     public function deserializeAccounts(UploadedFile $file)
     {
@@ -50,8 +51,9 @@ class ClmXmlDeserializer
             $file->getRealPath(),
             $file->getFilename());
         $xmlData = $fileInfo->getContents();
-        
-        $crawler = new Crawler($xmlData);
+
+        $crawler = new Crawler();
+        $crawler->addXmlContent($xmlData, 'UTF-8');
 
         $accounts = $this->getAccounts($crawler);
 
@@ -67,7 +69,6 @@ class ClmXmlDeserializer
     {
         $accounts =  $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
             $name = $node->attr('name');
-
             $account = new ClmAccount($name);
             $account
                 ->setTear($node->attr('tear'))
