@@ -1,0 +1,23 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+  hautelook_alice.bare_faker:
+      class: Faker\Generator
+      factory: [ Faker\Factory, create ]
+      lazy: true
+      arguments:
+          - '%hautelook_alice.locale%'
+      calls:
+          - [ seed, [ '%hautelook_alice.seed%' ] ]
+
+  faker.provider.conanitemprovider:
+      class: AppBundle\DataFixtures\Faker\Provider\ConanItemProvider
+      arguments: [ "@hautelook_alice.bare_faker" ]
+      tags: [ { name: "hautelook_alice.faker.provider" } ]
