@@ -5,8 +5,15 @@ namespace AppBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 
+/**
+ * Class MenuBuilder
+ * @package AppBundle\Menu
+ */
 class MenuBuilder
 {
+    /**
+     * @var FactoryInterface
+     */
     private $factory;
 
 
@@ -18,6 +25,9 @@ class MenuBuilder
         $this->factory = $factory;
     }
 
+    /**
+     * @return \Knp\Menu\ItemInterface
+     */
     public function createNavMenu()
     {
         $menu = $this->factory->createItem('root');
