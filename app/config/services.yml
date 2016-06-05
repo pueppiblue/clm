@@ -37,8 +37,8 @@ services:
           - '@app.repository.account'
           - '@app.repository.character'
 
-    app.menu_builder:
-        class: AppBundle\Menu\MenuBuilder
-        arguments: ['@knp_menu.factory']
-        tags:
-            - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
+  app.menu_builder:
+      class: AppBundle\Menu\MenuBuilder
+      arguments: ['@knp_menu.factory']
+      tags:
+          - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
