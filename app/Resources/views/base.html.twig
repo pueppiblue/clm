@@ -5,25 +5,34 @@
     <title>{% block title %}Conan Loot Manager!{% endblock %}</title>
     {% block stylesheets %}
         {#<link rel="stylesheet"#}
-              {#href="{{ asset('css/materialize.css') }}">#}
+        {#href="{{ asset('css/materialize.css') }}">#}
         {#<link rel="stylesheet"#}
-              {#href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">#}
+        {#href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">#}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-{% block menu %}
-    {{ knp_menu_render('nav') }}
-{% endblock %}
 
-{% block body %}
-{% endblock %}
+    {% block menu %}
+        {{ include('::navbar.html.twig') }}
+    {% endblock %}
 
-{% for flash_message in app.session.flashBag.get('info') %}
-    <div class="flash-info">
-        {{ flash_message }}
+    <div class="container">
+
+        {% block flash %}
+            {% if app.session.flashBag.has('info') %}
+            {% for info in app.session.flashBag.get('info') %}
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ info }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
     </div>
-{% endfor %}
 
 {% block javascripts %}
     {% if app.environment == 'dev' %}
