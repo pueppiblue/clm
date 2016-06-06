@@ -75,12 +75,12 @@ class UserController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $xmlFile = $form['XmlFile']->getData();
-            
+
+            $flashBag = $request->getSession()->getFlashBag();
             try {
                 $accounts = $this->xmlDeserializer->deserializeAccounts($xmlFile);
                 foreach ($accounts as $account) {
-                    $request->getSession()->getFlashBag()
-                        ->add(
+                    $flashBag->add(
                             'info',
                             sprintf(
                                 'Spieler %s wurde erfolgreich angelegt.',
@@ -89,9 +89,9 @@ class UserController
 
                 }
             } catch (ClmAccountRepositoryException $e){
-                $request->getSession()->getFlashBag()
-                    ->add('info', 'Duplikate beim Import übersprungen.');
+                $flashBag->add('info', 'Duplikate beim Import übersprungen.');
             }
+
 
             return new RedirectResponse(
                 $this->router->generate('user_list')
