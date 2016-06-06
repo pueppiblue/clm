@@ -21,12 +21,12 @@
 
         {% block flash %}
             {% if app.session.flashBag.has('info') %}
-            {% for info in app.session.flashBag.get('info') %}
-            <div class="alert alert-dismissible alert-info">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                {{ info }}
-            </div>
-            {% endfor %}
+                <div class="alert alert-dismissible alert-info">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {% for info in app.session.flashBag.get('info') %}
+                        <div>{{ info }}</div>
+                    {% endfor %}
+                </div>
             {% endif %}
         {% endblock %}
 
