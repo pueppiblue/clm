@@ -45,8 +45,8 @@ class UserController
         UserLootManager $userLootManager,
         ClmXmlDeserializer $xmlDeserializer)
     {
-       $this->userLootManager = $userLootManager;
-       $this->templating = $templating;
+        $this->userLootManager = $userLootManager;
+        $this->templating = $templating;
         $this->router = $router;
         $this->formFactory = $formFactory;
         $this->xmlDeserializer = $xmlDeserializer;
@@ -60,11 +60,11 @@ class UserController
         $users =$this->userLootManager->getAllAccounts();
 
         return $this->templating->renderResponse(
-                'User/listUsers.html.twig',
-                ['users' => $users]
-            );
+            'User/listUsers.html.twig',
+            ['users' => $users]
+        );
     }
-    
+
     public function importAction(Request $request)
     {
         $xmlFile = null;
@@ -73,25 +73,21 @@ class UserController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $xmlFile = $form['XmlFile']->getData();
 
             $flashBag = $request->getSession()->getFlashBag();
             try {
                 $accounts = $this->xmlDeserializer->deserializeAccounts($xmlFile);
-                foreach ($accounts as $account) {
-                    $flashBag->add(
-                            'info',
-                            sprintf(
-                                'Spieler %s wurde erfolgreich angelegt.',
-                                $account->getAccountName())
-                        );
-
-                }
+                $flashBag->add(
+                    'info',
+                    sprintf(
+                        '%s neue Accounts importiert.',
+                        count($accounts))
+                );
             } catch (ClmAccountRepositoryException $e){
                 $flashBag->add('info', 'Duplikate beim Import übersprungen.');
             }
-
 
             return new RedirectResponse(
                 $this->router->generate('user_list')
