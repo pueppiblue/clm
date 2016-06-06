@@ -67,24 +67,32 @@ class ClmXmlDeserializer
      */
     private function getAccounts(Crawler $crawler)
     {
-        $accounts =  $crawler->filterXPath('//accounts/account')->each(function (Crawler $node) {
+        $accounts =  array();
+
+        // The crawlers each function can return null elements to array
+        // so we inherit a parrent array and manually set its values
+        // and forfeit the array returned by the crawlers each closure
+        $crawler->filterXPath('//accounts/account')->each(function (Crawler $node, $i) use (&$accounts) {
             $name = $node->attr('name');
-            $account = new ClmAccount($name);
-            $account
-                ->setTear($node->attr('tear'))
-                ->setWeapon($node->attr('weapon'))
-                ->setUrn($node->attr('relic'))
-                ->setItem($node->attr('item'))
-                ->setAcc($node->attr('accessoire'));
-            
-            $this->saveAccount($account);
-            $account = $this->accountRepository->findOneByName($name);
 
-            $characters = $this->getCharacters($node);
-            $this->saveCharactersToAccount(new ArrayCollection($characters), $account);
+            $account = $this->accountRepository->findBy(array('accountName' => $name));
 
+            if (!$account) {
+                $account = new ClmAccount($name);
+                $account
+                    ->setTear($node->attr('tear'))
+                    ->setWeapon($node->attr('weapon'))
+                    ->setUrn($node->attr('relic'))
+                    ->setItem($node->attr('item'))
+                    ->setAcc($node->attr('accessoire'));
 
-            return  $account;
+                $this->saveAccount($account);
+
+                $characters = $this->getCharacters($node);
+                $this->saveCharactersToAccount(new ArrayCollection($characters), $account);
+
+                $accounts[]= $account;
+            }
         });
 
         return $accounts;
