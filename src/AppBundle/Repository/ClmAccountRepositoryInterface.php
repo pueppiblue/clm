@@ -28,4 +28,7 @@ interface ClmAccountRepositoryInterface
      * @return mixed
      */
     public function merge(ClmAccount $account);
+
+    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null);
+
 }
