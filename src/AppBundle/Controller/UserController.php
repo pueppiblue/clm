@@ -60,7 +60,7 @@ class UserController
         $users =$this->userLootManager->getAllAccounts();
 
         return $this->templating->renderResponse(
-            'User/listUsers.html.twig',
+            ':User:list.html.twig',
             ['users' => $users]
         );
     }
@@ -96,7 +96,7 @@ class UserController
 
 
         return $this->templating->renderResponse(
-            'User/importUsers.html.twig',
+            ':User:import.html.twig',
             array('form' => $form->createView(),)
         );
 

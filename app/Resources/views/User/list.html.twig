@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h4>Accounts:</h4>
+        <div class="well-lg col s9 push-s1">
+            <table class="bordered highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td><a class="orange-text" href="{{ path('user_show', {'id': user.id}) }}"> {{ user.getAccountName }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
