@@ -85,7 +85,6 @@ class ClmXmlDeserializer
                     ->setUrn($node->attr('relic'))
                     ->setItem($node->attr('item'))
                     ->setAcc($node->attr('accessoire'));
-
                 $this->saveAccount($account);
 
                 $characters = $this->getCharacters($node);
@@ -107,7 +106,10 @@ class ClmXmlDeserializer
         $characters = $crawler->filterXPath('//account/chars/char')->each(function (Crawler $node) {
             $character = new ClmCharacter($node->attr('name'));
             $character
-                ->setClmClass($node->attr('class'));
+                ->setClmClass($node->attr('class'))
+                ->setPreferredSet(
+                ($node->attr('set')) != 'Kein' ? ($node->attr('set')) : ''
+            );
 
             return $character;
         });
