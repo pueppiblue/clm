@@ -52,6 +52,16 @@ class UserController
         $this->xmlDeserializer = $xmlDeserializer;
     }
 
+    public function showAction($id=1)
+    {
+        $account = $this->userLootManager->getAccount($id);
+
+        return $this->templating->renderResponse(
+            ':User:show.html.twig',
+            ['user' => $account]
+        );
+    }
+
     /**
      * @return Response
      */
