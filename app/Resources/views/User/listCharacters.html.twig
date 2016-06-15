@@ -1,0 +1,22 @@
+<h5 class="black-text left-align">Verknüpfte Charaktere: </h5>
+
+<div class="card-panel teal">
+    <table class="bordered highlight responsive-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Klasse</th>
+            <th>Set</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for char in user.getCharacters %}
+            <tr>
+                <td>{{ char.getCharName }}</td>
+                <td>{{ char.getClmClass }}</td>
+                <td>{{ char.getPreferredSet }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
