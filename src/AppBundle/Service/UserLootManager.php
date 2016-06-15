@@ -28,4 +28,12 @@ class UserLootManager
 
         return $accounts;
     }
+
+    public function getAccount($id)
+    {
+        $account = $this->accountRepository->findBy(['id' => $id]);
+
+        return $account[0];
+
+    }
 }
