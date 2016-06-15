@@ -13,7 +13,7 @@
                 <tbody>
                 {% for user in users %}
                     <tr>
-                        <td><a class="orange-text" href="{{ path('user_show', {'id': user.id}) }}"> {{ user.getAccountName }}</a></td>
+                        <td><a class="orange-text text-accent-3" href="{{ path('user_show', {'id': user.id}) }}"> {{ user.getAccountName }}</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
