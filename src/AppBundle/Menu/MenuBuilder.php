@@ -31,11 +31,15 @@ class MenuBuilder
     public function createNavMenu()
     {
         $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'left hide-on-small-only');
+        $menu->setChildrenAttribute('id', 'nav-mobile');
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
-        $menu->addChild('Raid', array('route' => ''));
+        $menu->addChild('Raid', array('route' => 'user_list'));
         $menu->addChild('Import xml', array('route' => 'user_import'));
         
         return $menu;
     }
+
+
 }
