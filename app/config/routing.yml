@@ -6,11 +6,17 @@ redirect_home:
     permanent: true
 
 user_list:
-  path: /users/list
+  path: /user/list
   defaults:
     _controller: app.controller.user:listAction
 
 user_import:
-  path: /users/import
+  path: /user/import
   defaults:
     _controller: app.controller.user:importAction
+
+user_show:
+  path: /user/show/{id}
+  defaults:
+    _controller: app.controller.user:showAction
+    id: 1
