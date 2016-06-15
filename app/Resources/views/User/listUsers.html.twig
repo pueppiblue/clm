@@ -3,16 +3,19 @@
 {% block body %}
     <div class="row">
         <h3>UserList:</h3>
-        <div class="well-lg col s6 push-s3">
-            <table class="table-striped table-responsive">
-                <tr>
-                    <td>Name</td>
-                    <td>Tränen</td>
-                    <td>Waffen</td>
-                    <td>Accessoires</td>
-                    <td>Urnen</td>
-                    <td>Items</td>
-                </tr>
+        <div class="well-lg col s9 push-s1">
+            <table class="bordered highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Tränen</th>
+                        <th>Waffen</th>
+                        <th>Accessoires</th>
+                        <th>Urnen</th>
+                        <th>Items</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {% for user in users %}
                     <tr>
                         <td>{{ user.getAccountName }}</a></td>
@@ -23,6 +26,7 @@
                         <td>{{ user.getItem }}</td>
                     </tr>
                 {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
