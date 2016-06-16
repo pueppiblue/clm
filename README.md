@@ -19,6 +19,13 @@ $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
 ###create user for mysql
 ```bash
 mysql -uroot  -p -e "grant all on clm.* to clm@'localhost' identified by 'clm';flush privileges;"
+In your app/config/parameters.yml:
+  Set 
+  database_user,
+  database_name and 
+  database_password
+  to the corresponding values used in the command
+  above e.g. in this case set all three to 'clm'.
 ```
 
 ### run composer script to initialize the application
