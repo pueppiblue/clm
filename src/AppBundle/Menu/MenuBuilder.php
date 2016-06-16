@@ -35,8 +35,11 @@ class MenuBuilder
         $menu->setChildrenAttribute('id', 'nav-mobile');
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
+        $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
         $menu->addChild('Raid', array('route' => 'user_list'));
+        $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
         $menu->addChild('Import xml', array('route' => 'user_import'));
+        $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
         
         return $menu;
     }
