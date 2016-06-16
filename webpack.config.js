@@ -13,7 +13,7 @@ var config = {
             'webpack-dev-server/client?http://localhost:8090',
             'webpack/hot/dev-server',
             path.resolve(source_dir, "js/hello.js"),
-            path.resolve(source_dir, "css/hello.css"),
+            path.resolve(source_dir, "css/hello.scss"),
         ],
         vendor: [
             'webpack-dev-server/client?http://localhost:8090',
