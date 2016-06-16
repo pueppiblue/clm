@@ -9,6 +9,15 @@
         {#<link rel="stylesheet"#}
         {#href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">#}
     {% endblock %}
+    {% block javascripts %}
+        {% if app.environment == 'dev' %}
+            <script type="text/javascript" src="http://localhost:8090/assets/vendor.js"></script>
+            <script type="text/javascript" src="http://localhost:8090/assets/main.js"></script>
+        {% else %}
+            <script type="text/javascript" src="{{ asset('assets/vendor.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/main.js') }}"></script>
+        {% endif %}
+    {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body class="blue-grey lighten-1 white-text">
@@ -34,15 +43,6 @@
         {% endblock %}
     </div>
 
-{% block javascripts %}
-    {% if app.environment == 'dev' %}
-        <script type="text/javascript" src="http://localhost:8090/assets/vendor.js"></script>
-        <script type="text/javascript" src="http://localhost:8090/assets/main.js"></script>
-    {% else %}
-        <script type="text/javascript" src="{{ asset('assets/vendor.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/main.js') }}"></script>
-    {% endif %}
-{% endblock %}
 
 </body>
 </html>
