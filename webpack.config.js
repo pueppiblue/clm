@@ -9,20 +9,24 @@ var node = path.resolve(__dirname,'node_modules');
 
 var config = {
     entry: {
+        jquery: [
+            'webpack-dev-server/client?http://localhost:8090',
+            'webpack/hot/dev-server',
+            path.resolve(bower, "jquery/dist/jquery.js"),
+        ],
+        vendor: [
+            'webpack-dev-server/client?http://localhost:8090',
+            'webpack/hot/dev-server',
+            // path.resolve(bower, "bootstrap/less/bootstrap.less"),
+            // path.resolve(bower, "bootstrap/dist/js/bootstrap.js"),
+            path.resolve(bower, "Materialize/sass/materialize.scss"),
+            path.resolve(bower, "Materialize/dist/js/materialize.js"),
+        ],
         main: [
             'webpack-dev-server/client?http://localhost:8090',
             'webpack/hot/dev-server',
             path.resolve(source_dir, "js/hello.js"),
             path.resolve(source_dir, "css/hello.scss"),
-        ],
-        vendor: [
-            'webpack-dev-server/client?http://localhost:8090',
-            'webpack/hot/dev-server',
-            path.resolve(bower, "jquery/dist/jquery.js"),
-            path.resolve(bower, "bootstrap/less/bootstrap.less"),
-            path.resolve(bower, "bootstrap/dist/js/bootstrap.js"),
-            path.resolve(bower, "Materialize/sass/materialize.scss"),
-            path.resolve(bower, "Materialize/dist/js/materialize.js"),
         ]
     },
     output: {
@@ -39,7 +43,7 @@ var config = {
                 loader: "style!css"
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|sass)$/,
                 loader: "style!css!sass"
             },
             {
@@ -60,6 +64,7 @@ var config = {
         root: __dirname,
         modulesDirectories: ['node_modules', 'vendor/bower_components'],
         alias: {
+            jquery: "vendor/bower_components/jquery/src/jquery.js",
             hammerjs: "vendor/bower_components/Materialize/js/hammer.min.js"
         },
     },
@@ -71,13 +76,11 @@ var config = {
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
         ),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            // "Hammer": "hammerjs/hammer"
-        }),
-
-    ],
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery",
+        // })
+    ]
 };
 
 var devServer = new webpackDevServer(webpack(config), {
