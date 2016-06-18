@@ -31,8 +31,7 @@ class MenuBuilder
     public function createNavMenu()
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'left hide-on-small-only');
-        $menu->setChildrenAttribute('id', 'nav-mobile');
+        $menu->setChildrenAttribute('class', 'left hide-on-med-and-down');
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
         $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
@@ -40,9 +39,25 @@ class MenuBuilder
         $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
         $menu->addChild('Import xml', array('route' => 'user_import'));
         $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
-        
+
         return $menu;
+
     }
 
+    public function createSideMenu()
+    {
+        $menu = $this->factory->createItem('root');
+        $menu->setChildrenAttribute('class', 'side-nav');
+        $menu->setChildrenAttribute('id', 'mobile-nav');
 
+        $menu->addChild('Accounts', array('route' => 'user_list'));
+        $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
+        $menu->addChild('Raid', array('route' => 'user_list'));
+        $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
+        $menu->addChild('Import xml', array('route' => 'user_import'));
+        $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        return $menu;
+
+    }
 }
