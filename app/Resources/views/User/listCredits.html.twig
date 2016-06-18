@@ -1,18 +1,19 @@
-
-<h5 class="left-align">Derzeitige Listenpunkte: </h5>
-
-<div class="card-panel">
-    <table class="bordered highlight">
-        <thead>
-        <tr>
-            <th>Tränen</th>
-            <th>Waffen</th>
-            <th>Accessoires</th>
-            <th>Urnen</th>
-            <th>Items</th>
-        </tr>
-        </thead>
-        <tbody>
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">
+            <h5>Derzeitige Listenpunkte:</h5>
+        </span>
+        <table class="bordered highlight">
+            <thead>
+            <tr>
+                <th>Tränen</th>
+                <th>Waffen</th>
+                <th>Accessoires</th>
+                <th>Urnen</th>
+                <th>Items</th>
+            </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>{{ user.getTear }}</td>
                 <td>{{ user.getWeapon }}</td>
@@ -20,6 +21,31 @@
                 <td>{{ user.getUrn }}</td>
                 <td>{{ user.getItem }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+{#<h5 class="left-align">Derzeitige Listenpunkte: </h5>#}
+{#<div class="card-panel">#}
+    {#<table class="bordered highlight">#}
+        {#<thead>#}
+        {#<tr>#}
+            {#<th>Tränen</th>#}
+            {#<th>Waffen</th>#}
+            {#<th>Accessoires</th>#}
+            {#<th>Urnen</th>#}
+            {#<th>Items</th>#}
+        {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+            {#<tr>#}
+                {#<td>{{ user.getTear }}</td>#}
+                {#<td>{{ user.getWeapon }}</td>#}
+                {#<td>{{ user.getAcc }}</td>#}
+                {#<td>{{ user.getUrn }}</td>#}
+                {#<td>{{ user.getItem }}</td>#}
+            {#</tr>#}
+        {#</tbody>#}
+    {#</table>#}
+{#</div>#}
