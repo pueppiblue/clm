@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h4>Accounts:</h4>
+        {% for user in users %}
+            <div class="col s6 m4 l2">
+                <div id="multi-panel" class="card-panel">
+                    <a class="collection-item" href="{{ path('user_show', {'id': user.id}) }}"> {{ user.getAccountName }}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
+
