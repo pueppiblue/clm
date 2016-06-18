@@ -8,7 +8,7 @@ forum:
 
 $primary-color: #D18A21;
 $secondary-color: #168B65;
-$bg-color: #FFFFFF;
+$bg-color: #F3E9D9;
 $grey-dark: #574C3D;
 $grey-light: #F3E9D9;
 $sidenav-width: 200px;
@@ -19,7 +19,7 @@ body {
     color: #ffffff;
 }
 
-a {
+a, .side-nav a {
     color: white;
 }
 nav {
@@ -39,7 +39,7 @@ nav ul li a, .side-nav a{
     background-color: $primary-color;
 }
 
-div .well-lg, div .card-panel, div .side-nav, div .card {
+.btn, div .well-lg, div .card-panel, div .side-nav, div .card {
     background-color: $primary-color;
 }
 
