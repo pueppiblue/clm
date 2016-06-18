@@ -1,8 +1,10 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo right"><img style="max-height: 2em" src="{{ asset('images/aoc_logo1.jpg') }}"></a>
+        <a href="#!" class="brand-logo right"><img style="max-height: 2em" src="{{ asset('images/aoc_logo1.jpg') }}"></a>
+        <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
         {% set menu = knp_menu_get('nav') %}
         {{ knp_menu_render(menu) }}
+        {% set side_menu = knp_menu_get('side_nav') %}
+        {{ knp_menu_render(side_menu) }}
     </div>
 </nav>
-
