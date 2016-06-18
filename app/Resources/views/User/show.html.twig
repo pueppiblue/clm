@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <h4>Account: {{ user.getAccountName }}</h4>
-    {% include(':User:listCredits.html.twig') %}
-    {% include(':User:listCharacters.html.twig') %}
+    <div class="row">
+        <h4>Account: {{ user.getAccountName }}</h4>
+        <div class="col s12 m8 l6 offset-m2">
+            {% include(':User:listCredits.html.twig') %}
+        </div>
+        <div class="col s12 m8 l6 offset-m2">
+            {% include(':User:listCharacters.html.twig') %}
+        </div>
+    </div>
     {#{% include(':Item:list.html.twig') %}#}
     {#{% include(':Raid:list.html.twig') %}#}
 
