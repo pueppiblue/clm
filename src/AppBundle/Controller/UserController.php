@@ -70,7 +70,7 @@ class UserController
         $users =$this->userLootManager->getAllAccounts();
 
         return $this->templating->renderResponse(
-            ':User:list.html.twig',
+            ':User:listUnordered.html.twig',
             ['users' => $users]
         );
     }
