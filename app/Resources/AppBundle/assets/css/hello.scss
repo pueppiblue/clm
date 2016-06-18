@@ -11,6 +11,7 @@ $secondary-color: #168B65;
 $bg-color: #FFFFFF;
 $grey-dark: #574C3D;
 $grey-light: #F3E9D9;
+$sidenav-width: 200px;
 
 body {
     /*text-align: center;*/
@@ -26,11 +27,16 @@ nav {
     background-color: $primary-color;
 }
 
-nav li:hover {
+nav li:hover, nav li a:hover {
     background-color: $secondary-color;
 }
 nav ul li {
     color: #ffffff;
+    width: $sidenav-width;
+}
+
+.side-nav {
+    background-color: $primary-color;
 }
 
 div .well-lg{
