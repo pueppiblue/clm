@@ -42,3 +42,4 @@ services:
       arguments: ['@knp_menu.factory']
       tags:
           - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
+          - { name: knp_menu.menu_builder, method: createSideMenu, alias: side_nav }
