@@ -35,7 +35,7 @@ class MenuBuilder
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
         $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
-        $menu->addChild('Raid', array('route' => 'user_list'));
+        $menu->addChild('Raid', array('route' => 'raid_show'));
         $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
         $menu->addChild('Import xml', array('route' => 'user_import'));
         $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
@@ -52,7 +52,7 @@ class MenuBuilder
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
         $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
-        $menu->addChild('Raid', array('route' => 'user_list'));
+        $menu->addChild('Raid', array('route' => 'raid_show'));
         $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
         $menu->addChild('Import xml', array('route' => 'user_import'));
         $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
