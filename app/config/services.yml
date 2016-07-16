@@ -31,6 +31,14 @@ services:
         - '@app.service.user_manager'
         - '@app.xml_deserializer'
 
+  app.controller.raid:
+      class: AppBundle\Controller\RaidController
+      arguments:
+        - '@templating'
+        - '@router'
+        - '@form.factory'
+        - '@app.service.user_manager'
+
   app.xml_deserializer:
       class: AppBundle\Service\ClmXmlDeserializer
       arguments:
