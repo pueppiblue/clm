@@ -20,3 +20,9 @@ user_show:
   defaults:
     _controller: app.controller.user:showAction
     id: 1
+
+raid_show:
+  path: /raid/show/{id}
+  defaults:
+    _controller: app.controller.raid:showAction
+    id: 1
