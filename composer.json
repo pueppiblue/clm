@@ -36,7 +36,8 @@
         "symfony/phpunit-bridge": "^3.0",
         "hirak/prestissimo": "^0.2.2",
         "hautelook/alice-bundle": "^1.2",
-        "doctrine/data-fixtures": "^1.1"
+        "doctrine/data-fixtures": "^1.1",
+        "phpunit/phpunit": "^4.8"
     },
     "scripts": {
         "project-init": [
