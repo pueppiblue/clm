@@ -1,9 +1,3 @@
-redirect_home:
-  path: /
-  defaults:
-    _controller: FrameworkBundle:Redirect:Redirect
-    route: user_list
-    permanent: true
 
 user_list:
   path: /user/list
@@ -26,3 +20,11 @@ raid_show:
   defaults:
     _controller: app.controller.raid:showAction
     id: 1
+
+redirect_home:
+  path: /{slug}
+  defaults:
+    _controller: FrameworkBundle:Redirect:Redirect
+    route: user_list
+  requirements:
+    slug: .+
