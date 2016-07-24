@@ -3,24 +3,52 @@ $(window.document).ready(init);
 function init() {
     var listElements = $('.js-list-account');
     listElements.on('click', function () {
-        var element = $(this).children();
+        var element = $(this);
+        switchListItemState(element);
         switchCardStyle(element);
     });
-    console.log(element);
 }
 
 function switchCardStyle(element) {
-    if (element.hasClass('bg-secondary')) {
-        element.removeClass('bg-secondary');
+    var cardItem = element.children();
+    if (cardItem.hasClass('bg-secondary')) {
+        cardItem.removeClass('bg-secondary');
     } else {
-        element.addClass('bg-secondary');
+        cardItem.addClass('bg-secondary');
     }
 
-    if (element.hasClass('z-depth-1')) {
-        element.removeClass('z-depth-1');
-        element.addClass('z-depth-0');
+    if (cardItem.hasClass('z-depth-1')) {
+        cardItem.removeClass('z-depth-1');
+        cardItem.addClass('z-depth-0');
     } else {
-        element.removeClass('z-depth-0');
-        element.addClass('z-depth-1');
+        cardItem.removeClass('z-depth-0');
+        cardItem.addClass('z-depth-1');
     }
+}
+
+function switchListItemState(listItem) {
+    var isInRoster = listItem.data('is-in-roster');
+    if (isInRoster === false) {
+        console.log('entered if statement');
+        listItem.data('is-in-roster', true);
+        addItemToRoster(listItem);
+    } else {
+        listItem.data('is-in-roster', false);
+        removeItemFromRoster(listItem);
+    }
+}
+
+function addItemToRoster(listItem) {
+    var listRoster = $('.js-list-roster');
+    console.log(listItem);
+    listRoster.append(listItem.clone());
+}
+
+function removeItemFromRoster(listItem) {
+    var listRoster = $('.js-list-roster');
+    var characterId = listItem.data('character-id');
+    var clonedItem = listRoster.find("[data-character-id='"  +
+        characterId + "']");
+    console.log(clonedItem);
+    clonedItem.remove();
 }
