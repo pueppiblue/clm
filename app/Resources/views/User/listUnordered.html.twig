@@ -11,7 +11,7 @@
         {% for user in users %}
             <div class="col s6 m4 l2">
                 <a class="collection-item" href="{{ path('user_show', {'id': user.id}) }}">
-                    <div id="multi-panel" class="card-panel">
+                    <div class="multi-panel card-panel">
                         {{ user.getAccountName }}
                     </div>
                 </a>
