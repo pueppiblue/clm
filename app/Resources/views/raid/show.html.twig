@@ -4,41 +4,29 @@
     <div class="row">
         <div class="col s12">
             <br>
-            <div id="big" class="card-panel"
+
+            <ul id="big" class="card-panel js-roster"
                 ondragenter="return dragEnter(event)"
                 ondragover="return dragOver(event)"
                 ondrop="return dragdrop(event)">
                 <h4>Roster:</h4>
-            </div>
+            </ul>
         </div>
     </div>
 
 
         <div class="col s12">
-            <div class="card-panel">
+            <div class="card-panel js-pool">
                 <h4>Player-Pool:</h4>
-                <div class="row">
-                <div class="col s2">
-                    <div id="multi-panel" class="card-panel" draggable="true">
-                        spieler 1
-                    </div>
-                </div>
-                    <div class="col s2">
-                        <div id="multi-panel" class="card-panel" draggable="true">
-                          Spieler 2
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div id="multi-panel" class="card-panel" draggable="true">
-                            Spieler 3
-                        </div>
-                    </div>
-                    <div class="col s2">
-                        <div id="multi-panel" class="card-panel" draggable="true">
-                            Spieler 4
-                        </div>
-                    </div>
-                </div>
+                <ul class="row">
+                    {% for i in 1..20 %}
+                        <li class="col s2 js-list-account" >
+                            <div class="multi-panel card-panel z-depth-1" draggable="true">
+                                spieler {{ i }}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
 {% endblock %}

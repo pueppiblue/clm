@@ -27,22 +27,26 @@ nav {
 }
 
 nav li:hover, nav li a:hover, #table-item:hover, .btn:hover {
-    background-color: $secondary-color;
+  background-color: $secondary-color;
 }
 
 nav ul li a, .side-nav a{
-    width: $sidenav-width;
+  width: $sidenav-width;
 }
 
-#multi-panel {
-    height: 100px;
-    background-color: $primary-color;
+.multi-panel {
+  height: 100px;
+  background-color: $primary-color;
 }
 
-.btn, div .well-lg, div .card-panel, div .side-nav, div .card {
-    background-color: $primary-color;
+.btn, .well-lg, .card-panel, .side-nav, .card {
+  background-color: $primary-color;
 }
 
 .highlight tbody tr:hover td {
-    background-color: $secondary-color;
+  background-color: $secondary-color;
+}
+
+.bg-secondary {
+  background-color: $secondary-color;
 }

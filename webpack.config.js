@@ -12,7 +12,7 @@ var config = {
         jquery: [
             'webpack-dev-server/client?http://localhost:8090',
             'webpack/hot/dev-server',
-            path.resolve(bower, "jquery/dist/jquery.js"),
+            path.resolve(bower, "jquery/dist/jquery.js")
         ],
         vendor: [
             'webpack-dev-server/client?http://localhost:8090',
@@ -20,13 +20,13 @@ var config = {
             // path.resolve(bower, "bootstrap/less/bootstrap.less"),
             // path.resolve(bower, "bootstrap/dist/js/bootstrap.js"),
             path.resolve(bower, "Materialize/sass/materialize.scss"),
-            path.resolve(bower, "Materialize/dist/js/materialize.js"),
+            path.resolve(bower, "Materialize/dist/js/materialize.js")
         ],
         main: [
             'webpack-dev-server/client?http://localhost:8090',
             'webpack/hot/dev-server',
-            path.resolve(source_dir, "js/hello.js"),
-            path.resolve(source_dir, "css/hello.scss"),
+            path.resolve(source_dir, "js/main.js"),
+            path.resolve(source_dir, "css/main.scss")
         ]
     },
     output: {
@@ -66,7 +66,7 @@ var config = {
         alias: {
             jquery: "vendor/bower_components/jquery/src/jquery.js",
             hammerjs: "vendor/bower_components/Materialize/js/hammer.min.js"
-        },
+        }
     },
     resolveLoader: {
         root: [node, bower]
@@ -75,7 +75,7 @@ var config = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
-        ),
+        )
         // new webpack.ProvidePlugin({
         //     $: "jquery",
         //     jQuery: "jquery",
