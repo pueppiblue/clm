@@ -1,5 +1,6 @@
 $(window.document).ready(init);
 
+
 function init() {
     var listElements = $('.js-list-account');
     listElements.on('click', function () {
@@ -41,7 +42,10 @@ function switchListItemState(listItem) {
 function addItemToRoster(listItem) {
     var listRoster = $('.js-list-roster');
     console.log(listItem);
+    // var itemClone = listItem.clone();
+    // listElements.add(itemClone);
     listRoster.append(listItem.clone());
+
 }
 
 function removeItemFromRoster(listItem) {
