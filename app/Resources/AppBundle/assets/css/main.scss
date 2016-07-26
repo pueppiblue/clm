@@ -7,7 +7,6 @@ forum:
 */
 
 $primary-color: #D18A21;
-$accent-color: #E4A64A;
 $secondary-color: #168B65;
 $bg-color: #F3E9D9;
 $grey-dark: #574C3D;
@@ -27,46 +26,28 @@ nav {
     background-color: $primary-color;
 }
 
-nav li:hover, nav li a:hover,#multi-panel:hover ,#table-item:hover, .btn:hover {
-    background-color: $accent-color;
+nav li:hover, nav li a:hover, #table-item:hover, .btn:hover {
+  background-color: $secondary-color;
 }
 
 nav ul li a, .side-nav a{
   width: $sidenav-width;
 }
 
-.js-list-account {
-  margin-left: 15px;
-  margin-right: 15px;
+.multi-panel {
+  height: 100px;
+  width: 100px;
+  background-color: $primary-color;
 }
 
 .btn, .well-lg, .card-panel, .side-nav, .card {
   background-color: $primary-color;
 }
 
-.multi-panel {
-  min-height: 100px;
-  min-width: 100px;
-  background-color: $bg-color;
-  color: $primary-color;
-}
-
 .highlight tbody tr:hover td {
   background-color: $secondary-color;
 }
 
-h4 {
-  min-height: 80px;
-}
-.bg-primary {
-  background-color: $primary-color;
-}
-
 .bg-secondary {
   background-color: $secondary-color;
-  color: #ffffff;
-}
-
-.bg-bgcolor {
-  background-color: $bg-color;
 }
