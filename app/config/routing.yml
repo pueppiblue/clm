@@ -27,4 +27,4 @@ redirect_home:
     _controller: FrameworkBundle:Redirect:Redirect
     route: user_list
   requirements:
-    slug: .+
+    slug: .*
