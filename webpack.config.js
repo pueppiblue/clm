@@ -24,7 +24,7 @@ var config = {
     output: {
         filename: '[name].js',
         path: dest_dir + "/",
-        publicPath:  dest_dir + "/" //"http://localhost:8090/assets/"
+        //publicPath:  dest_dir + "/" //"http://localhost:8090/assets/"
     },
     devtool: 'source-maps',
     module: {
