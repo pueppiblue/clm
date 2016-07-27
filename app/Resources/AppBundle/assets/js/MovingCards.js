@@ -26,10 +26,22 @@ function switchCardStyle(element) {
     }
 }
 
+function animateItem(listItem) {
+    var itemChild = listItem.children();
+    //new item animation
+    console.log(listItem);
+    if (itemChild.hasClass('new-item')) {
+        itemChild.addClass('removed-item');
+        console.log('Start remove animation');
+        // itemChild.removeClass('new-item');
+    } else {
+        itemChild.addClass('new-item');
+    }
+
+}
 function switchListItemState(listItem) {
     var isInRoster = listItem.data('is-in-roster');
     if (isInRoster === false) {
-        console.log('entered if statement');
         listItem.data('is-in-roster', true);
         addItemToRoster(listItem);
     } else {
@@ -40,8 +52,10 @@ function switchListItemState(listItem) {
 
 function addItemToRoster(listItem) {
     var listRoster = $('.js-list-roster');
-    console.log(listItem);
-    listRoster.append(listItem.clone());
+    var listClone = listItem.clone();
+    listClone.children().addClass('new-item');
+    console.log(listClone.children());
+    listRoster.append(listClone);
 }
 
 function removeItemFromRoster(listItem) {
@@ -49,6 +63,7 @@ function removeItemFromRoster(listItem) {
     var characterId = listItem.data('character-id');
     var clonedItem = listRoster.find("[data-character-id='"  +
         characterId + "']");
-    console.log(clonedItem);
-    clonedItem.remove();
+    clonedItem.children().removeClass('new-item');
+    clonedItem.children().addClass('removed-item');
+    setTimeout(function(){clonedItem.remove()}, 1000);
 }
