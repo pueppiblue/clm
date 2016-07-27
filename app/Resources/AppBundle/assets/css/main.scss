@@ -23,6 +23,7 @@ body {
 a, .side-nav a {
     color: white;
 }
+
 nav {
     background-color: $primary-color;
 }
@@ -40,8 +41,10 @@ nav ul li a, .side-nav a{
 }
 
 .multi-panel {
-  height: 100px;
-  width: 100px;
+  min-height: 80px;
+  max-height: 80px;
+  min-width:  80px;
+  max-width: 500px;
   background-color: $bg-color;
   color: $primary-color;
 }
