@@ -1,12 +1,11 @@
 var config = require("./webpack.config.js");
 var webpack = require('webpack');
-var port = 8090;
+var port = '8090';
 
 var webpackDevServer=require('webpack-dev-server');
 
 config.entry.main.unshift(
-    "webpack-dev-server/client?http://localhost:" +
-    port + "/", "webpack/hot/dev-server"
+    "webpack-dev-server/client?http://localhost:" + port + "/", "webpack/hot/dev-server"
 );
 
 var devServer = new webpackDevServer(webpack(config), {
