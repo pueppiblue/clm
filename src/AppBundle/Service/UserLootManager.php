@@ -33,7 +33,10 @@ class UserLootManager
     {
         $account = $this->accountRepository->findBy(['id' => $id]);
 
-        return $account[0];
+        if ($account) {
+            return $account[0];
+        }
 
+        return null;
     }
 }
