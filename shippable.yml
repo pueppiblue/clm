@@ -42,7 +42,7 @@ build:
       - mkdir -p shippable/codecoverage
       - mkdir -p shippable/testresults
       # run tests
-      - vendor/bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
+      - bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
       # - cp -r ./var/logs shippable/logs
 
 
