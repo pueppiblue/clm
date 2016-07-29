@@ -4,7 +4,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
-    <field name="accountName" type="string" column="name" length="255" unique="true"/>
+    <field name="accountName" type="string" column="name" length="190" unique="true"/>
     <field name="tear" type="integer" column="tear" nullable="true"/>
     <field name="acc" type="integer" column="acc" nullable="true"/>
     <field name="weapon" type="integer" column="weapon" nullable="true"/>

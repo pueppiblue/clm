@@ -4,9 +4,9 @@
     <id name="id" type="integer" column="id">
       <generator strategy="AUTO"/>
     </id>
-    <field name="charName" type="string" column="character_name" length="255"/>
-    <field name="clmClass" type="string" column="clm_class" length="255"/>
-    <field name="preferredSet" type="string" column="preferred_set" length="255" nullable="true"/>
+    <field name="charName" type="string" column="character_name" length="190"/>
+    <field name="clmClass" type="string" column="clm_class" length="190"/>
+    <field name="preferredSet" type="string" column="preferred_set" length="190" nullable="true"/>
 
     <many-to-one
       field="account"
