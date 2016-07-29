@@ -71,10 +71,3 @@ integrations:
           on_success: never
           on_failure: never
           on_changed: never
-
-    hub:
-        - integrationName:
-          type:
-          agent_only:
-          branches:
-
