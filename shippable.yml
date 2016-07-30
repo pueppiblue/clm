@@ -38,6 +38,8 @@ build:
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       # run composer script to execute database creation
       - php composer.phar run-script project-init
+      # load fixtures
+      - php bin/console h:d:f:l -n --env=test
       # create test and coverage folders
       - mkdir -p shippable/codecoverage
       - mkdir -p shippable/testresults
