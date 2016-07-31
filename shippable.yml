@@ -42,7 +42,7 @@ build:
       # run composer script to execute database creation
       - php composer.phar run-script project-init
       # create mysql database for test purposes
-      - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+      - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY 'clm_test'; FLUSH PRIVILEGES;"
       - php bin/console d:d:c --env=test -n
       # load fixtures into dev database
       - php bin/console h:d:f:l -n --env=dev
