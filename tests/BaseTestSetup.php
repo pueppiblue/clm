@@ -6,18 +6,18 @@ namespace Tests;
 use Doctrine\ORM\Tools\SchemaTool;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
+/** @noinspection LongInheritanceChainInspection */
 abstract class BaseTestSetup extends WebTestCase
 {
 
-    private $client;
-    private $em;
+    protected $client;
+    protected $em;
 
     protected function setUp() {
-        $this->client = static::createClient();
         $this->em = $this->getContainer()->get('doctrine')
             ->getManager();
         if (!isset($metadatas)) {
-                $metadatas = $this->em->getMetadataFactory()->getAllMetadata();
+            $metadatas = $this->em->getMetadataFactory()->getAllMetadata();
         }
 
         $schemaTool = new SchemaTool($this->em);
@@ -28,5 +28,7 @@ abstract class BaseTestSetup extends WebTestCase
         }
 
         $this->postFixtureSetup();
+
+        $this->client = $this->makeClient();
     }
 }
