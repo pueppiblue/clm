@@ -35,9 +35,11 @@ build:
       - npm -v
       - php -v
       - mysql -v
-      # set timezone
+      # set system timezone
       - echo 'Europe/Berlin' | sudo tee /etc/timezone
       - sudo dpkg-reconfigure --frontend noninteractive tzdata
+      # set php.ini timezone
+      - echo "date.timezone = Europe/Berlin" >> $HOME/.phpenv/versions/$(phpenv version-name)/etc/php.ini
       # configure database access
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
       - mysql -e "CREATE DATABASE ams_shippable;"
