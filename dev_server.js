@@ -1,6 +1,6 @@
 var config = require("./webpack.config.js");
 var webpack = require('webpack');
-var port = '8090';
+var port = '8080';
 
 var webpackDevServer=require('webpack-dev-server');
 
