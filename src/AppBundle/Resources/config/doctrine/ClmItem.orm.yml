@@ -1,0 +1,36 @@
+AppBundle\Entity\ClmItem:
+    type: entity
+    table: clm_item
+    repositoryClass: AppBundle\Repository\DoctrineORMClmItemRepository
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            length: 190
+        dropDate:
+            type: datetime
+            column: drop_date
+        category:
+            type: string
+            length: 190
+            nullable: true
+        isCash:
+            type: boolean
+            nullable: true
+    manyToOne:
+        looter:
+            targetEntity: AppBundle\Entity\ClmAccount
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: items
+            joinColumns:
+                looter_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

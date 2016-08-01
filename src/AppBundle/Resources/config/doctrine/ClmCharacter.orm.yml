@@ -1,0 +1,36 @@
+AppBundle\Entity\ClmCharacter:
+    type: entity
+    table: clm_characters
+    repositoryClass: AppBundle\Repository\DoctrineORMClmCharacterRepository
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: IDENTITY
+    fields:
+        charName:
+            type: string
+            length: 190
+            column: character_name
+        clmClass:
+            type: string
+            length: 190
+            column: clm_class
+        preferredSet:
+            type: string
+            length: 190
+            nullable: true
+            column: preferred_set
+    manyToOne:
+        account:
+            targetEntity: AppBundle\Entity\ClmAccount
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: characters
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
