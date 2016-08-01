@@ -39,6 +39,11 @@ twig:
     form_themes:
         - 'bootstrap_3_layout.html.twig'
 
+fos_user:
+    db_driver: orm
+    firewall: main
+    user_class: AppBundle\Entity\User
+
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
     twig:
