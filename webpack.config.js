@@ -1,3 +1,6 @@
+var isProd = process.env.NODE_ENV === 'production';
+console.log('Environment is set to:' +  process.env.NODE_ENV);
+
 var path = require('path');
 var webpack = require('webpack');
 var source_dir = path.resolve(__dirname, 'app/Resources/AppBundle/assets');
@@ -23,10 +26,10 @@ var config = {
     },
     output: {
         filename: '[name].js',
-        path: dest_dir + "/",
-        publicPath:  "http://localhost:8090/assets/"
+        path: dest_dir,
+        publicPath: dest_dir
     },
-    devtool: 'source-maps',
+    devtool: isProd ? false : '#inline-source-maps',
     module: {
         loaders: [
             {
@@ -44,7 +47,7 @@ var config = {
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader"
+                loader: "url-loader?limit=70000"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -64,6 +67,7 @@ var config = {
         root: [node, bower]
     },
     plugins: [
+        new webpack.NodeEnvironmentPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
@@ -74,5 +78,12 @@ var config = {
         // })
     ]
 };
+
+if (isProd) {
+    console.log('Optimizing for production...');
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+    config.plugins.push(new webpack.optimize.DedupePlugin());
+    config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
+}
 
 module.exports = config;

@@ -11,7 +11,7 @@ config.entry.main.unshift(
 var devServer = new webpackDevServer(webpack(config), {
         hot: true,
         publicPath: "http://localhost:" + port + "/assets/",
-        contentBase: "web/",
+        contentBase: "./web/",
         headers: {"X-Custom-Header": "yes"},
         stats: {colors: true}
     }
