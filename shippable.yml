@@ -36,6 +36,8 @@ build:
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
       - mysql -e "CREATE DATABASE ams_shippable;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+      # load fixtures
+      - php bin/console h:a:f:l
       # run composer script to execute database creation
       - php composer.phar run-script project-init
       # create test and coverage folders
