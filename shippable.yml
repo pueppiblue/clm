@@ -49,9 +49,11 @@ build:
       - php bin/console h:d:f:l -n
       # create mysql database for test purposes
       - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY 'clm_test'; FLUSH PRIVILEGES;"
+      - php bin/console d:d:d --env=test -n --if-exists --force
       - php bin/console d:d:c --env=test -n
+      - php bin/console d:m:m --env=test -n
       # load fixtures into dev database
-      - php bin/console h:d:f:l -n --env=dev
+      - php bin/console h:d:f:l -n --env=test
       # create test and coverage folders
       - mkdir -p shippable/codecoverage
       - mkdir -p shippable/testresults
