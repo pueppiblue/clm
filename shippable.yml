@@ -39,17 +39,18 @@ build:
       - echo "date.timezone = Europe/Berlin" >> $HOME/.phpenv/versions/$(phpenv version-name)/etc/php.ini
       # replace app parameters
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
+      # set mysql privileges
+      - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+      - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       # install composer dependencies
       - php composer.phar install
       # create mysql database for test purposes
-      - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       - php bin/console d:d:d --env=test -n --if-exists --force
       - php bin/console d:d:c --env=test -n
       - php bin/console d:m:m --env=test -n
       # load test environment fixtures into test database
       - php bin/console h:d:f:l -n --env=test
       # configure production database access
-      - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       - mysql -e "CREATE DATABASE clm_shippable;"
       # run composer script to execute database creation and migrations
       - php composer.phar run-script project-init
