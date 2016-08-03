@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\AppBundle\Controller;
+namespace Tests\Integration;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tests\BaseTestSetup;
 
-class UrlAvailable extends WebTestCase
+class UserControllerTest extends BaseTestSetup
 {
     /**
      * @dataProvider urlProvider
@@ -12,11 +12,16 @@ class UrlAvailable extends WebTestCase
      */
     public function testPathIsAvailable($url)
     {
-        $client = self::createClient();
+        $this->loadFixtureFiles([
+            '@AppBundle/DataFixtures/ORM/test/clmAccounts.yml',
+            '@AppBundle/DataFixtures/ORM/test/clmCharacters.yml',
+            '@AppBundle/DataFixtures/ORM/test/clmItems.yml',
+        ]);
+
+        $client = $this->client;
         $client->request('GET', $url);
 
-        static::assertTrue($client->getResponse()->isSuccessful(),
-            'URL: ' . $url . ' could not be reached successfully.');
+        $this->assertStatusCode(200, $client);
     }
 
     /**
@@ -25,11 +30,16 @@ class UrlAvailable extends WebTestCase
      */
     public function testWildCardsAreRedirected($url)
     {
-        $client = self::createClient();
+        $this->loadFixtureFiles([
+            '@AppBundle/DataFixtures/ORM/test/clmAccounts.yml',
+            '@AppBundle/DataFixtures/ORM/test/clmCharacters.yml',
+            '@AppBundle/DataFixtures/ORM/test/clmItems.yml',
+        ]);
+
+        $client = $this->client;
         $client->request('GET', $url);
 
-        static::assertTrue($client->getResponse()->isRedirection(),
-            "url with wildcards was not redirected.");
+        $this->assertStatusCode(302, $client);
     }
 
     /**

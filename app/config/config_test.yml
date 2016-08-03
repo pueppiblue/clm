@@ -8,9 +8,23 @@ framework:
     profiler:
         collect: false
 
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     127.0.0.1
+        dbname:   clm_test
+        user: clm_test
+        password:  clm_test
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
 web_profiler:
     toolbar: false
     intercept_redirects: false
 
 swiftmailer:
     disable_delivery: true
+
+liip_functional_test: ~
