@@ -43,10 +43,10 @@ build:
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
       - mysql -e "CREATE DATABASE ams_shippable;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
-      # load fixtures
-      - php bin/console h:d:f:l -n
       # run composer script to execute database creation
       - php composer.phar run-script project-init
+      # load fixtures
+      - php bin/console h:d:f:l -n
       # create mysql database for test purposes
       - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY 'clm_test'; FLUSH PRIVILEGES;"
       - php bin/console d:d:c --env=test -n
