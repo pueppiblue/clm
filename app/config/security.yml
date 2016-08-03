@@ -42,3 +42,4 @@ security:
         - { path: ^/admin/, role: ROLE_SUPER_ADMIN}
         - { path: ^/raid/, role: ROLE_ADMIN }
         - { path: ^/user/import, role: ROLE_ADMIN }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
