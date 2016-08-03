@@ -44,7 +44,7 @@ build:
       - mysql -e "CREATE DATABASE ams_shippable;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       # load fixtures
-      - php bin/console h:d:f:l
+      - php bin/console h:d:f:l -n
       # run composer script to execute database creation
       - php composer.phar run-script project-init
       # create mysql database for test purposes
