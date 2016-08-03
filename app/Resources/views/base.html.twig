@@ -5,20 +5,11 @@
     <title>{% block title %}Conan Loot Manager!{% endblock %}</title>
     {% block stylesheets %}
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        {#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">#}
-        {#<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>#}
-        {#<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>#}
     {% endblock %}
     {% block javascripts %}
-        {% if app.environment == 'dev' %}
-            <script type="text/javascript" src="http://localhost:8090/assets/jquery.js"></script>
-            <script type="text/javascript" src="http://localhost:8090/assets/vendor.js"></script>
-            <script type="text/javascript" src="http://localhost:8090/assets/main.js"></script>
-        {% else %}
             <script type="text/javascript" src="{{ asset('assets/jquery.js')  }}"></script>
             <script type="text/javascript" src="{{ asset('assets/vendor.js') }}"></script>
             <script type="text/javascript" src="{{ asset('assets/main.js') }}"></script>
-        {% endif %}
     {% endblock %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
