@@ -1,5 +1,6 @@
 <?php
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
@@ -48,9 +49,18 @@ class AppKernel extends Kernel
     {
         return dirname(__DIR__).'/var/logs';
     }
-
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+
+        $loader->load(function(ContainerBuilder $container) {
+            if ($container->getParameter('use_webpack_dev_server')) {
+                $container->loadFromExtension('framework', [
+                    'assets' => [
+                        'base_url' => 'http://localhost:8080'
+                    ]
+                ]);
+            }
+        });
     }
 }
