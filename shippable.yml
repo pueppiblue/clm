@@ -42,6 +42,8 @@ build:
       # set mysql privileges
       - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+      - mysql -e "CREATE DATABASE clm_shippable;"
+      - mysql -e "CREATE DATABASE clm_test;"
       # install composer dependencies
       - php composer.phar install
       # create mysql database for test purposes
@@ -50,8 +52,6 @@ build:
       - php bin/console d:m:m --env=test -n
       # load test environment fixtures into test database
       - php bin/console h:d:f:l -n --env=test
-      # configure production database access
-      - mysql -e "CREATE DATABASE clm_shippable;"
       # run composer script to execute database creation and migrations
       - php composer.phar run-script project-init
       # load fixtures
