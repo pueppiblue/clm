@@ -41,7 +41,7 @@ build:
       - echo "date.timezone = Europe/Berlin" >> $HOME/.phpenv/versions/$(phpenv version-name)/etc/php.ini
       # configure database access
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
-      - mysql -e "CREATE DATABASE ams_shippable;"
+      # - mysql -e "CREATE DATABASE clm_shippable;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       # run composer script to execute database creation
       - php composer.phar run-script project-init
