@@ -10,4 +10,4 @@ AppBundle\Entity\User:
         plainPassword: showmeloot
         email: Nils.Freigang@gmx.de
         enabled: 1
-        roles: [ROLE_SUPERADMIN]
+        roles: [ROLE_SUPER_ADMIN]
