@@ -1,0 +1,13 @@
+AppBundle\Entity\User:
+    generic_admin:
+        username: admin
+        plainPassword: admin
+        email: admin@adminsFromHell.com
+        enabled: 1
+        roles: [ROLE_ADMIN]
+    user_nils:
+        username: Nilsebaer
+        plainPassword: showmeloot
+        email: Nils.Freigang@gmx.de
+        enabled: 1
+        roles: [ROLE_SUPERADMIN]
