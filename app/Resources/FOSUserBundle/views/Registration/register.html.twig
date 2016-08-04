@@ -1,5 +1,15 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% form_theme form _self %}
+
+
+{%- block form_row -%}
+    <div class="input-field col s10 push-s1">
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock form_row -%}
 
 {% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
 {% endblock fos_user_content %}
