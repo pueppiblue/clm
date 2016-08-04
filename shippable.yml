@@ -31,7 +31,7 @@ build:
       - node --version
       - npm -v
       - php -v
-      - mysql -v
+      - mysql --version
       # set system timezone
       - echo 'Europe/Berlin' | sudo tee /etc/timezone
       - sudo dpkg-reconfigure --frontend noninteractive tzdata
@@ -42,26 +42,31 @@ build:
       # set mysql privileges
       - mysql -e "GRANT ALL ON clm_test.* TO clm_test@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO shippable@localhost IDENTIFIED BY ''; FLUSH PRIVILEGES;"
-      - mysql -e "CREATE DATABASE clm_shippable;"
-      - mysql -e "CREATE DATABASE clm_test;"
-      # install composer dependencies
+      # install dependencies
       - php composer.phar install
-      # create mysql database for test purposes
+      - npm install
+      - ./node_modules/.bin/bower install --allow-root
+      # create mysql test database
       - php bin/console d:d:d --env=test -n --if-exists --force
       - php bin/console d:d:c --env=test -n
       - php bin/console d:m:m --env=test -n
-      # load test environment fixtures into test database
+      # load test fixtures
       - php bin/console h:d:f:l -n --env=test
-      # run composer script to execute database creation and migrations
-      - php composer.phar run-script project-init
-      # load fixtures
+      # create database
+      - php bin/console d:d:d -n --if-exists --force
+      - php bin/console d:d:c -n
+      - php bin/console d:m:m -n
+      # load dev fixtures
       - php bin/console h:d:f:l -n
+      # clear cache
+      - php bin/console cache:clear --env=dev
+      - php bin/console cache:clear --env=test
       # create test and coverage folders
       - mkdir -p shippable/codecoverage
       - mkdir -p shippable/testresults
       # run tests
       - bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage
-      # - cp -r ./var/logs shippable/logs
+      - cp -r ./var/logs shippable/logs
 
 
     post_ci:
