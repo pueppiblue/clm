@@ -1,10 +1,4 @@
 AppBundle\Entity\User:
-    user_nils:
-        username: Nilsebaer
-        plainPassword: showmeloot
-        email: Nils.Freigang@gmx.de
-        enabled: 1
-        roles: [ROLE_ADMIN]
     user_lootmaster:
         username: Lootmaster
         plainPassword: showmeloot
@@ -12,7 +6,7 @@ AppBundle\Entity\User:
         enabled: 1
         roles: [ROLE_ADMIN]
     user{1..10}:
-        username: <firstName()>.<lastName()>
+        username: <firstName()>.<lastName().dev>
         plainpassword: <password()>
         email: <email()>
         roles: [ROLE_USER]

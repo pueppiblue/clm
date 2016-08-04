@@ -1,21 +1,21 @@
 AppBundle\Entity\User:
     user_testSuper:
-        username: SuperAdmin  
+        username: super_admin
         plainPassword: super
         email: super@clm.fan
         enabled: 1
         roles: [ROLE_SUPERADMIN]
     user_testAdmin:
-            username: admin  
-            plainPassword: admin  
-            email: admin@clm.fan
-            enabled: 1
-            roles: [ROLE_ADMIN]
+        username: test_admin
+        plainPassword: test_admin
+        email: admin@clm.fan
+        enabled: 1
+        roles: [ROLE_ADMIN]
     user_testUser:
-            username: user  
-            plainPassword: user
-            email: user@clm.fan
-            enabled: 1
-            roles: [ROLE_USER]
+        username: test_user
+        plainPassword: test_user
+        email: user@clm.fan
+        enabled: 1
+        roles: [ROLE_USER]
         
         
