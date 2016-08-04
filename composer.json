@@ -60,11 +60,11 @@
             "php bin/console doctrine:database:drop --no-interaction --force --if-exists",
             "php bin/console doctrine:database:create",
             "php bin/console doctrine:migrations:migrate",
-            "php bin/console h:d:f:l -n",
-            "php bin/console doctrine:database:drop --if-exists --no-interaction --force -e=test",
-            "php bin/console doctrine:database:create -e=test",
-            "php bin/console doctrine:migrations:migrate -e=test",
-            "php bin/console h:d:f:l -e=test -n"
+            "php bin/console h:d:f:l -e dev -n",
+            "php bin/console doctrine:database:drop --if-exists --no-interaction --force --env=test",
+            "php bin/console doctrine:database:create -e test",
+            "php bin/console doctrine:migrations:migrate -e test",
+            "php bin/console h:d:f:l -e test -n"
         ],
         "database-migrations-diff": [
             "php bin/console doctrine:database:drop --if-exists --no-interaction --force",
