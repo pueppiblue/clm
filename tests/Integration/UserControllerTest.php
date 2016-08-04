@@ -7,11 +7,10 @@ use Tests\BaseTestSetup;
 class UserControllerTest extends BaseTestSetup
 {
     /**
-     * @dataProvider urlProvider
-     * @param $url
+     * @dataProvider unrestrictedRoutesProvider
+     * @param String $url
      */
-    public function testPathIsAvailable($url)
-    {
+    public function testRoutesForAnonymousUser($url) {
         $this->loadFixtureFiles([
             '@AppBundle/DataFixtures/ORM/test/clmAccounts.yml',
             '@AppBundle/DataFixtures/ORM/test/clmCharacters.yml',
@@ -56,13 +55,39 @@ class UserControllerTest extends BaseTestSetup
     /**
      * @return array
      */
-    public function urlProvider()
+    public function adminRoutesProvider()
     {
         return [
+            ['/register'],
+            ['/login'],
             ['/user/list'],
-            ['/user/import'],
             ['/user/show/1'],
+            ['/user/import'],
             ['/raid/show/1'],
         ];
     }
+
+    public function userRoutesProvider()
+    {
+        return [
+            ['/register'],
+            ['/login'],
+            ['/user/list'],
+            ['/user/show/1'],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function unrestrictedRoutesProvider()
+    {
+        return [
+            ['/register/'],
+            ['/login'],
+            ['/user/list'],
+            ['/user/show/1'],
+        ];
+    }
+
 }
