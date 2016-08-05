@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 
+
 class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAccountRepositoryInterface
 {
 
@@ -36,6 +37,7 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
 
     /**
      * @param ClmAccount $account
+     * @return void
      */
     public function merge(ClmAccount $account)
     {
@@ -57,9 +59,7 @@ class DoctrineORMClmAccountRepository extends EntityRepository implements ClmAcc
             ->getQuery();
 
         try {
-            $account = $query->getSingleResult();
-
-            return $account;
+            return $query->getSingleResult();
         } catch (NoResultException $e) {
             throw new ClmAccountRepositoryException('Account not found by name', null, $e);
         } catch (NonUniqueResultException $e) {
