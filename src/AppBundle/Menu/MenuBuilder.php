@@ -71,18 +71,22 @@ class MenuBuilder
         return $menu;
     }
 
-    public function createSideMenu()
+    public function createSideMenu($options)
     {
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'side-nav');
         $menu->setChildrenAttribute('id', 'mobile-nav');
 
-        $menu->addChild('Accounts', ['route' => 'user_list']);
-        $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
-        $menu->addChild('Raid', array('route' => 'raid_show'));
-        $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
-        $menu->addChild('Import xml', array('route' => 'user_import'));
-        $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
+        $user = $this->createUserMenu($options);
+        $nav = $this->createNavMenu();
+
+        foreach ($nav->getChildren() as $child) {
+            $menu->addChild(($child->copy()));
+        }
+
+        foreach ($user->getChildren() as $child) {
+            $menu->addChild(($child->copy()));
+        }
 
         return $menu;
 
