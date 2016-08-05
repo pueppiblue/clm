@@ -2,13 +2,19 @@
 {% form_theme form _self %}
 
 {%- block file_widget -%}
-    <div class="file-field input-field">
-        <div class="btn btn-default">
-            <span>Select xml</span>
-            {{- block('form_widget_simple') -}}
+    <div class="file-field input-field col s10 push-s1">
+        <div class="row">
+            <div class="btn btn-default">
+                <span>Select xml</span>
+                {{- block('form_widget_simple') -}}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
         </div>
-        <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
+        <div class="row"><button class="btn waves-effect waves-light col s12" type="submit" name="action">
+                Import Accounts
+            </button>
         </div>
     </div>
 {%- endblock file_widget %}
@@ -26,9 +32,6 @@
                         {{ form_start(form) }}
                         {{ form_errors(form) }}
                         {{ form_widget(form.XmlFile) }}
-                        <button class="btn waves-effect waves-light col s12" type="submit" name="action">
-                            Import Accounts
-                        </button>
                         {{ form_end(form) }}
                     </div>
                 </div>
