@@ -23,23 +23,28 @@ body {
     color: #ffffff;
 }
 
+// NAVBAR CSS
 a, .side-nav a {
     color: white;
 }
-
 nav {
     background-color: $primary-color;
 }
 
-nav li:hover, nav li a:hover,#multi-panel:hover ,#table-item:hover{
+nav li:hover, nav li a:hover, #multi-panel:hover ,#table-item:hover{
     background-color: $accent-primary;
 }
 
 nav ul li a, .side-nav a{
   width: $sidenav-width;
 }
+.side-nav {
+    background-color: $primary-color;
+  }
 
-.well-lg, .card-panel, .side-nav, .card {
+
+// PANELS
+.well-lg, .card-panel {
   background-color: $primary-color;
 }
 .panel-heading {
@@ -47,6 +52,9 @@ nav ul li a, .side-nav a{
 }
 
 //card CSS
+.card {
+  background-color: $accent-primary;
+}
 .card .card-title {
   background-color: $primary-color;
   text-align: center;
@@ -54,9 +62,6 @@ nav ul li a, .side-nav a{
 .card .card-content {
   background-color: $accent-primary;
   padding: 0 0 0 0;
-}
-.card {
-  background-color: $accent-primary;
 }
 
 
