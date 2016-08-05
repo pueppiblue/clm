@@ -51,9 +51,14 @@ nav ul li a, .side-nav a{
   background-color: $primary-color;
   text-align: center;
 }
+.card .card-content {
+  background-color: $accent-primary;
+  padding: 0 0 0 0;
+}
 .card {
   background-color: $accent-primary;
 }
+
 
 //form CSS
 .btn {
