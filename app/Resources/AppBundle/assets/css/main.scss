@@ -81,9 +81,11 @@ nav ul li a, .side-nav a{
 }
 
 .multi-panel {
-  min-height: 80px;
-  max-height: 80px;
-  min-width:  80px;
+  padding: 5px 5px 5px 5px;
+  word-wrap: break-word;
+  min-height: 45px;
+  max-height: 45px;
+  min-width:  45px;
   max-width: 500px;
   background-color: $bg-color;
   color: $primary-color;

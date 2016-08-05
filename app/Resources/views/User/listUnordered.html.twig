@@ -11,10 +11,10 @@
         <div class="col s12 card-panel">
             <ul class="row">
                 {% for user in users %}
-                    <li class="col s12 m3 l2">
+                    <li class="col s4 m2 l1">
                         <a href="{{ path('user_show', {'id': user.id}) }}">
                             <div class="multi-panel card-panel">
-                                {{ user.getAccountName }}
+                                    {{ user.getAccountName }}
                             </div>
                         </a>
                     </li>
