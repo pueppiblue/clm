@@ -1,0 +1,23 @@
+AppBundle\Entity\ClmRaid:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ClmRaidRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+        contentTier:
+            type: string
+            length: '190'
+        participants:
+            type: array
+            nullable: true
+        lootedItems:
+            type: array
+            nullable: true
+    lifecycleCallbacks: {  }
