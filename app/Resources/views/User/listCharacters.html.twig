@@ -1,15 +1,18 @@
 <div class="card">
     <div class="card-content">
-        <span class="card-title">
+        <div class="col s12 card-title">
             <h5>Verknüpfte Charaktere:</h5>
-        </span>
-        <table class="bordered highlight">
-            <thead>
-                <th>Name</th>
-                <th>Klasse</th>
-                <th>Set</th>
-            </thead>
-            <tbody>
+        </div>
+        <div>
+            <table class="bordered highlight">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Klasse</th>
+                        <th>Set</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {% for char in user.getCharacters %}
                     <tr>
                         <td>{{ char.getCharName }}</td>
@@ -17,27 +20,8 @@
                         <td>{{ char.getPreferredSet }}</td>
                     </tr>
                 {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-{#<div class="card-panel">#}
-    {#<table class="bordered highlight">#}
-        {#<thead>#}
-        {#<tr>#}
-            {#<th>Name</th>#}
-            {#<th>Klasse</th>#}
-            {#<th>Set</th>#}
-        {#</tr>#}
-        {#</thead>#}
-        {#<tbody>#}
-        {#{% for char in user.getCharacters %}#}
-            {#<tr>#}
-                {#<td>{{ char.getCharName }}</td>#}
-                {#<td>{{ char.getClmClass }}</td>#}
-                {#<td>{{ char.getPreferredSet }}</td>#}
-            {#</tr>#}
-        {#{% endfor %}#}
-        {#</tbody>#}
-    {#</table>#}
-{#</div>#}
