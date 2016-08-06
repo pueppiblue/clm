@@ -27,6 +27,10 @@ body {
   padding-top: 5em;
 }
 
+h2 {
+  font-size: 200%;
+}
+
 // NAVBAR CSS
 a, .side-nav a {
     color: white;
@@ -62,6 +66,8 @@ nav ul li a, .side-nav a{
 .card .card-title {
   background-color: $primary-color;
   text-align: center;
+  font-size: 200%;
+  font-weight: bold;
 }
 .card .card-content {
   background-color: $accent-primary;
