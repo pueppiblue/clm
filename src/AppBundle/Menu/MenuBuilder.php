@@ -50,13 +50,13 @@ class MenuBuilder
     {
         $isAdmin = $this->checker->isGranted('ROLE_ADMIN');
         $isUser = $this->checker->isGranted('ROLE_USER');
-        $loggedIn = ($isAdmin || $isUser);
+        $isLoggedIn = ($isAdmin || $isUser);
 
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'right hide-on-med-and-down')
             ->setExtra('translation_domain', 'FOSUserBundle');
 
-        if ($loggedIn) {
+        if ($isLoggedIn) {
             /** @var User $userName */
             $user = $options['user'];
             $userName = $user->getUsername();
