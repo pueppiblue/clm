@@ -22,7 +22,7 @@ class ClmRaid
     /**
      * @var string
      */
-    private $contentTier;
+    private $raidTier;
 
     /**
      * @var arrayCollection
@@ -33,18 +33,6 @@ class ClmRaid
      * @var arrayCollection
      */
     private $lootedItems;
-
-    /**
-     * ClmRaid constructor.
-     * @param int $id
-     * @param \DateTime $date
-     * @param string $contentTier
-     */
-    public function __construct(DateTime $date, $contentTier)
-    {
-        $this->date = $date;
-        $this->contentTier = $contentTier;
-    }
 
     /**
      * Get id
@@ -83,13 +71,13 @@ class ClmRaid
     /**
      * Set contentTier
      *
-     * @param string $contentTier
+     * @param string $raidTier
      *
      * @return ClmRaid
      */
-    public function setContentTier($contentTier)
+    public function setRaidTier($raidTier)
     {
-        $this->contentTier = $contentTier;
+        $this->raidTier = $raidTier;
 
         return $this;
     }
@@ -99,9 +87,9 @@ class ClmRaid
      *
      * @return string
      */
-    public function getContentTier()
+    public function getRaidTier()
     {
-        return $this->contentTier;
+        return $this->raidTier;
     }
 
     /**

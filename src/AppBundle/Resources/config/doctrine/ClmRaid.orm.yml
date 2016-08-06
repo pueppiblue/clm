@@ -11,7 +11,7 @@ AppBundle\Entity\ClmRaid:
     fields:
         date:
             type: datetime
-        contentTier:
+        raidTier:
             type: string
             length: '190'
     OneToMany:

@@ -17,14 +17,19 @@ class ConanItemProvider extends BaseProvider
         return self::randomElement($this->charNameProvider);
     }
 
+    public function conanRaidTier()
+    {
+        return self::randomElement($this->raidTierProvider);
+    }
+
     public function conanItem()
     {
         $items = [
-          sprintf(
-              '%s-%s',
-              self::randomElement($this->classProvider),
-              self::randomElement($this->itemProvider)
-              )
+            sprintf(
+                '%s-%s',
+                self::randomElement($this->classProvider),
+                self::randomElement($this->itemProvider)
+            )
         ];
         return self::randomElement($items);
     }
@@ -53,4 +58,7 @@ class ConanItemProvider extends BaseProvider
         'DT', 'Ero', 'BS', 'Waechter', 'ToS', 'PoM', 'Assa', 'Barb', 'Ranger','HoX', 'Nec', 'Demo'
     ];
 
+    private $raidTierProvider = [
+        'T4', 'T5', 'T6'
+    ];
 }
