@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Item
@@ -16,11 +17,6 @@ class ClmItem
      * @var string
      */
     private $name;
-
-    /**
-     * @var int
-     */
-    private $looter;
 
     /**
      * @var \DateTime
@@ -41,9 +37,10 @@ class ClmItem
      * Item constructor.
      * @param string $name
      */
-    public function __construct($name)
+    public function __construct($name, DateTime $date)
     {
         $this->name = $name;
+        $this->dropDate = $date;
     }
 
 
@@ -79,31 +76,6 @@ class ClmItem
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set user
-     *
-     * @param integer $looter
-     *
-     * @return ClmItem
-     */
-    public function setLooter(ClmAccount $looter)
-    {
-        $this->looter = $looter;
-        $looter->assignItem($this);
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return int
-     */
-    public function getLooter()
-    {
-        return $this->looter;
     }
 
     /**
