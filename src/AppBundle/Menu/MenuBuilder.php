@@ -57,7 +57,7 @@ class MenuBuilder
             ->setExtra('translation_domain', 'FOSUserBundle');
 
         if ($isLoggedIn) {
-            /** @var User $userName */
+            /** @var User $user */
             $user = $options['user'];
             $userName = $user->getUsername();
             $menu->addChild('Logout('.$userName.')',['route' => 'fos_user_security_logout']);
