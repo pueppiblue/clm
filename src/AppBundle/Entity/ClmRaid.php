@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -33,6 +34,17 @@ class ClmRaid
      */
     private $lootedItems;
 
+    /**
+     * ClmRaid constructor.
+     * @param int $id
+     * @param \DateTime $date
+     * @param string $contentTier
+     */
+    public function __construct(DateTime $date, $contentTier)
+    {
+        $this->date = $date;
+        $this->contentTier = $contentTier;
+    }
 
     /**
      * Get id
