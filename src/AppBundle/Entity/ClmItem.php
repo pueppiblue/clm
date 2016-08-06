@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Item
@@ -37,10 +37,9 @@ class ClmItem
      * Item constructor.
      * @param string $name
      */
-    public function __construct($name, DateTime $date)
+    public function __construct($name)
     {
         $this->name = $name;
-        $this->dropDate = $date;
     }
 
 
