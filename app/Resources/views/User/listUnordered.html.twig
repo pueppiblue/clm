@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <br>
     <div class="row">
         <div class="col s12 card-panel">
             <div>
-                <h4>Accounts</h4>
+                <h2>Accounts</h2>
             </div>
         </div>
         <div class="col s12 card-panel">
@@ -14,7 +13,7 @@
                     <li class="col s4 m2 l1">
                         <a href="{{ path('user_show', {'id': user.id}) }}">
                             <div class="multi-panel card-panel">
-                                    {{ user.getAccountName }}
+                                {{ user.getAccountName }}
                             </div>
                         </a>
                     </li>
@@ -22,6 +21,5 @@
             </ul>
         </div>
     </div>
-
 {% endblock %}
 
