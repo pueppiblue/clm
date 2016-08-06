@@ -1,6 +1,6 @@
 AppBundle\Entity\ClmRaid:
     type: entity
-    table: null
+    table: clm_raid
     repositoryClass: AppBundle\Repository\ClmRaidRepository
     id:
         id:
@@ -14,10 +14,24 @@ AppBundle\Entity\ClmRaid:
         contentTier:
             type: string
             length: '190'
+    OneToMany:
+        droppedItems:
+            targetEntity: AppBundle\Entity\ClmItem
+            cascade: {  }
+            fetch: LAZY
+            JoinColumn:
+              name: item_id
+              referencedColumName: id
+    ManyToMany:
         participants:
-            type: array
-            nullable: true
-        lootedItems:
-            type: array
-            nullable: true
+            targetEntity: AppBundle\Entity\ClmCharacter
+            inversedBy: attendedRaids
+            joinTable:
+                name: raids_characters
+                joinColumns:
+                    raid_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    character_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }
