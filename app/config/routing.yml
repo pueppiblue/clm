@@ -30,7 +30,7 @@ raid_list:
 
 raid_createRoster:
   path: /raid/createRoster
-    defaults:
+  defaults:
     _controller: app.controller.raid:createRosterAction
 
 redirect_home:
