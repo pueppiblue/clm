@@ -18,6 +18,7 @@ interface ClmRaidRepositoryInterface
 
     /**
      * @param int $id
+     * @return ClmRaid
      */
     public function findById($id);
 

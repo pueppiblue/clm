@@ -2,6 +2,8 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\ClmAccount;
+use AppBundle\Entity\ClmRaid;
 use AppBundle\Repository\ClmAccountRepositoryInterface;
 use AppBundle\Repository\ClmRaidRepositoryInterface;
 
@@ -42,7 +44,7 @@ class UserLootManager
 
     /**
      * @param $id
-     * @return null
+     * @return null| ClmAccount[]
      */
     public function getAccount($id)
     {
@@ -54,4 +56,19 @@ class UserLootManager
 
         return null;
     }
+
+    /**
+     * @return ClmRaid[]
+     */
+    public function getAllRaids()
+    {
+        return $raids = $this->raidRepository->findAll();
+
+    }
+
+    public function getRaid($id)
+    {
+        return $this->raidRepository->findById($id);
+    }
+
 }
