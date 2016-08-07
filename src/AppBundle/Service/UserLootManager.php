@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Repository\ClmAccountRepositoryInterface;
+use AppBundle\Repository\ClmRaidRepositoryInterface;
 
 class UserLootManager
 {
@@ -10,13 +11,24 @@ class UserLootManager
      * @var ClmAccountRepositoryInterface
      */
     private $accountRepository;
+    /**
+     * @var ClmRaidRepositoryInterface
+     */
+    private $raidRepository;
+
 
     /**
+     * UserLootManager constructor.
      * @param ClmAccountRepositoryInterface $accountRepository
+     * @param ClmRaidRepositoryInterface $raidRepository
      */
-    public function __construct(ClmAccountRepositoryInterface $accountRepository)
+    public function __construct(
+        ClmAccountRepositoryInterface $accountRepository,
+        ClmRaidRepositoryInterface $raidRepository
+    )
     {
        $this->accountRepository = $accountRepository;
+       $this->raidRepository = $raidRepository;
     }
 
     /**
@@ -24,11 +36,14 @@ class UserLootManager
      */
     public function getAllAccounts()
     {
-        $accounts = $this->accountRepository->findAll();
+        return $accounts = $this->accountRepository->findAll();
 
-        return $accounts;
     }
 
+    /**
+     * @param $id
+     * @return null
+     */
     public function getAccount($id)
     {
         $account = $this->accountRepository->findBy(['id' => $id]);

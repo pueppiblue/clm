@@ -27,6 +27,7 @@ services:
       class: AppBundle\Service\UserLootManager
       arguments:
         - '@app.repository.account'
+        - '@app.repository.raid'
 
   app.controller.user:
       class: AppBundle\Controller\UserController
