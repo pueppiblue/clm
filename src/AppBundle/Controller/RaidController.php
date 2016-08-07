@@ -51,22 +51,35 @@ class RaidController
      * @param int $id
      * @return Response
      */
-    public function createRosterAction()
+    public function showAction()
     {
         return $this->templating->renderResponse(
-            ':raid:createRoster.html.twig'
+            ':raid:show.html.twig'
         );
+    }
 
+    /**
+     * @return Response
+     */
+    public function listAction()
+    {
+        $raids = $this->userLootManager->getAllRaids();
+
+        return $this->templating->renderResponse(
+            'raid:list:html.twig',
+            ['raids' => $raids]
+        );
     }
 
     /**
      * @param int $id
      * @return Response
      */
-    public function showAction()
+    public function createRosterAction()
     {
         return $this->templating->renderResponse(
-            ':raid:show.html.twig'
+            ':raid:createRoster.html.twig'
         );
+
     }
 }
