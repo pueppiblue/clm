@@ -4,7 +4,9 @@ namespace AppBundle\Menu;
 
 use AppBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\ItemInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
@@ -34,8 +36,8 @@ class MenuBuilder
     }
 
     /**
-     * @return \Knp\Menu\ItemInterface
-     * @throws \InvalidArgumentException
+     * @return ItemInterface
+     * @throws InvalidArgumentException
      */
     public function createNavMenu()
     {
@@ -44,8 +46,7 @@ class MenuBuilder
 
         $menu->addChild('Accounts', array('route' => 'user_list'));
         $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
-        $menu->addChild('Raid', array('route' => 'raid_show'));
-        $menu['Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
+
         $menu->addChild('Import xml', array('route' => 'user_import'));
         $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
 
@@ -53,9 +54,64 @@ class MenuBuilder
     }
 
     /**
+     * @param $options
+     * @return ItemInterface
+     * @throws InvalidArgumentException
+     */
+    public function createSideMenu($options)
+    {
+        $menu = $this->factory->createItem('sideRoot');
+        $menu->setChildrenAttribute('class', 'side-nav');
+        $menu->setChildrenAttribute('id', 'mobile-nav');
+
+        $user = $this->createUserMenu($options);
+        $nav = $this->createNavMenu();
+
+        foreach ($nav->getChildren() as $child) {
+            $menu->addChild($child->copy());
+        }
+
+
+        foreach ($user->getChildren() as $child) {
+            $menu->addChild($child->copy());
+        }
+
+        return $menu;
+    }
+
+    public function createRaidDropContent()
+    {
+        $menu = $this->factory->createItem('RaidContent');
+        $menu->setChildrenAttributes([
+            'class' => 'dropdown-content',
+            'id' => 'dropdown-raid'
+        ]);
+
+        $menu->addChild('Raid List', ['route' => 'raid_list']);
+        $menu['Raid List']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        $menu->addChild('Create Roster', ['route' => 'raid_createRoster']);
+        $menu['Create Roster']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        return $menu;
+
+    }
+
+    public function createRaidDropButton()
+    {
+        $menu = $this->factory->createItem('RaidRoot');
+        
+        $menu->addChild('Raid', ['uri' => '#']);
+        $menu['Raid']->setLinkAttribute('data-activates', 'dropdown-raid');
+        $menu['Raid']->setLinkAttribute('class', 'dropdown-button');
+        
+        return $menu;
+    }
+
+    /**
      * @param array $options
-     * @return \Knp\Menu\ItemInterface
-     * @throws \InvalidArgumentException
+     * @return ItemInterface
+     * @throws InvalidArgumentException
      */
     public function createUserMenu(array $options)
     {
@@ -77,31 +133,6 @@ class MenuBuilder
                 ->setExtra('translation_domain', 'FOSUserBundle');
 
             $menu->addChild('Register', ['route' => 'fos_user_registration_register']);
-        }
-
-        return $menu;
-    }
-
-    /**
-     * @param $options
-     * @return \Knp\Menu\ItemInterface
-     * @throws \InvalidArgumentException
-     */
-    public function createSideMenu($options)
-    {
-        $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'side-nav');
-        $menu->setChildrenAttribute('id', 'mobile-nav');
-
-        $user = $this->createUserMenu($options);
-        $nav = $this->createNavMenu();
-
-        foreach ($nav->getChildren() as $child) {
-            $menu->addChild($child->copy());
-        }
-
-        foreach ($user->getChildren() as $child) {
-            $menu->addChild($child->copy());
         }
 
         return $menu;

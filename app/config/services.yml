@@ -59,3 +59,5 @@ services:
           - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
           - { name: knp_menu.menu_builder, method: createSideMenu, alias: side_nav }
           - { name: knp_menu.menu_builder, method: createUserMenu, alias: user_nav}
+          - { name: knp_menu.menu_builder, method: createRaidDropButton, alias: raid_drop_button}
+          - { name: knp_menu.menu_builder, method: createRaidDropContent, alias: raid_drop_content}
