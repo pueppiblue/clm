@@ -23,6 +23,16 @@ raid_show:
     _controller: app.controller.raid:showAction
     id: 1
 
+raid_list:
+  path: /raid/list
+  defaults:
+    _controller: app.controller.raid:listAction
+
+raid_createRoster:
+  path: /raid/createRoster
+    defaults:
+    _controller: app.controller.raid:createRosterAction
+
 redirect_home:
   path: /{slug}
   defaults:
