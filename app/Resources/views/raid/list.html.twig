@@ -11,8 +11,8 @@
             <ul class="row">
                 {% for raid in raids %}
                     <li class="col s6">
-                        <div class="card-panel">
-                            {{ raid.getDate }}    {{ raid.getRaidTier }}
+                        <div class="card-panel multi-panel">
+                            <strong>{{ raid.getRaidTier }}</strong> {{ raid.getDate|date('Y-m-d') }}
                         </div>
                     </li>
                 {% endfor %}

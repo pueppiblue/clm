@@ -66,7 +66,7 @@ class RaidController
         $raids = $this->userLootManager->getAllRaids();
 
         return $this->templating->renderResponse(
-            'raid:list:html.twig',
+            ':raid:list.html.twig',
             ['raids' => $raids]
         );
     }
