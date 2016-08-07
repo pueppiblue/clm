@@ -1,7 +1,7 @@
 AppBundle\Entity\ClmRaid:
     type: entity
     table: clm_raid
-    repositoryClass: AppBundle\Repository\ClmRaidRepository
+    repositoryClass: AppBundle\Repository\DoctrineORMClmRaidRepository
     id:
         id:
             type: integer

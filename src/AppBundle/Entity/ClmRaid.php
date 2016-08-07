@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -15,7 +16,7 @@ class ClmRaid
     private $id;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $date;
 
@@ -47,7 +48,7 @@ class ClmRaid
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param DateTime $date
      *
      * @return ClmRaid
      */
@@ -61,7 +62,7 @@ class ClmRaid
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDate()
     {

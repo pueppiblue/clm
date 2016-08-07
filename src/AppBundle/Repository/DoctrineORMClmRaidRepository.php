@@ -9,6 +9,9 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class DoctrineORMClmRaidRepository extends EntityRepository implements ClmRaidRepositoryInterface
 {
+    /**
+     * @param ClmRaid $raid
+     */
     public function save(ClmRaid $raid)
     {
         $em = $this->getEntityManager();
@@ -17,6 +20,10 @@ class DoctrineORMClmRaidRepository extends EntityRepository implements ClmRaidRe
         $em->flush();
     }
 
+    /**
+     * @param int $id
+     * @return ClmRaid
+     */
     public function findById($id)
     {
         $query = $this->createQueryBuilder('b')

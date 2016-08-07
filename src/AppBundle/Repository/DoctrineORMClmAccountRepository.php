@@ -3,9 +3,9 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\ClmAccount;
+use Doctrine\ORM\EntityRepository;
 use AppBundle\Exception\ClmAccountRepositoryException;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 
