@@ -29,7 +29,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-migrations-bundle": "^1.1",
         "jms/serializer-bundle": "^1.1",
-        "knplabs/knp-menu-bundle": "^2.1"
+        "knplabs/knp-menu-bundle": "~2.1dev",
+        "friendsofsymfony/user-bundle": "~2.0dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -42,26 +43,31 @@
     },
     "scripts": {
         "project-init": [
-            "@composer-init",
+            "php composer.phar install",
+            "@database-init",
             "@assets-init",
-            "@database-init"
+            "@composer-init"
         ],
         "assets-init": [
             "npm install",
             "./node_modules/.bin/bower install --allow-root"
         ],
         "composer-init": [
-            "php composer.phar install",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "php bin/console cache:clear"
         ],
         "database-init": [
             "php bin/console doctrine:database:drop --no-interaction --force --if-exists",
             "php bin/console doctrine:database:create",
-            "php bin/console doctrine:migrations:migrate"
+            "php bin/console doctrine:migrations:migrate",
+            "php bin/console h:d:f:l -e dev -n",
+            "php bin/console doctrine:database:drop --if-exists --no-interaction --force --env=test",
+            "php bin/console doctrine:database:create -e test",
+            "php bin/console doctrine:migrations:migrate -e test",
+            "php bin/console h:d:f:l -e test -n"
         ],
         "database-migrations-diff": [
-            "php bin/console doctrine:database:drop --no-interaction --force --if-exists",
+            "php bin/console doctrine:database:drop --if-exists --no-interaction --force",
             "php bin/console doctrine:database:create",
             "php bin/console doctrine:migrations:diff"
         ],

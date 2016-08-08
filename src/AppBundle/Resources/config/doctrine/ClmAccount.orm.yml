@@ -1,0 +1,49 @@
+AppBundle\Entity\ClmAccount:
+    type: entity
+    table: clm_account
+    repositoryClass: AppBundle\Repository\DoctrineORMClmAccountRepository
+    id:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: IDENTITY
+    fields:
+        accountName:
+            type: string
+            length: 190
+            unique: true
+            column: name
+        tear:
+            type: integer
+            nullable: true
+        acc:
+            type: integer
+            nullable: true
+        weapon:
+            type: integer
+            nullable: true
+        item:
+            type: integer
+            nullable: true
+        urn:
+            type: integer
+            nullable: true
+    oneToMany:
+        characters:
+            targetEntity: AppBundle\Entity\ClmCharacter
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: account
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+        items:
+            targetEntity: AppBundle\Entity\ClmItem
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: looter
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks: {  }

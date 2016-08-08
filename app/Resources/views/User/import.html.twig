@@ -1,14 +1,20 @@
 {% extends 'base.html.twig' %}
 {% form_theme form _self %}
 
-{% block file_widget -%}
-    <div class="file-field input-field">
-        <div class="btn btn-default">
-            <span>Select xml</span>
-            {{- block('form_widget_simple') -}}
+{%- block file_widget -%}
+    <div class="file-field input-field col s10 push-s1">
+        <div class="row">
+            <div class="btn btn-default">
+                <span>Select xml</span>
+                {{- block('form_widget_simple') -}}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
         </div>
-        <div class="file-path-wrapper">
-           <input class="file-path validate" type="text">
+        <div class="row"><button class="btn waves-effect waves-light col s12" type="submit" name="action">
+                Import Accounts
+            </button>
         </div>
     </div>
 {%- endblock file_widget %}
@@ -16,14 +22,20 @@
 
 {% block body %}
     <div class="row">
-        <div class="push-s3 col s6">
-            {{ form_start(form) }}
-            {{ form_errors(form) }}
-            {{ form_widget(form.XmlFile) }}
-            <button class="btn waves-effect waves-light col s12" type="submit" name="action">
-                Import Accounts
-            </button>
-            {{ form_end(form) }}
+        <div class="col s6 push-s3">
+            <div class="card">
+                <div class="card-title col s12">
+                    Import account data
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        {{ form_widget(form.XmlFile) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -47,7 +47,8 @@ services:
 
   app.menu_builder:
       class: AppBundle\Menu\MenuBuilder
-      arguments: ['@knp_menu.factory']
+      arguments: ['@knp_menu.factory', '@security.authorization_checker']
       tags:
           - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
           - { name: knp_menu.menu_builder, method: createSideMenu, alias: side_nav }
+          - { name: knp_menu.menu_builder, method: createUserMenu, alias: user_nav}

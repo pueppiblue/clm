@@ -1,6 +1,6 @@
 AppBundle\Entity\ClmAccount:
   clmAccount{1..100}:
-    accountName (unique): <firstName()>
+    accountName (unique): <firstName()>.test
     __construct : [$accountName]
     tear: <numberBetween(0, 45)>
     weapon: <numberBetween(0, 45)>

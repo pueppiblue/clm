@@ -1,0 +1,17 @@
+AppBundle\Entity\User:
+    type: entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    attributeOverride:
+        username:
+            length: 190
+        usernameCanonical:
+            length: 190
+        email:
+            length: 190
+        emailCanonical:
+            length: 190

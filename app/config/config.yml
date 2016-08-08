@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -37,7 +37,12 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
-        - 'bootstrap_3_layout.html.twig'
+        - 'form_div_layout.html.twig'
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
 
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
@@ -58,6 +63,7 @@ doctrine:
         user:     "%database_user%"
         password: "%database_password%"
         charset: utf8mb4
+        server_version: 5.7
         default_table_options:
             charset: utf8mb4
             collate: utf8mb4_unicode_ci

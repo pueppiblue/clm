@@ -1,0 +1,12 @@
+AppBundle\Entity\User:
+    user_lootmaster:
+        username: Lootmaster
+        plainPassword: showmeloot
+        email: lootgod@aoc.com
+        enabled: 1
+        roles: [ROLE_ADMIN]
+    user{1..10}:
+        username: <firstName()>.<lastName().dev>
+        plainpassword: <password()>
+        email: <email()>
+        roles: [ROLE_USER]

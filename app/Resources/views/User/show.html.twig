@@ -4,7 +4,9 @@
     <p> </p>
     <div class="row">
         <div class="col s12">
-            <div class="card-panel"><h4>{{ user.getAccountName }}</h4></div>
+            <div class="card-panel">
+                <h2>{{ user.getAccountName }}</h2>
+            </div>
         </div>
             <div class="col s12 l6">
             {% include(':User:listCharacters.html.twig') %}
@@ -13,9 +15,5 @@
             {% include(':User:listCredits.html.twig') %}
         </div>
     </div>
-    {#{% include(':Item:list.html.twig') %}#}
-    {#{% include(':Raid:list.html.twig') %}#}
-
-
 
 {% endblock %}

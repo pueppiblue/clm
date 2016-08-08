@@ -9,8 +9,9 @@ forum:
 @import 'animateList';
 
 $primary-color: #D18A21;
-$accent-color: #E4A64A;
+$accent-primary: #E4A64A;
 $secondary-color: #168B65;
+$accent-secondary: #1A9088;
 $bg-color: #F3E9D9;
 $grey-dark: #574C3D;
 $grey-light: #F3E9D9;
@@ -22,30 +23,79 @@ body {
     color: #ffffff;
 }
 
+.container {
+  padding-top: 5em;
+}
+
+h2 {
+  font-size: 200%;
+}
+
+// NAVBAR CSS
 a, .side-nav a {
     color: white;
 }
-
 nav {
     background-color: $primary-color;
 }
 
-nav li:hover, nav li a:hover,#multi-panel:hover ,#table-item:hover, .btn:hover {
-    background-color: $accent-color;
+nav li:hover, nav li a:hover, #multi-panel:hover ,#table-item:hover{
+    background-color: $accent-primary;
 }
 
 nav ul li a, .side-nav a{
   width: $sidenav-width;
 }
+.side-nav {
+    background-color: $primary-color;
+  }
 
-.btn, .well-lg, .card-panel, .side-nav, .card {
+
+// PANELS
+.well-lg, .card-panel {
   background-color: $primary-color;
+}
+.panel-heading {
+  background-color: $accent-primary;
+}
+
+//card CSS
+.card {
+  background-color: $accent-primary;
+}
+.card .card-title {
+  background-color: $primary-color;
+  text-align: center;
+  font-size: 200%;
+  font-weight: bold;
+}
+.card .card-content {
+  background-color: $accent-primary;
+  padding: 0 0 0 0;
+}
+
+
+//form CSS
+.btn {
+  background-color: $secondary-color;
+}
+.btn:hover {
+  background-color: $accent-secondary;
+}
+.input-field input {
+  border-bottom-color: #ffffff;
+  outline-color: #ffffff;
+}
+.input-field label {
+  color: #ffffff;
 }
 
 .multi-panel {
-  min-height: 80px;
-  max-height: 80px;
-  min-width:  80px;
+  padding: 5px 5px 5px 5px;
+  word-wrap: break-word;
+  min-height: 45px;
+  max-height: 45px;
+  min-width:  45px;
   max-width: 500px;
   background-color: $bg-color;
   color: $primary-color;
