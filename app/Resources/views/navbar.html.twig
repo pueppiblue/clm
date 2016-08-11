@@ -1,7 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 
-{{ knp_menu_render( knp_menu_get('raid_drop_content')) }}
 <nav>
     <div class="nav-wrapper">
         <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -9,8 +8,6 @@
 
         {% set menu = knp_menu_get('nav') %}
         {{ knp_menu_render(menu) }}
-
-        {{ knp_menu_render( knp_menu_get('raid_drop_button')) }}
 
         {% set user_menu = knp_menu_get('user_nav', [], {'user': app.user}) %}
         {{ knp_menu_render(user_menu) }}

@@ -50,6 +50,25 @@ class MenuBuilder
         $menu->addChild('Import xml', array('route' => 'user_import'));
         $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
 
+        $menu->addChild('Raid', ['uri' => '#']);
+        $menu['Raid']->setLinkAttribute('data-activates', 'dropdown-raid');
+        $menu['Raid']->setLinkAttribute('class', 'dropdown-button');
+
+        $menuDrop = $menu->addChild('');
+        $menuDrop->setChildrenAttributes([
+            'class' => 'dropdown-content',
+            'id' => 'dropdown-raid'
+        ]);
+
+        $menuDrop->addChild('List Raids', ['route' => 'raid_list']);
+        $menuDrop['List Raids']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        $menuDrop->addChild('Create Raid', ['route' => 'raid_createRoster']);
+        $menuDrop['Create Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        $menuDrop->addChild('Active Raids', ['route' => 'raid_list']);
+        $menuDrop['Active Raids']->setAttribute('class', 'hoverable waves-effect waves-light');
+
         return $menu;
     }
 
@@ -67,18 +86,41 @@ class MenuBuilder
         $user = $this->createUserMenu($options);
         $nav = $this->createNavMenu();
 
+        /*import all nav menu items except 'raid'
+        because dropdown is converted to collapsible in side menu*/
         foreach ($nav->getChildren() as $child) {
-            $menu->addChild($child->copy());
+            if($child->getLabel()!=='Raid') {
+                $menu->addChild($child->copy());
+            }
         }
 
+        // include raidDropDown as collapsible
+        $raidMenu= $menu->addChild('',['attributes' => ['class' => 'no-padding']]);
 
+        //$raidMenu = $this->factory->createItem('raidSideMenu');
+        $raidMenu->setChildrenAttribute('class', 'collapsible collapsible-accordion');
+
+        $raidDropDown = $raidMenu->addChild('Raid', ['uri' => '#']);
+        $raidDropDown->setLinkAttribute('class', 'collapsible-header');
+        $raidDropDown->setChildrenAttribute('class', 'collapsible-body');
+
+        $raidDropDown->addChild('Create Raid', ['uri' => '#']);
+        $raidDropDown->addChild('List Raids', ['uri' => '#']);
+        $raidDropDown->addChild('Active Raids', ['uri' => '#']);
+
+        //copy user menu
         foreach ($user->getChildren() as $child) {
             $menu->addChild($child->copy());
         }
 
+
         return $menu;
     }
 
+    /**
+     * @return ItemInterface
+     * deprecated logic included in navMenu fucntion
+     */
     public function createRaidDropContent()
     {
         $menu = $this->factory->createItem('RaidContent');
@@ -97,10 +139,14 @@ class MenuBuilder
 
     }
 
+    /**
+     * @return ItemInterface
+     * deprecated logic included in navMenu fucntion
+     */
     public function createRaidDropButton()
     {
         $menu = $this->factory->createItem('RaidRoot');
-        
+        $menu->setChildrenAttribute('class', 'right hide-on-med-and-down');
         $menu->addChild('Raid', ['uri' => '#']);
         $menu['Raid']->setLinkAttribute('data-activates', 'dropdown-raid');
         $menu['Raid']->setLinkAttribute('class', 'dropdown-button');
