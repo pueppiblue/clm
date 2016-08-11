@@ -9,10 +9,6 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-/**
- * Class MenuBuilder
- * @package AppBundle\Menu
- */
 class MenuBuilder
 {
     /**
@@ -47,9 +43,6 @@ class MenuBuilder
         $menu->addChild('Accounts', array('route' => 'user_list'));
         $menu['Accounts']->setAttribute('class', 'hoverable waves-effect waves-light');
 
-        $menu->addChild('Import xml', array('route' => 'user_import'));
-        $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
-
         $menu->addChild('Raid', ['uri' => '#']);
         $menu['Raid']->setLinkAttribute('data-activates', 'dropdown-raid');
         $menu['Raid']->setLinkAttribute('class', 'dropdown-button');
@@ -63,11 +56,18 @@ class MenuBuilder
         $menuDrop->addChild('List Raids', ['route' => 'raid_list']);
         $menuDrop['List Raids']->setAttribute('class', 'hoverable waves-effect waves-light');
 
-        $menuDrop->addChild('Create Raid', ['route' => 'raid_createRoster']);
-        $menuDrop['Create Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
-
         $menuDrop->addChild('Active Raids', ['route' => 'raid_list']);
         $menuDrop['Active Raids']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+        if ($this->isAdmin()) {
+            $menuDrop->addChild('Create Raid', ['route' => 'raid_createRoster']);
+            $menuDrop['Create Raid']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+            $menu->addChild('Import xml', array('route' => 'user_import'));
+            $menu['Import xml']->setAttribute('class', 'hoverable waves-effect waves-light');
+
+
+        }
 
         return $menu;
     }
@@ -104,9 +104,12 @@ class MenuBuilder
         $raidDropDown->setLinkAttribute('class', 'collapsible-header');
         $raidDropDown->setChildrenAttribute('class', 'collapsible-body');
 
-        $raidDropDown->addChild('Create Raid', ['uri' => '#']);
-        $raidDropDown->addChild('List Raids', ['uri' => '#']);
         $raidDropDown->addChild('Active Raids', ['uri' => '#']);
+        $raidDropDown->addChild('List Raids', ['uri' => '#']);
+
+        if ($this->isAdmin()) {
+            $raidDropDown->addChild('Create Raid', ['uri' => '#']);
+        }
 
         //copy user menu
         foreach ($user->getChildren() as $child) {
@@ -150,7 +153,7 @@ class MenuBuilder
         $menu->addChild('Raid', ['uri' => '#']);
         $menu['Raid']->setLinkAttribute('data-activates', 'dropdown-raid');
         $menu['Raid']->setLinkAttribute('class', 'dropdown-button');
-        
+
         return $menu;
     }
 
@@ -161,15 +164,11 @@ class MenuBuilder
      */
     public function createUserMenu(array $options)
     {
-        $isAdmin = $this->checker->isGranted('ROLE_ADMIN');
-        $isUser = $this->checker->isGranted('ROLE_USER');
-        $isLoggedIn = ($isAdmin || $isUser);
-
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'right hide-on-med-and-down')
             ->setExtra('translation_domain', 'FOSUserBundle');
 
-        if ($isLoggedIn) {
+        if ($this->isLoggedIn()) {
             /** @var User $user */
             $user = $options['user'];
             $userName = $user->getUsername();
@@ -182,5 +181,22 @@ class MenuBuilder
         }
 
         return $menu;
+    }
+
+    /**
+     * @return bool
+     */
+    private function isAdmin()
+    {
+        return $this->checker->isGranted('ROLE_ADMIN');
+    }
+
+    /**
+     * @return bool
+     */
+    private function isLoggedIn()
+    {
+        return $this->checker->isGranted('ROLE_ADMIN');
+
     }
 }
