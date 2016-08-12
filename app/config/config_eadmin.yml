@@ -1,0 +1,9 @@
+# app/config/config_eadmin.yml
+easy_admin:
+    entities:
+        Accounts:
+            class: AppBundle\Entity\ClmAccount
+        Characters:
+            class: AppBundle\Entity\ClmCharacter
+        Users:
+            class: AppBundle\Entity\User
