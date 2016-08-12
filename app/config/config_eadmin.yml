@@ -7,3 +7,16 @@ easy_admin:
             class: AppBundle\Entity\ClmCharacter
         Users:
             class: AppBundle\Entity\User
+            form:
+                fields: ['username', 'email', 'enabled', 'roles', 'lastLogin']
+            list:
+                fields: ['username', 'email', 'enabled', 'roles', 'lastLogin']
+                actions:
+                    - { name: 'show', icon: 'search' }
+                    - { name: 'edit', icon: 'pencil' }
+                    - { name: 'delete' }
+    design:
+        menu:
+            - { entity: 'Users', icon: 'user'}
+            - { entity: 'Accounts', icon: 'user'}
+            - { entity: 'Characters', icon: 'user'}
