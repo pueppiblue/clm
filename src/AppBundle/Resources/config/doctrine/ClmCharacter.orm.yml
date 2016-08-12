@@ -1,6 +1,6 @@
 AppBundle\Entity\ClmCharacter:
     type: entity
-    table: clm_characters
+    table: clm_character
     repositoryClass: AppBundle\Repository\DoctrineORMClmCharacterRepository
     id:
         id:
