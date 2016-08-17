@@ -38,10 +38,18 @@ class ClmCharacter
      * @param $name
      * @param $clmClass
      */
-    public function __construct($name, $clmClass = '')
+    public function __construct($name = '', $clmClass = '')
     {
         $this->charName = $name;
         $this->clmClass = $clmClass;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->charName;
     }
 
     /**

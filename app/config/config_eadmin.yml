@@ -3,12 +3,14 @@ easy_admin:
     entities:
         Accounts:
             class: AppBundle\Entity\ClmAccount
+            form:
+                fields: ['accountName', 'tear', 'weapon', 'acc', 'urn', 'item', 'characters', 'items' ]
         Characters:
             class: AppBundle\Entity\ClmCharacter
         Users:
             class: AppBundle\Entity\User
             form:
-                fields: ['username', 'email', 'enabled', 'roles', 'lastLogin']
+                fields: ['username', 'email', 'password', 'enabled', 'roles', 'lastLogin']
             list:
                 fields: ['username', 'email', 'enabled', 'roles', 'lastLogin']
                 actions:

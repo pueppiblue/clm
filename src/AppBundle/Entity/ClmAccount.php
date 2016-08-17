@@ -24,7 +24,7 @@ class ClmAccount
      */
     protected $acc=0;
     /**
-     * @var int
+     * @var string
      */
     protected $item=0;
 
@@ -50,11 +50,29 @@ class ClmAccount
      * User constructor.
      * @param string $name
      */
-    public function __construct($name)
+    public function __construct($name = '')
     {
         $this->accountName = $name;
         $this->items = new ArrayCollection();
         $this->characters= new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return $this->accountName;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function setAccountName($name)
+    {
+        $this->accountName = $name;
+
+        return $this;
     }
 
     /**
