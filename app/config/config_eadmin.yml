@@ -18,7 +18,7 @@ easy_admin:
                 actions:
                     - { name: 'show', icon: 'search' }
                     - { name: 'edit', icon: 'pencil' }
-                    - { name: 'delete' }
+                    - { name: 'delete', icon: 'minus-circle' }
     design:
         menu:
             - { entity: 'Users', icon: 'user'}
