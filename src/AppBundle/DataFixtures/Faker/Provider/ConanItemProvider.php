@@ -2,33 +2,10 @@
 
 namespace AppBundle\DataFixtures\Faker\Provider;
 
-
 use Faker\Provider\Base as BaseProvider;
 
 class ConanItemProvider extends BaseProvider
 {
-    public function conanClass()
-    {
-        return self::randomElement($this->classProvider);
-    }
-
-    public function conanCharName()
-    {
-        return self::randomElement($this->charNameProvider);
-    }
-
-    public function conanItem()
-    {
-        $items = [
-          sprintf(
-              '%s-%s',
-              self::randomElement($this->classProvider),
-              self::randomElement($this->itemProvider)
-              )
-        ];
-        return self::randomElement($items);
-    }
-
     private $itemProvider = [
         'Brust',
         'Mainhand',
@@ -52,5 +29,37 @@ class ConanItemProvider extends BaseProvider
     private $classProvider = [
         'DT', 'Ero', 'BS', 'Waechter', 'ToS', 'PoM', 'Assa', 'Barb', 'Ranger','HoX', 'Nec', 'Demo'
     ];
+
+    /**
+     * @return string
+     */
+    public function conanClass()
+    {
+        return self::randomElement($this->classProvider);
+    }
+
+    /**
+     * @return string
+     */
+    public function conanCharName()
+    {
+        return self::randomElement($this->charNameProvider);
+    }
+
+    /**
+     * @return string
+     */
+    public function conanItem()
+    {
+        $items = [
+          sprintf(
+              '%s-%s',
+              self::randomElement($this->classProvider),
+              self::randomElement($this->itemProvider)
+              )
+        ];
+
+        return self::randomElement($items);
+    }
 
 }
