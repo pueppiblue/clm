@@ -7,6 +7,8 @@ easy_admin:
                 fields: ['accountName', 'tear', 'weapon', 'acc', 'urn', 'item', 'characters', 'items' ]
         Characters:
             class: AppBundle\Entity\ClmCharacter
+        Items:
+            class: AppBundle\Entity\ClmItem
         Users:
             class: AppBundle\Entity\User
             form:
@@ -22,3 +24,4 @@ easy_admin:
             - { entity: 'Users', icon: 'user'}
             - { entity: 'Accounts', icon: 'user'}
             - { entity: 'Characters', icon: 'user'}
+            - { entity: 'Items' }
