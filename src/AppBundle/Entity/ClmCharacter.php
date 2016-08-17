@@ -33,16 +33,6 @@ class ClmCharacter
      */
     protected $preferredSet = null;
 
-    /**
-     * ClmCharacter constructor.
-     * @param $name
-     * @param $clmClass
-     */
-    public function __construct($name = '', $clmClass = '')
-    {
-        $this->charName = $name;
-        $this->clmClass = $clmClass;
-    }
 
     /**
      * @return string

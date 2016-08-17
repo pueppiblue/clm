@@ -47,12 +47,10 @@ class ClmAccount
     protected $characters = null;
 
     /**
-     * User constructor.
-     * @param string $name
+     * ClmAccount constructor.
      */
-    public function __construct($name = '')
+    public function __construct()
     {
-        $this->accountName = $name;
         $this->items = new ArrayCollection();
         $this->characters= new ArrayCollection();
     }
