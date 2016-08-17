@@ -69,6 +69,10 @@ class UserLootManager
 
     }
 
+    /**
+     * @param $id
+     * @return ClmRaid
+     */
     public function getRaid($id)
     {
         return $this->raidRepository->findById($id);
