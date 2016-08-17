@@ -6,6 +6,7 @@ use AppBundle\Entity\ClmAccount;
 use AppBundle\Entity\ClmRaid;
 use AppBundle\Repository\ClmAccountRepositoryInterface;
 use AppBundle\Repository\ClmRaidRepositoryInterface;
+use Doctrine\ORM\NoResultException;
 
 class UserLootManager
 {
@@ -29,8 +30,8 @@ class UserLootManager
         ClmRaidRepositoryInterface $raidRepository
     )
     {
-       $this->accountRepository = $accountRepository;
-       $this->raidRepository = $raidRepository;
+        $this->accountRepository = $accountRepository;
+        $this->raidRepository = $raidRepository;
     }
 
     /**
@@ -44,17 +45,19 @@ class UserLootManager
 
     /**
      * @param $id
-     * @return null| ClmAccount[]
+     * @return ClmAccount
+     * @throws NoResultException
      */
     public function getAccount($id)
     {
         $account = $this->accountRepository->findBy(['id' => $id]);
 
-        if ($account) {
+        if (!$account) {
+            throw new NoResultException();
+        } else {
+
             return $account[0];
         }
-
-        return null;
     }
 
     /**
