@@ -42,7 +42,8 @@ build:
       # replace app parameters
       - mv app/config/parameters.yml.shippable app/config/parameters.yml
       # set mysql privileges
-      - mysql -e "CREATE USER 'clm_shippable'@'localhost' IDENTIFIED BY '', 'clm_test'@'localhost' IDENTIFIED BY clm_test; FLUSH PRIVILEGES;"
+      - mysql -e "CREATE USER 'clm_shippable'@'localhost' IDENTIFIED BY ''; FLUSH PRIVILEGES;"
+      - mysql -e "CREATE USER 'clm_test'@'localhost' IDENTIFIED BY 'clm_test'; FLUSH PRIVILEGES;"
       - mysql -e "GRANT ALL ON clm_test.* TO 'clm_test'@'localhost'; FLUSH PRIVILEGES;"
       - mysql -e "GRANT ALL ON clm_shippable.* TO 'shippable'@'localhost'; FLUSH PRIVILEGES;"
       # install dependencies
