@@ -26,12 +26,12 @@ class ClmRaid
     private $raidTier;
 
     /**
-     * @var arrayCollection
+     * @var ArrayCollection
      */
     private $participants;
 
     /**
-     * @var arrayCollection
+     * @var ArrayCollection
      */
     private $lootedItems;
 
@@ -96,7 +96,7 @@ class ClmRaid
     /**
      * Set participants
      *
-     * @param arrayCollection $participants
+     * @param ArrayCollection $participants
      *
      * @return ClmRaid
      */
@@ -110,7 +110,7 @@ class ClmRaid
     /**
      * Get participants
      *
-     * @return arrayCollection
+     * @return ArrayCollection
      */
     public function getParticipants()
     {
@@ -120,7 +120,7 @@ class ClmRaid
     /**
      * Set lootedItems
      *
-     * @param array $lootedItems
+     * @param ArrayCollection $lootedItems
      *
      * @return ClmRaid
      */
@@ -134,7 +134,7 @@ class ClmRaid
     /**
      * Get lootedItems
      *
-     * @return arrayCollection
+     * @return ArrayCollection
      */
     public function getLootedItems()
     {
