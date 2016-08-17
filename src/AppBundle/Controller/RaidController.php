@@ -48,7 +48,6 @@ class RaidController
     }
 
     /**
-     * @param int $id
      * @return Response
      */
     public function showAction()
@@ -72,7 +71,6 @@ class RaidController
     }
 
     /**
-     * @param int $id
      * @return Response
      */
     public function createRosterAction()
