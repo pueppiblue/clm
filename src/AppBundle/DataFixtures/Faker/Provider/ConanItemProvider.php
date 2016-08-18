@@ -7,33 +7,6 @@ use Faker\Provider\Base as BaseProvider;
 
 class ConanItemProvider extends BaseProvider
 {
-    public function conanClass()
-    {
-        return self::randomElement($this->classProvider);
-    }
-
-    public function conanCharName()
-    {
-        return self::randomElement($this->charNameProvider);
-    }
-
-    public function conanRaidTier()
-    {
-        return self::randomElement($this->raidTierProvider);
-    }
-
-    public function conanItem()
-    {
-        $items = [
-            sprintf(
-                '%s-%s',
-                self::randomElement($this->classProvider),
-                self::randomElement($this->itemProvider)
-            )
-        ];
-        return self::randomElement($items);
-    }
-
     private $itemProvider = [
         'Brust',
         'Mainhand',
@@ -61,4 +34,43 @@ class ConanItemProvider extends BaseProvider
     private $raidTierProvider = [
         'T4', 'T5', 'T6'
     ];
+
+    /**
+     * @return string
+     */
+    public function conanClass()
+    {
+        return self::randomElement($this->classProvider);
+    }
+
+    /**
+     * @return string
+     */
+    public function conanCharName()
+    {
+        return self::randomElement($this->charNameProvider);
+    }
+
+    /**
+     * @return string
+     */
+    public function conanRaidTier()
+    {
+        return self::randomElement($this->raidTierProvider);
+    }
+
+    /**
+     * @return string
+     */
+    public function conanItem()
+    {
+        $items = [
+            sprintf(
+                '%s-%s',
+                self::randomElement($this->classProvider),
+                self::randomElement($this->itemProvider)
+            )
+        ];
+        return self::randomElement($items);
+    }
 }
