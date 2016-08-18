@@ -16,6 +16,7 @@ AppBundle\Entity\ClmCharacter:
         clmClass:
             type: string
             length: 190
+            nullable: true
             column: clm_class
         preferredSet:
             type: string

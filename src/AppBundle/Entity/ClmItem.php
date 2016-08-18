@@ -31,17 +31,15 @@ class ClmItem
     /**
      * @var bool
      */
-    private $isCash;
+    private $isCash = false;
 
     /**
-     * Item constructor.
-     * @param string $name
+     * @return string
      */
-    public function __construct($name)
+    public function __toString()
     {
-        $this->name = $name;
+        return $this->name;
     }
-
 
     /**
      * Get id

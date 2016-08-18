@@ -1,9 +1,9 @@
 AppBundle\Entity\ClmAccount:
-  clmAccount{1..100}:
-    accountName (unique): <firstName()>.test
+  clmAccount{1..200}:
+    accountName (unique): '<name()>.test'
     __construct : [$accountName]
-    tear: <numberBetween(0, 45)>
-    weapon: <numberBetween(0, 45)>
-    item: <numberBetween(0, 45)>
-    acc: <numberBetween(0, 45)>
-    urn: <numberBetween(0, 45)>
+    tear: '<numberBetween(0, 45)>'
+    weapon: '<numberBetween(0, 45)>'
+    item: '<numberBetween(0, 45)>'
+    acc: '<numberBetween(0, 45)>'
+    urn: '<numberBetween(0, 45)>'

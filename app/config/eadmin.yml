@@ -1,0 +1,27 @@
+# app/config/config_eadmin.yml
+easy_admin:
+    entities:
+        Accounts:
+            class: AppBundle\Entity\ClmAccount
+            form:
+                fields: ['accountName', 'tear', 'weapon', 'acc', 'urn', 'item', 'characters', 'items' ]
+        Characters:
+            class: AppBundle\Entity\ClmCharacter
+        Items:
+            class: AppBundle\Entity\ClmItem
+        Users:
+            class: AppBundle\Entity\User
+            form:
+                fields: ['username', 'email', 'password', 'enabled', 'roles', 'lastLogin']
+            list:
+                fields: ['username', 'email', 'enabled', 'roles', 'lastLogin']
+                actions:
+                    - { name: 'show', icon: 'search' }
+                    - { name: 'edit', icon: 'pencil' }
+                    - { name: 'delete', icon: 'minus-circle' }
+    design:
+        menu:
+            - { entity: 'Users', icon: 'user'}
+            - { entity: 'Accounts', icon: 'user'}
+            - { entity: 'Characters', icon: 'user'}
+            - { entity: 'Items' }

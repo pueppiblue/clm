@@ -2,7 +2,6 @@
 
 namespace AppBundle\DataFixtures\Faker\Provider;
 
-
 use Faker\Provider\Base as BaseProvider;
 
 class ConanItemProvider extends BaseProvider
@@ -38,6 +37,14 @@ class ConanItemProvider extends BaseProvider
     /**
      * @return string
      */
+    public function conanRaidTier()
+    {
+        return self::randomElement($this->raidTierProvider);
+    }
+
+    /**
+     * @return string
+     */
     public function conanClass()
     {
         return self::randomElement($this->classProvider);
@@ -54,23 +61,17 @@ class ConanItemProvider extends BaseProvider
     /**
      * @return string
      */
-    public function conanRaidTier()
-    {
-        return self::randomElement($this->raidTierProvider);
-    }
-
-    /**
-     * @return string
-     */
     public function conanItem()
     {
         $items = [
-            sprintf(
-                '%s-%s',
-                self::randomElement($this->classProvider),
-                self::randomElement($this->itemProvider)
-            )
+          sprintf(
+              '%s-%s',
+              self::randomElement($this->classProvider),
+              self::randomElement($this->itemProvider)
+              )
         ];
+
         return self::randomElement($items);
     }
+
 }

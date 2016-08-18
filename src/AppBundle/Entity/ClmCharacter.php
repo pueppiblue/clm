@@ -39,15 +39,13 @@ class ClmCharacter
      */
     protected $preferredSet = null;
 
+
     /**
-     * ClmCharacter constructor.
-     * @param $name
-     * @param $clmClass
+     * @return string
      */
-    public function __construct($name, $clmClass = '')
+    public function __toString()
     {
-        $this->charName = $name;
-        $this->clmClass = $clmClass;
+        return $this->charName;
     }
 
     /**
