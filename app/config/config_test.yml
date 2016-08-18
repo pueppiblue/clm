@@ -14,7 +14,7 @@ doctrine:
         host:     127.0.0.1
         dbname:   clm_test
         user:     clm_test
-        password: ~
+        password: clm_test
         charset:  utf8mb4
         server_version: 5.7
         default_table_options:

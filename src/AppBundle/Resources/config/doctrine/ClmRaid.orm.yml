@@ -1,0 +1,37 @@
+AppBundle\Entity\ClmRaid:
+    type: entity
+    table: clm_raid
+    repositoryClass: AppBundle\Repository\DoctrineORMClmRaidRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+        raidTier:
+            type: string
+            length: '190'
+    OneToMany:
+        droppedItems:
+            targetEntity: AppBundle\Entity\ClmItem
+            cascade: {  }
+            fetch: LAZY
+            JoinColumn:
+              name: item_id
+              referencedColumName: id
+    ManyToMany:
+        participants:
+            targetEntity: AppBundle\Entity\ClmCharacter
+            inversedBy: attendedRaids
+            joinTable:
+                name: raids_characters
+                joinColumns:
+                    raid_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    character_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

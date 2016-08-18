@@ -4,15 +4,16 @@
 {%- block file_widget -%}
     <div class="file-field input-field col s10 push-s1">
         <div class="row">
-            <div class="btn btn-default">
+            <div class="btn btn-default col s12 m5 l4">
                 <span>Select xml</span>
                 {{- block('form_widget_simple') -}}
             </div>
-            <div class="file-path-wrapper">
+            <div class="file-path-wrapper col s12 m7 l8">
                 <input class="file-path validate" type="text">
             </div>
         </div>
-        <div class="row"><button class="btn waves-effect waves-light col s12" type="submit" name="action">
+        <div class="row">
+            <button class="btn waves-effect waves-light col s12" type="submit" name="action">
                 Import Accounts
             </button>
         </div>
@@ -22,7 +23,7 @@
 
 {% block body %}
     <div class="row">
-        <div class="col s6 push-s3">
+        <div class="col s12 m8 push-m2">
             <div class="card">
                 <div class="card-title col s12">
                     Import account data

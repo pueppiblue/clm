@@ -3,5 +3,4 @@ AppBundle\Entity\ClmItem:
     name (unique): <conanItem()>
     __construct : [$name]
     dropDate: <dateTime()>
-    looter: '@clmAccount*'
-    category: <randomElement( ['Tear','Urn','Weapon','Item','Accessoires'])>
+    category: <randomElement(['Tear','Urn','Weapon','Item','Accessoires'])>

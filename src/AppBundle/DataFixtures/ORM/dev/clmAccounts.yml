@@ -1,5 +1,5 @@
 AppBundle\Entity\ClmAccount:
-  clmAccount{1..100}:
+  ClmAccount{1..100}:
     accountName (unique): <firstName()>
     __construct : [$accountName]
     tear: <numberBetween(0, 45)>

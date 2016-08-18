@@ -32,7 +32,7 @@ h2 {
 }
 
 // NAVBAR CSS
-a, .side-nav a {
+a, .side-nav a, .dropdown-content li > a {
     color: white;
 }
 nav {
@@ -45,7 +45,10 @@ nav li:hover, nav li a:hover, #multi-panel:hover ,#table-item:hover{
 
 nav ul li a, .side-nav a{
   width: $sidenav-width;
+  background-color: $primary-color;
 }
+
+
 .side-nav {
     background-color: $primary-color;
   }
@@ -62,6 +65,9 @@ nav ul li a, .side-nav a{
 //card CSS
 .card {
   background-color: $accent-primary;
+  padding: 0 0 0 0;
+  min-width: 300px;
+
 }
 .card .card-title {
   background-color: $primary-color;
@@ -96,7 +102,7 @@ nav ul li a, .side-nav a{
   min-height: 45px;
   max-height: 45px;
   min-width:  45px;
-  max-width: 500px;
+  max-width: 1000px;
   background-color: $bg-color;
   color: $primary-color;
 }

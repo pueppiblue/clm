@@ -1,0 +1,6 @@
+AppBundle\Entity\ClmRaid:
+  ClmRaid{1..20}:
+    raidTier: <conanRaidTier()>
+    date: <dateTime()>
+    participants: '24x @ClmCharacter*'
+    lootedItems: '10x @ClmItem*'

@@ -1,6 +1,6 @@
 AppBundle\Entity\ClmCharacter:
     type: entity
-    table: clm_characters
+    table: clm_character
     repositoryClass: AppBundle\Repository\DoctrineORMClmCharacterRepository
     id:
         id:
@@ -33,4 +33,8 @@ AppBundle\Entity\ClmCharacter:
                 user_id:
                     referencedColumnName: id
             orphanRemoval: false
+    manyToMany:
+        attendedRaids:
+            targetEntity: AppBundle\Entity\ClmRaid
+            mappedBy: participants
     lifecycleCallbacks: {  }
