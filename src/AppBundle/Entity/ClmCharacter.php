@@ -18,6 +18,7 @@ class ClmCharacter
      * @var string
      */
     protected $charName;
+
     /**
      * @var string
      */
@@ -31,6 +32,11 @@ class ClmCharacter
     /**
      * @var ArrayCollection
      */
+    protected $attendedRaids = null;
+
+    /**
+     * @var string
+     */
     protected $preferredSet = null;
 
 
@@ -40,6 +46,22 @@ class ClmCharacter
     public function __toString()
     {
         return $this->charName;
+    }
+
+    /**
+     * @param ClmItem $item
+     */
+    public function assignItem(ClmItem $item)
+    {
+        $this->account->assignItem($item);
+    }
+
+    /**
+     * @param ClmRaid $raid
+     */
+    public function assignToRaid(ClmRaid $raid)
+    {
+        $this->attendedRaids[] = $raid;
     }
 
     /**
@@ -116,11 +138,27 @@ class ClmCharacter
     }
 
     /**
-     * @return ArrayCollection
+     * @return string
      */
     public function getPreferredSet()
     {
         return $this->preferredSet;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getAttendedRaids()
+    {
+        return $this->attendedRaids;
+    }
+
+    /**
+     * @param ArrayCollection $attendedRaids
+     */
+    public function setAttendedRaids($attendedRaids)
+    {
+        $this->attendedRaids = $attendedRaids;
     }
 
 

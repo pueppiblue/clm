@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Item
@@ -16,11 +17,6 @@ class ClmItem
      * @var string
      */
     private $name;
-
-    /**
-     * @var int
-     */
-    private $looter;
 
     /**
      * @var \DateTime
@@ -77,31 +73,6 @@ class ClmItem
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set user
-     *
-     * @param integer $looter
-     *
-     * @return ClmItem
-     */
-    public function setLooter(ClmAccount $looter)
-    {
-        $this->looter = $looter;
-        $looter->assignItem($this);
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return int
-     */
-    public function getLooter()
-    {
-        return $this->looter;
     }
 
     /**

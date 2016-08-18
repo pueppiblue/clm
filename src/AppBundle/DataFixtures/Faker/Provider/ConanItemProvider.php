@@ -30,6 +30,18 @@ class ConanItemProvider extends BaseProvider
         'DT', 'Ero', 'BS', 'Waechter', 'ToS', 'PoM', 'Assa', 'Barb', 'Ranger','HoX', 'Nec', 'Demo'
     ];
 
+    private $raidTierProvider = [
+        'T4', 'T5', 'T6'
+    ];
+
+    /**
+     * @return string
+     */
+    public function conanRaidTier()
+    {
+        return self::randomElement($this->raidTierProvider);
+    }
+
     /**
      * @return string
      */

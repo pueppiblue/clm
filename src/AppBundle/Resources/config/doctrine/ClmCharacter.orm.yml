@@ -34,4 +34,8 @@ AppBundle\Entity\ClmCharacter:
                 user_id:
                     referencedColumnName: id
             orphanRemoval: false
+    manyToMany:
+        attendedRaids:
+            targetEntity: AppBundle\Entity\ClmRaid
+            mappedBy: participants
     lifecycleCallbacks: {  }

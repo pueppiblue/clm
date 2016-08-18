@@ -13,6 +13,11 @@ services:
       factory: ['@doctrine', 'getRepository']
       arguments: ['AppBundle:ClmAccount']
 
+  app.repository.raid:
+      class: AppBundle\Repository\ClmRaidRepositoryInterface
+      factory: ['@doctrine', 'getRepository']
+      arguments: ['AppBundle:ClmRaid']
+
   app.repository.character:
       class: AppBundle\Repository\ClmCharacterRepositoryInterface
       factory: ['@doctrine', 'getRepository']
@@ -20,7 +25,9 @@ services:
 
   app.service.user_manager:
       class: AppBundle\Service\UserLootManager
-      arguments: ['@app.repository.account']
+      arguments:
+        - '@app.repository.account'
+        - '@app.repository.raid'
 
   app.controller.user:
       class: AppBundle\Controller\UserController
@@ -52,3 +59,5 @@ services:
           - { name: knp_menu.menu_builder, method: createNavMenu, alias: nav }
           - { name: knp_menu.menu_builder, method: createSideMenu, alias: side_nav }
           - { name: knp_menu.menu_builder, method: createUserMenu, alias: user_nav}
+          - { name: knp_menu.menu_builder, method: createRaidDropButton, alias: raid_drop_button}
+          - { name: knp_menu.menu_builder, method: createRaidDropContent, alias: raid_drop_content}
