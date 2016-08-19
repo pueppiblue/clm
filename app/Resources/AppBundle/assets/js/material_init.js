@@ -4,5 +4,10 @@ $(document).ready(function(){
     $(".button-collapse").sideNav({
         menuWidth: 200 // Default is 240
     });
+    $('select').material_select();
     $('.collapsible').collapsible();
+    $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: 2
+    });
 });
