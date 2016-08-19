@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\ClmRaid;
+use AppBundle\Form\CreateRosterType;
 use AppBundle\Service\UserLootManager;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -71,12 +74,26 @@ class RaidController
     }
 
     /**
+     * @param Request $request
      * @return Response
      */
-    public function createRosterAction()
+    public function createRosterAction(Request $request)
     {
+        $raid = new ClmRaid();
+        $form = $this->formFactory->create(CreateRosterType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $flashBag = $request->getSession()->getFlashBag();
+            $flashBag->add('info', sprintf('Raid mit ID %s wurde gestartet', $raid->getId()));
+
+        }
+
+
         return $this->templating->renderResponse(
-            ':raid:createRoster.html.twig'
+            ':raid:createRoster.html.twig',
+            array('form' => $form->createView())
         );
 
     }
