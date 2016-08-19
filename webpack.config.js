@@ -16,8 +16,8 @@ var config = {
         vendor: [
             // // path.resolve(bower, "bootstrap/less/bootstrap.less"),
             // path.resolve(bower, "bootstrap/dist/js/bootstrap.js"),
-            path.resolve(bower, "Materialize/sass/materialize.scss"),
-            path.resolve(bower, "Materialize/dist/js/materialize.js")
+            path.resolve(bower, "materialize/sass/materialize.scss"),
+            path.resolve(bower, "materialize/dist/js/materialize.js")
         ],
         main: [
             path.resolve(source_dir, "js/main.js"),
@@ -60,7 +60,7 @@ var config = {
         modulesDirectories: ['node_modules', 'vendor/bower_components'],
         alias: {
             jquery: "vendor/bower_components/jquery/src/jquery.js",
-            hammerjs: "vendor/bower_components/Materialize/js/hammer.min.js"
+            hammerjs: "vendor/bower_components/materialize/js/hammer.min.js"
         }
     },
     resolveLoader: {
