@@ -59,6 +59,7 @@ var config = {
         root: __dirname,
         modulesDirectories: ['node_modules', 'vendor/bower_components'],
         alias: {
+            'jQuery': 'jquery',
             jquery: "vendor/bower_components/jquery/src/jquery.js",
             hammerjs: "vendor/bower_components/materialize/js/hammer.min.js"
         }
