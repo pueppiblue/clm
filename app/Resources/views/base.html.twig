@@ -24,12 +24,13 @@
 
         {% block flash %}
             {% if app.session.flashBag.has('info') %}
-                <div class="alert alert-dismissible alert-info">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
                     {% for info in app.session.flashBag.get('info') %}
-                        <div>{{ info }}</div>
+                        <div>
+                        <script>
+                            Materialize.toast({{ info }}, 4000);
+                        </script>
+                        </div>
                     {% endfor %}
-                </div>
             {% endif %}
         {% endblock %}
 
