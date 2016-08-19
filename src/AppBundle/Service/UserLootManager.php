@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\ClmAccount;
+use AppBundle\Entity\ClmCharacter;
 use AppBundle\Entity\ClmRaid;
 use AppBundle\Repository\ClmAccountRepositoryInterface;
 use AppBundle\Repository\ClmRaidRepositoryInterface;
@@ -41,6 +42,25 @@ class UserLootManager
     {
         return $accounts = $this->accountRepository->findAll();
 
+    }
+
+    /**
+     * @return ClmCharacter[]
+     */
+    public function getAllCharacters()
+    {
+        $accounts = $this->getAllAccounts();
+        $characters = [];
+
+        foreach ($accounts as $account)
+        {
+            foreach ($account->getCharacters() as $character)
+            {
+                $characters[] = $character;
+            }
+        }
+
+        return $characters;
     }
 
     /**
