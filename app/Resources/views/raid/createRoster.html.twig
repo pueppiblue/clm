@@ -22,10 +22,10 @@
             <div class="card-panel">
                 <h2>Player-Pool:</h2>
                 <ul class="row">
-                    {% for i in 1..40 %}
-                        <li class="col s4 m2 l1 js-list-account" data-is-in-roster="false" data-character-id="{{ i }}">
+                    {% for character in characters %}
+                        <li class="col s4 m2 l1 js-list-account" data-is-in-roster="false" data-character-id="{{ character.id }}">
                             <div class="multi-panel card-panel z-depth-1" draggable="true">
-                                spieler {{ i }}
+                                {{ character.getCharName }}
                             </div>
                         </li>
                     {% endfor %}

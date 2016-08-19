@@ -80,6 +80,8 @@ class RaidController
     public function createRosterAction(Request $request)
     {
         $raid = new ClmRaid();
+        $characters = $this->userLootManager->getAllCharacters();
+
         $form = $this->formFactory->create(CreateRosterType::class);
         $form->handleRequest($request);
 
@@ -93,8 +95,10 @@ class RaidController
 
         return $this->templating->renderResponse(
             ':raid:createRoster.html.twig',
-            array('form' => $form->createView())
-        );
+            [
+                'characters' => $characters,
+                'form' => $form->createView()
+            ]);
 
     }
 }
