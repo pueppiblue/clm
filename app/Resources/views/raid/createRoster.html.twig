@@ -23,8 +23,8 @@
                 <h2>Player-Pool:</h2>
                 <ul class="row">
                     {% for character in characters %}
-                        <li class="col s4 m2 l1 js-list-account" data-is-in-roster="false" data-character-id="{{ character.id }}">
-                            <div class="multi-panel card-panel z-depth-1" draggable="true">
+                        <li class="col s6 m3 l2 js-list-account" data-is-in-roster="false" data-character-id="{{ character.id }}">
+                            <div class="multi-panel truncate card-panel z-depth-1" draggable="true">
                                 {{ character.getCharName }}
                             </div>
                         </li>

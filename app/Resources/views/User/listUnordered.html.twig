@@ -12,7 +12,7 @@
                 {% for user in users %}
                     <li class="col s4 m2 l1">
                         <a href="{{ path('user_show', {'id': user.id}) }}">
-                            <div class="multi-panel card-panel">
+                            <div class="multi-panel truncate card-panel">
                                 {{ user.getAccountName }}
                             </div>
                         </a>
