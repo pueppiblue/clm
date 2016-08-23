@@ -15,23 +15,25 @@
                 </div>
             </div>
             <div class="col s4">
-                <div class="input-field">
-                    {{ form_row(form.save, {'attr': {'class': 'btn btn-default waves-light waves-effect', 'onclick': "Materialize.toast('Starting Raid',4000)"}}) }}
-                </div>
-                <div class="input-field">
-                    {{ form_widget(form.raidTier, {'attr': {'id': 'raidTier'}}) }}
-                    <label for="raidTier">Raid Tier</label>
-                </div>
-                <div class="input-field">
-                    <label for="raidStart" class="active">Raid Beginn</label>
-                    {{ form_widget(form.raidStart, {'attr': {'id': 'raidStart', 'type': 'date', 'class': 'datepicker'}}) }}
-                </div>
+                <div class="card-panel">
+                    <div class="input-field">
+                        {{ form_widget(form.raidTier, {'attr': {'id': 'raidTier'}}) }}
+                        <label for="raidTier">Raid Tier</label>
+                    </div>
+                    <div class="input-field">
+                        <label for="raidStart" class="active">Raid Beginn</label>
+                        {{ form_widget(form.raidStart, {'attr': {'id': 'raidStart', 'type': 'date', 'class': 'datepicker'}}) }}
+                    </div>
 
-                <div class="input-field">
-                    <label for="raidEnd" class="active">Raid Ende</label>
-                    {{ form_widget(form.raidEnd, {'attr': {'id': 'raidEnd', 'type': 'date', 'class': 'datepicker'}}) }}
+                    <div class="input-field">
+                        <label for="raidEnd" class="active">Raid Ende</label>
+                        {{ form_widget(form.raidEnd, {'attr': {'id': 'raidEnd', 'type': 'date', 'class': 'datepicker'}}) }}
+                    </div>
+                    <div class="input-field">
+                        {{ form_row(form.save, {'attr': {'class': 'btn btn-default waves-light waves-effect', 'onclick': "Materialize.toast('Starting Raid',4000)"}}) }}
+                    </div>
                 </div>
-              </div>
+            </div>
         </div>
         <div class="row">
             <div class="col s12">

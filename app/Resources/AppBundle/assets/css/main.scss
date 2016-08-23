@@ -12,6 +12,7 @@ $primary-color: #D18A21;
 $accent-primary: #E4A64A;
 $secondary-color: #168B65;
 $accent-secondary: #1A9088;
+$text-color: #ffffff;
 $bg-color: #F3E9D9;
 $grey-dark: #574C3D;
 $grey-light: #F3E9D9;
@@ -20,7 +21,7 @@ $sidenav-width: 200px;
 body {
     /*text-align: center;*/
     background-color: $bg-color;
-    color: #ffffff;
+    color: $text-color;
 }
 
 .container {
@@ -87,6 +88,9 @@ nav ul li a, .side-nav a{
 }
 .btn:hover {
   background-color: $accent-secondary;
+}
+.select-wrapper input.select-dropdown{
+  border-bottom-color: #ffffff;
 }
 .input-field input {
   border-bottom-color: #ffffff;
