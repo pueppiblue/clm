@@ -1,0 +1,12 @@
+<div class="card-panel">
+    {% for character in characters %}
+        <div class="truncate">
+            <input type="checkbox" id="{{ character.vars['id'] }}"
+                   name={{ character.vars['full_name'] }}
+                   data-raider-id="{{ character.vars['attr']['data-raider-id'] }}"
+                   value="{{ character.vars['name'] }}"
+                />
+            <label for="{{ character.vars['id'] }}">{{ character.vars['label'] }}</label>
+        </div>
+    {% endfor %}
+</div>
