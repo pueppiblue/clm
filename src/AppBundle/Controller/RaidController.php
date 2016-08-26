@@ -42,8 +42,8 @@ class RaidController
         EngineInterface $templating,
         UrlGeneratorInterface $router,
         FormFactory $formFactory,
-        UserLootManager $userLootManager)
-    {
+        UserLootManager $userLootManager
+    ) {
         $this->userLootManager = $userLootManager;
         $this->templating = $templating;
         $this->router = $router;
@@ -76,17 +76,20 @@ class RaidController
     /**
      * @param Request $request
      * @return Response
+     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException
      */
     public function createRosterAction(Request $request)
     {
         $raid = new ClmRaid();
         $characters = $this->userLootManager->getAllCharacters();
 
-        $form = $this->formFactory->create(CreateRosterType::class);
+        $form = $this->formFactory->create(
+            CreateRosterType::class, $raid,
+            ['default_characters' => $characters]
+        );
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $flashBag = $request->getSession()->getFlashBag();
             $flashBag->add('info', sprintf('Raid mit ID %s wurde gestartet', $raid->getId()));
 
@@ -97,8 +100,9 @@ class RaidController
             ':raid:createRoster.html.twig',
             [
                 'characters' => $characters,
-                'form' => $form->createView()
-            ]);
+                'form' => $form->createView(),
+            ]
+        );
 
     }
 }

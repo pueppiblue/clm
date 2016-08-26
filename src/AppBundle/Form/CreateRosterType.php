@@ -3,28 +3,60 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\ClmRaid;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CreateRosterType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $characters = $options['default_characters'];
         $builder
-            ->add('roster', CollectionType::class)
-            ->add('raidTier', ChoiceType::class, [
-                'label' => 'Raid Tier',
-                'choices' => [
-                    'T4' => 'T4',
-                    'T5' => 'T5',
-                    'T6' => 'T6'
-                ]])
-            ->add('raidStart', DateTimeType::class, ['label' => 'Raid Beginn', 'widget' => 'single_text'])
-            ->add('raidEnd', DateTimeType::class, ['label' => 'Raid Ende', 'widget' => 'single_text'])
-            ->add('save', SubmitType::class, array('label' => 'Start Raid'));
+            ->add(
+                'participants',
+                ChoiceType::class,
+                [
+                    'label' => 'Participants',
+                    'choices' => [
+                        $characters,
+                    ],
+                    'choice_label' => 'charName'
+                    ,
+                ]
+            )
+            ->add(
+                'raidTier',
+                ChoiceType::class,
+                [
+                    'label' => 'Raid Tier',
+                    'choices' => [
+                        'T4' => 'T4',
+                        'T5' => 'T5',
+                        'T6' => 'T6',
+                    ],
+                ]
+            )
+            ->add('date', DateType::class, ['label' => 'Raid Beginn', 'widget' => 'single_text']);
     }
+
+    public
+    function configureOptions(
+        OptionsResolver $resolver
+    ) {
+        $resolver->setDefaults(
+            array(
+                'default_characters' => null,
+                'data_class' => ClmRaid::class,
+            )
+        );
+    }
+
 }
