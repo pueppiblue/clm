@@ -18,7 +18,7 @@ $ sudo setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX var
 
 ###preparing mysql database
 ```bash
-mysql -uroot -p -e "CREATE USER 'clm@'localhost' IDENTIFIED BY clm, 'clm_test'@'localhost' IDENTIFIED BY clm_test; FLUSH PRIVILEGES;"
+mysql -uroot -p -e "CREATE USER 'clm'@'localhost' IDENTIFIED BY 'clm', 'clm_test'@'localhost' IDENTIFIED BY 'clm_test'; FLUSH PRIVILEGES;"
 mysql -uroot -p -e "GRANT ALL ON clm_test.* TO 'clm_test'@'localhost'; FLUSH PRIVILEGES;"
 mysql -uroot -p -e "GRANT ALL ON clm.* TO 'clm'@'localhost'; FLUSH PRIVILEGES;"
 ```
