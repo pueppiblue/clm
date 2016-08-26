@@ -1,5 +1,6 @@
 AppBundle\Entity\ClmCharacter:
   ClmCharacter{1..400}:
     charName (unique): <conanCharName()>.<current()>
-    __construct : [$charName, <conanClass()>]
+    __construct : [$charName]
+    clmClass: <conanClass()>
     account: '@ClmAccount*'
