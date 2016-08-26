@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\ClmAccount;
+use AppBundle\Entity\ClmCharacter;
 use AppBundle\Entity\ClmRaid;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -25,11 +27,31 @@ class CreateRosterType extends AbstractType
                 ChoiceType::class,
                 [
                     'label' => 'Participants',
-                    'choices' => [
+                    'choices' =>
                         $characters,
-                    ],
-                    'choice_label' => 'charName'
-                    ,
+                    'choice_label' =>
+                        function ($character) {
+                            /**@var ClmCharacter $character */
+                            /**@var ClmAccount $account */
+                            return sprintf(
+                                '%s (%s)',
+                                $character->getCharName(),
+                                $character->getAccount()->getAccountName()
+                            );
+                        },
+                    'choice_attr' =>
+                        function ($character) {
+                            /**@var ClmCharacter $character */
+                            /**@var ClmAccount $account */
+                            return [
+                                'data-raider-id' => $character->getAccount()->getId(),
+                                'data-character-class' => $character->getClmClass(),
+                            ];
+                        },
+                    'group_by' => 'clmClass',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'placeholder' => null,
                 ]
             )
             ->add(
@@ -44,7 +66,7 @@ class CreateRosterType extends AbstractType
                     ],
                 ]
             )
-            ->add('date', DateType::class, ['label' => 'Raid Beginn', 'widget' => 'single_text']);
+            ->add('date', DateType::class, ['label' => 'Raid Beginn', 'widget' => 'single_text', 'format' => 'dd MMMM, y']);
     }
 
     public
