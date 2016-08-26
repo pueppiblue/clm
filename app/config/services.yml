@@ -52,6 +52,12 @@ services:
           - '@app.repository.account'
           - '@app.repository.character'
 
+  app.twig_character_extension:
+      class: AppBundle\Twig\CharacterClassExtension
+      public: false
+      tags:
+          - { name: twig.extension}
+
   app.menu_builder:
       class: AppBundle\Menu\MenuBuilder
       arguments: ['@knp_menu.factory', '@security.authorization_checker']
