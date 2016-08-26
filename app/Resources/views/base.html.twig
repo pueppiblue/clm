@@ -27,7 +27,7 @@
                     {% for info in app.session.flashBag.get('info') %}
                         <div>
                         <script>
-                            Materialize.toast({{ info }}, 4000);
+                            Materialize.toast('{{ info|escape('js') }}', 4000);
                         </script>
                         </div>
                     {% endfor %}
