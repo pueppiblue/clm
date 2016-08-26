@@ -98,4 +98,12 @@ class UserLootManager
         return $this->raidRepository->findById($id);
     }
 
+    /**
+     * @param ClmRaid $raid
+     */
+    public function saveRaid(ClmRaid $raid)
+    {
+        $this->raidRepository->save($raid);
+    }
+
 }
