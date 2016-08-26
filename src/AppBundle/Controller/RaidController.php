@@ -90,9 +90,11 @@ class RaidController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $raid = $form->getData();
+            $this->userLootManager->saveRaid($raid);
+
             $flashBag = $request->getSession()->getFlashBag();
             $flashBag->add('info', sprintf('Raid mit ID %s wurde gestartet', $raid->getId()));
-
         }
 
 
